@@ -6,10 +6,28 @@
     <description>Recent content on Yangpengpeng&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Apr 2020 19:04:50 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 12 Apr 2020 17:09:51 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo搭建博客中所碰到的问题</title>
+      <link>https://pengpengyang94.github.io/post/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Sun, 12 Apr 2020 17:09:51 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/post/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+      <description>在搭建的过程中，报错主要出现在将 Hugo 和 Github 进行关联的过程中，以下记录了我所碰到的一些报错，还有在插入图片时候的一些建议。
+1.未填写用户名和邮箱 在运行 git commit -m &amp;quot;Add a new post&amp;quot; 命令后，出现如下报错信息：
+解决方案：
+按照提示将用户名和邮箱按照如下命令提交即可（根据实际情况修改成自己的邮箱和用户）。
+git config --global user.email &amp;quot;yangpengpeng.1993@live.com&amp;quot; git config --global user.name &amp;quot;YangPengPeng&amp;quot; 2.出现 fatal: Could not read from remote repository. 在运行git push -u origin master命令后，出现如下报错信息：
+解决方案：
+删除当前 key，然后重新生成 key，具体步骤如下。
+1.执行如下命令后一直回车，会产生 id_rsa 和 id_rsa.pub 两个文件，如下图所示。
+ssh-keygen -t rsa -C &amp;quot;yangpengpeng.1993@live.com&amp;quot; 2.到 https://github.com/settings/keys 的 SSH keys 中点击下图所示的 New SSH key。
+3.将 id_rsa.pub 中的内容复制到下图中的 key 中，title 中可以填写相应的说明，填写完毕后，点击 Add SSH key 即可。</description>
+    </item>
     
     <item>
       <title>Hugo搭建个人博客（Winsows版）</title>

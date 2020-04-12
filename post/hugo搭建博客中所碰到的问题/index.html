@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Hugo搭建博客中所碰到的问题 - Yangpengpeng&#39;s blog</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Yangpengpeng&#39;s blog" rel="home">
+				<div class="logo__title">Yangpengpeng&#39;s blog</div>
+				
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Hugo搭建博客中所碰到的问题</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>在搭建的过程中，报错主要出现在将 <strong>Hugo</strong> 和 <strong>Github</strong> 进行关联的过程中，以下记录了我所碰到的一些报错，还有在插入图片时候的一些建议。</p>
+<h2 id="1未填写用户名和邮箱">1.未填写用户名和邮箱</h2>
+<p>在运行 <code>git commit -m &quot;Add a new post&quot;</code> 命令后，出现如下报错信息：</p>
+<p><img src="https://i.loli.net/2020/04/12/CFg7PinS8m2sLWf.png" alt="Hugo搭建博客中所碰到的问题-1.png"></p>
+<p><strong>解决方案：</strong><br>
+按照提示将用户名和邮箱按照如下命令提交即可（根据实际情况修改成自己的邮箱和用户）。</p>
+<pre><code>git config --global user.email &quot;yangpengpeng.1993@live.com&quot;
+git config --global user.name &quot;YangPengPeng&quot;
+</code></pre><h2 id="2出现-fatal-could-not-read-from-remote-repository">2.出现 <code>fatal: Could not read from remote repository.</code></h2>
+<p>在运行<code>git push -u origin master</code>命令后，出现如下报错信息：</p>
+<p><img src="https://i.loli.net/2020/04/12/dz8AFgfoY315ycS.png" alt="Hugo搭建博客中所碰到的问题-2.png"></p>
+<p><strong>解决方案：</strong><br>
+删除当前 <strong>key</strong>，然后重新生成 <strong>key</strong>，具体步骤如下。</p>
+<p>1.执行如下命令后一直回车，会产生 <strong>id_rsa</strong> 和 <strong>id_rsa.pub</strong> 两个文件，如下图所示。</p>
+<pre><code>ssh-keygen -t rsa -C &quot;yangpengpeng.1993@live.com&quot;
+</code></pre><p><img src="https://i.loli.net/2020/04/12/g9OTILonz8tEq2w.png" alt="Hugo搭建博客中所碰到的问题-3.png"></p>
+<p>2.到 <a href="https://github.com/settings/keys">https://github.com/settings/keys</a> 的 <strong>SSH keys</strong> 中点击下图所示的 <strong>New SSH key</strong>。</p>
+<p><img src="https://i.loli.net/2020/04/12/2bD3TB6GwzpcPqE.png" alt="Hugo搭建博客中所碰到的问题-4.png"></p>
+<p>3.将 <strong>id_rsa.pub</strong> 中的内容复制到下图中的 <strong>key</strong> 中，<strong>title</strong> 中可以填写相应的说明，填写完毕后，点击 <strong>Add SSH key</strong> 即可。</p>
+<p><img src="https://i.loli.net/2020/04/12/KgRFAhIksDJum5U.png" alt="Hugo搭建博客中所碰到的问题-5.png"></p>
+<h2 id="3出现-error-failed-to-push-some-refs-to-gitgithubcompengpengyang94pengpengyang94githubiogit">3.出现 <code>error: failed to push some refs to 'git@github.com:pengpengyang94/pengpengyang94.github.io.git'</code></h2>
+<p>在运行<code>git push -u origin master</code>命令后，出现如下报错信息：</p>
+<p><img src="https://i.loli.net/2020/04/12/F1eDpwiItkAZSEH.png" alt="Hugo搭建博客中所碰到的问题-6.png"></p>
+<p>解决方案：<br>
+由于 <strong>GitHub</strong> 远程仓库中的 <strong>README.md</strong> 文件不在本地仓库中。运行 <code>git pull --rebase origin master</code>，即可看到本地代码库中多了 <strong>README.md</strong> 文件。</p>
+<h2 id="4图片插入">4.图片插入</h2>
+<h2 id="41-格式及尺寸">4.1 格式及尺寸</h2>
+<p>没有图片的文章，是不完整的。因为之前一直用 <strong>html</strong> 格式来插入图片，但发现 <strong>Hugo</strong> 并不支持 <strong>html</strong> 格式的转换，只支持 <strong>markdown</strong> 格式。而 <strong>markdown</strong> 格式不能改变图片大小，这点是我为啥不用这种格式的原因。<br>
+为了解决上述问题，我所能想到的是改变原始图片的尺寸，因为主要针对的是网页文章的排版，经过一些摸索，我自己得到下面2个信息，当然这个可以个人来发挥。</p>
+<ul>
+<li>宽度在800至900：这个宽度基本就是网页的宽度了，适合展示比较大点的图片</li>
+<li>宽度在350至450：适合展示小点的图片</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"># html 格式
+&lt;img src=&#34;picture.png&#34; width=&#34;600&#34; hegiht=&#34;100&#34; align=center /&gt;
+# markdown 格式
+![<span style="color:#f92672">picture name</span>](<span style="color:#a6e22e">picture.png</span>)
+</code></pre></div><h2 id="41-图床">4.1 图床</h2>
+<p>最终目的是为了发布到网上，比较方便的做法是先将图片存于图床中，然后再调用图片的 <strong>url</strong> 。有想过用 <strong>github</strong> 作为图床，但是鉴于网络原因，果断打消了这个想法。目前可以作为图床的网站还是有一些的，目前我是用的 <strong>sm.ms</strong> 作为图床，也有推荐 <strong><a href="https://www.aliimg.site/">阿里图床</a></strong> 的，自行选择即可，下面简单介绍 <strong>sm.ms</strong> 的优点和用法。</p>
+<p><strong>sm.ms</strong>: <a href="https://sm.ms/">https://sm.ms/</a></p>
+<ul>
+<li>完全免费，当然付费会有更好的服务，但是对于个人来说，免费的已经够用了，更重要的一点是穷！！！</li>
+<li>不用注册</li>
+<li>批量上传图片后可以直接产生不同格式的图片引用格式，包含 markdown 的格式，比较方便</li>
+</ul>
+<p><strong>sm.ms</strong> 的使用：<br>
+1.打开网址，会出现下图所示界面，点击 <strong>Select image</strong> 在文件夹中进行选择或者直接将图片拖拽进入虚线框中均可。</p>
+<p><img src="https://i.loli.net/2020/04/12/anrAxgw6OskFVDS.png" alt="Hugo搭建博客中所碰到的问题-7.png"></p>
+<p>2.选择完需要上传的图片后，点击下图中 <strong>Upload</strong> 选项，等待一段时间后，会出现下图中多种带有图片 <strong>url</strong> 的插入格式，复制 <strong>Markdown</strong> 中的文本即可直接放在 <strong>md</strong> 文档中用来插入图片。</p>
+<p><img src="https://i.loli.net/2020/04/12/ZX4hFcbuUPBNOMf.png" alt="Hugo搭建博客中所碰到的问题-8.png"></p>
+<hr>
+<p><strong>参考资料：</strong>
+<a href="https://mp.weixin.qq.com/s?__biz=MjM5NTk0Mzg2Nw==&amp;mid=2247484995&amp;idx=1&amp;sn=83e18324ea00c53b247cd16d1f9add2a&amp;chksm=a6f1829791860b819ec6defda9f80d873c976a7cfef48e7c92980f837be9d78cafce73df019e&amp;scene=126&amp;sessionid=1586488871&amp;key=226bbf49838413066e59280f7faac9d3f2821c5090556899beda15482a02be371989952761f8d6d4d75333282f2b3f5909b92063eb3c3d1cbe4ea877c3eb630c49380b774b35e291e9b0a292fc93250a&amp;ascene=1&amp;uin=NjkwMTYwNDgw&amp;devicetype=Windows+10&amp;version=62080085&amp;lang=zh_CN&amp;exportkey=AcsOU9Df63wlonDyF%2Be6QXk%3D&amp;pass_ticket=p4WcsOF6zsWg1Mj6ISTHohus3kEjhtwhmF%2B7UPeOSXB%2BNfeZmq1apuS5Wtb4RpPa">1.GIT简单入门（1）</a><br>
+<a href="https://blog.csdn.net/Leolu007/article/details/79129446">2.fatal: Could not read from remote repository.的解决办法</a><br>
+<a href="https://www.cnblogs.com/aeolian/p/10346235.html">3.IDEA分享项目到GitHub出现Could not read from remote repository</a><br>
+<a href="https://www.cnblogs.com/sjhsszl/p/8708471.html">4.如何解决failed to push some refs to git</a><br>
+<a href="https://blog.csdn.net/hunhun1122/article/details/79752188">5.git push报错error: failed to push some refs to &lsquo;git@github.com:</a></p>
+
+		</div>
+	</article>
+</main>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Yangpengpeng&#39;s blog.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>
