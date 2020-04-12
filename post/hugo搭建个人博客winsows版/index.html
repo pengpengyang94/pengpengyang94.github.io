@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Hugo搭建个人博客（Winsows版） - Yangpengpeng&#39;s blog</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Yangpengpeng&#39;s blog" rel="home">
+				<div class="logo__title">Yangpengpeng&#39;s blog</div>
+				
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Hugo搭建个人博客（Winsows版）</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>本文主要介绍如何利用 Hugo + github 搭建自己的个人博客，选择 Hugo 的原因主要是操作流程比较简单，而且主题多!!!</p>
+<h2 id="1新建-github-库">1.新建 GitHub 库</h2>
+<p>新建 <strong>repository</strong>：https://github.com/new<br>
+<strong>Repository name</strong> 中填写 <code>name.github.io</code>，注意 <strong>name</strong> 必须是github的账户名。</p>
+<p><img src="https://i.loli.net/2020/04/12/Um1edcBa7SxrMwC.png" alt="Hugo搭建个人博客（Winsows版）-1.png"></p>
+<h2 id="2下载并安装对应版本的-hugo">2.下载并安装对应版本的 Hugo</h2>
+<p>不同版本下载地址：https://github.com/gohugoio/hugo/releases<br>
+我的电脑是Windows 64位的系统，所以下载下图所示版本的软件。</p>
+<p><img src="https://i.loli.net/2020/04/12/c8VZqujQAOFnL14.jpg" alt="Hugo搭建个人博客（Winsows版）-2.jpg"></p>
+<p>注意：<br>
+1.<strong>解压后的目录即是安装目录</strong>，根据需求设定解压位置。<br>
+2.建议将安装目录添加到系统环境变量中以方便日后调用。</p>
+<p>安装结束后，在 <strong>cmd</strong> 中运行如下命令检查是否安装成功。</p>
+<pre><code># 进入安装目录，若添加到系统环境变量中则不需要进入安装文件夹中
+cd /install dir path/ 
+# 检查是否安装成功
+hugo version
+</code></pre><p>若出现类似下图反应表示安装成功。</p>
+<p><img src="https://i.loli.net/2020/04/12/bSkqLKjBQOxGZP3.png" alt="Hugo搭建个人博客（Winsows版）-7.png"></p>
+<h2 id="3创建-hugo-网站">3.创建 Hugo 网站</h2>
+<pre><code># 进入想要存放网站文件夹的目录
+cd /save dir path/ 
+# 新建一个 Hugo 网站（yang-blog是名字）
+hugo new site yang-blog
+</code></pre><h2 id="4修改主题">4.修改主题</h2>
+<p>在 <strong>yang-blog</strong> 中新建一个 <strong>themes</strong> 的文件夹用于存储主题。<br>
+Hugo Themes: <a href="https://themes.gohugo.io">https://themes.gohugo.io</a></p>
+<p>在上面链接中选择合适的主题，点击后进入主题介绍界面，其中包含安装说明，以<strong>Mainroad</strong>为例，分为以下两种情况：</p>
+<h3 id="41-已安装git">4.1 已安装Git</h3>
+<p>使用 <code>git</code> 下载主题，主题说明界面会看到如下安装说明。</p>
+<p><img src="https://i.loli.net/2020/04/12/ZHIQ1KmvM9rj4wL.png" alt="Hugo搭建个人博客（Winsows版）-3.png"></p>
+<pre><code># 进入themes目录中
+cd .\yang-blog\themes
+# 下载 mainroad 主题
+git clone https://github.com/vimux/mainroad
+</code></pre><h3 id="42-未安装git">4.2 未安装Git</h3>
+<p>点击下图中的 **Download **选项，进入主题的 <strong>Github</strong> 界面。</p>
+<p><img src="https://i.loli.net/2020/04/12/SQZNrxcHDflvi29.png" alt="Hugo搭建个人博客（Winsows版）-4.png"></p>
+<p>按照下图所示点击 <strong>Clone or download</strong> 中的 <strong>Download ZIP</strong> 选项，再将压缩包解压至 <strong>themes</strong> 文件夹中。</p>
+<p><img src="https://i.loli.net/2020/04/12/hdyYFO9i61NV8rG.png" alt="Hugo搭建个人博客（Winsows版）-5.png"></p>
+<p>最后在 <strong>yang-blog</strong> 文件夹下的 <code>config.toml</code> 中添加一行 <code>theme = &quot;mainroad&quot;</code>，引号中间的是主题名称，至此主题就已经修改好了。</p>
+<p>注意：可以在 <code>config.toml</code> 添加 <code>themesDir = &quot;./themes/&quot;</code> 来设置存放主题的文件夹。</p>
+<h2 id="5新建文章">5.新建文章</h2>
+<pre><code># 进入想要存放网站文件夹的目录
+cd .\yang-blog
+# 新建文章（yang-blog是名字）
+hugo new post/Hugo搭建个人博客（Winsows版）.md
+# 随后在 Hugo搭建个人博客（Winsows版）.md 中添加内容即可
+</code></pre><p>注意：新创建的 <strong>md</strong> 文档需要将原来 <strong>draft</strong> 后的 <strong>true</strong> 改为如下所示的 <strong>false</strong> 才能在预览的时候加载出来。</p>
+<p><img src="https://i.loli.net/2020/04/12/OgNKJTUzf5Lrwv6.png" alt="Hugo搭建个人博客（Winsows版）-6.png"></p>
+<h2 id="6本地预览网站效果">6.本地预览网站效果</h2>
+<pre><code># 启动 Hugo
+hugo server -D
+# 终止
+Ctrl+C
+</code></pre><p>浏览器中打开 http://localhost:1313 即可预览。</p>
+<p>注意：须至少有一篇文章才能预览。</p>
+<h2 id="7构建-hugo-网站">7.构建 Hugo 网站</h2>
+<p>在 <strong>yang-blog</strong> 目录下执行 <code>hugo</code> 指令来构建你的 <strong>Hugo</strong> 网站，默认会将静态站点保存到 <strong>public</strong> 目录中。</p>
+<h2 id="8将网站文件夹转换为-git-库">8.将网站文件夹转换为 Git 库</h2>
+<p>在 <code>/yang-blog/public</code> 目录下执行如下指令。</p>
+<pre><code>## 初始化 Git 库
+git init  
+## 查看会多一个 .git 的隐藏文件
+ls -a
+</code></pre><h2 id="9将-git-本地库关联至远程库">9.将 Git 本地库关联至远程库</h2>
+<p>在 <code>/yang-blog/public</code> 目录下执行如下指令。</p>
+<pre><code># 根据实际情况进行修改
+git remote add origin git@github.com:pengpengyang94/pengpengyang94.github.io .git
+</code></pre><p>注意：上面命令中的&quot;pengpengyang94/pengpengyang94.github.io .git&rdquo; 含义是 &ldquo;your-github-id/your-github-id.github.io.git&rdquo;。</p>
+<h2 id="10提交修改至本地库">10.提交修改至本地库</h2>
+<p>在 <code>/yang-blog/public</code> 目录下执行如下指令。</p>
+<pre><code>git status  # 查看当前修改状态
+git add .  # 添加所有修改过的文件
+git commit -m &quot;Add a new post&quot;  # 引号内容是本次提交的说明
+</code></pre><h2 id="11将你的修改推至远程库">11.将你的修改推至远程库</h2>
+<p>在 <code>/yang-blog/public</code> 目录下执行如下指令。</p>
+<pre><code>git push -u origin master
+</code></pre><p>至此，就完成了整个 <strong>blog</strong> 的构建步骤，后面就可以愉快的在这更新文章了！！！</p>
+<h2 id="12日常编辑及上传文章流程">12.日常编辑及上传文章流程</h2>
+<pre><code># ./yang-blog 目录下执行下面命令新建文章
+hugo new post/paper.md
+# 将更新的内容，保存到 public 目录下
+hugo
+
+# 编辑完成后，更新github上的内容
+# /yang-blog/public 目录下
+git status  # 查看当前修改状态
+git add .  # 添加所有修改过的文件
+git commit -m &quot;Add a new post&quot;  # 引号内容是本次提交的说明
+git push -u origin master
+</code></pre><hr>
+<p><strong>参考资料：</strong><br>
+<a href="https://www.jianshu.com/p/ca04631f4438">1.如何利用 GitHub Pages 和 Hugo 轻松搭建个人博客？</a><br>
+<a href="https://linux.cn/article-10048-1.html">2.用 Hugo 30 分钟搭建静态博客</a><br>
+<a href="https://blog.csdn.net/u013233097/article/details/79780016">3.HuGo+ github个人博客搭建（步骤一：初始化一个hugo项目）</a><br>
+<a href="https://www.jianshu.com/p/68da4f350d97">4.hugo+github博客搭建教程！</a><br>
+<a href="https://www.jianshu.com/p/e57bb9cf0bc7">5.Hugo +github 简单快捷搭建完成个人博</a><br>
+<a href="https://www.bilibili.com/video/BV1q4411i7gL?t=695">6.手把手教你从0开始搭建自己的个人博客 |第二种姿势 | hugo</a></p>
+
+		</div>
+	</article>
+</main>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Yangpengpeng&#39;s blog.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>
