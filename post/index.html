@@ -1,106 +1,136 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Posts - Yangpengpeng&#39;s blog</title>
-	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
+<html lang="en-us">
+   <head>
+   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="XN4YmHgE76jTp2kNQ9qnsVSApl6yIQBzdyLe0BnbFks" />
+  <meta name="Description" content="Yang&#39;s blog | ">
+  <title>
+    
+    
+    Posts - Yang&#39;s blog
+    
+  </title>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="all">
+  <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+
+<script src="/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/highlight/styles/.css">  
+  <script src="/highlight/highlight.pack.js" type='text/javascript'></script>
+  <script src="/js/bootstrap.min.js"></script>
+ <script src="/js/holder.min.js" type='text/javascript'></script>
+<script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+	hljs.initHighlightingOnLoad();
+    $('div.src').each(function(i, block) {
+	hljs.highlightBlock(block);
+    });
+$("div.src").each(function(){
+$(this).html("<ul><li>" + $(this).html().replace(/\n/g,"\n</li><li>") +"\n</li></ul>");
+});
+});
+  </script>
+
+
+  <link rel="canonical" href="https://pengpengyang94.github.io/post/">
+  <link href="/post/index.xml" rel="alternate" type="application/rss+xml" title="Posts" />
+   </head>
+   <body data-spy="scroll" data-target="#toc">
+     <header class="navbar navbar-default navbar-fixed-top" id="top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://pengpengyang94.github.io/">Yang&#39;s blog</a>
+    </div>
+
+    
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
 	
 	
-	<link rel="dns-prefetch" href="//fonts.googleapis.com">
-	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/post/index.xml" title="Yangpengpeng's blog">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
-	<link rel="stylesheet" href="/css/style.css">
+	<li  ><a href="/">Home</a></li>
 	
-	<link rel="shortcut icon" href="/favicon.ico">
-		
-</head>
-<body class="body">
-	<div class="container container--outer">
-		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Yangpengpeng&#39;s blog" rel="home">
-				<div class="logo__title">Yangpengpeng&#39;s blog</div>
-				
-			</a>
-		</div>
-		<div class="divider"></div>
-	</div>
+	
+	
+	<li > <a href="https://pengpengyang94.github.io/post/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" >Hugo搭建博客中所碰到的问题</a></li>
+	
+
+	
+	
+	<li > <a href="https://pengpengyang94.github.io/post/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2winsows%E7%89%88/" >Hugo搭建个人博客（Winsows版）</a></li>
+	
+
+
+	
+	<li > <a href="/tags/" >Tags</a></li>
+      </ul>
+    </nav>
 </header>
-		<div class="wrapper flex">
-			<div class="primary">
-			
-<main class="main list" role="main">
-	<header class="main__header">
-		<h1 class="main__title">Posts</h1>
-	</header><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" rel="bookmark">
-			Hugo搭建博客中所碰到的问题
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		在搭建的过程中，报错主要出现在将 Hugo 和 Github 进行关联的过程中，以下记录了我所碰到的一些报错，还有在插入图片时候的一些建议。
-1.未填写用户名和邮箱 在运行 git commit -m &quot;Add a new post&quot; 命令后，出现如下报错信息：
-解决方案：
-按照提示将用户名和邮箱按照如下命令提交即可（根据实际情况修改成自己的邮箱和用户）。
-git config --global user.email &quot;yangpengpeng.1993@live.com&quot; git config --global user.name &quot;YangPengPeng&quot; 2.出现 fatal: Could not read from remote repository. 在运行git push -u origin master命令后，出现如下报错信息：
-解决方案：
-删除当前 key，然后重新生成 key，具体步骤如下。
-1.执行如下命令后一直回车，会产生 id_rsa 和 id_rsa.pub 两个文件，如下图所示。
-ssh-keygen -t rsa -C &quot;yangpengpeng.1993@live.com&quot; 2.到 https://github.com/settings/keys 的 SSH keys 中点击下图所示的 New SSH key。
-3.将 id_rsa.pub 中的内容复制到下图中的 key 中，title 中可以填写相应的说明，填写完毕后，点击 Add SSH key 即可。
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2winsows%E7%89%88/" rel="bookmark">
-			Hugo搭建个人博客（Winsows版）
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		本文主要介绍如何利用 Hugo + github 搭建自己的个人博客，选择 Hugo 的原因主要是操作流程比较简单，而且主题多!!!
-1.新建 GitHub 库 新建 repository: https://github.com/new
-Repository name 中填写 name.github.io，注意 name 必须是github的账户名。
-2.下载并安装对应版本的 Hugo 不同版本下载地址: https://github.com/gohugoio/hugo/releases
-我的电脑是Windows 64位的系统，所以下载下图所示版本的软件。
-注意：
-1.解压后的目录即是安装目录，根据需求设定解压位置。
-2.建议将安装目录添加到系统环境变量中以方便日后调用。
-安装结束后，在 cmd 中运行如下命令检查是否安装成功。
-# 进入安装目录，若添加到系统环境变量中则不需要进入安装文件夹中 cd /install dir path/ # 检查是否安装成功 hugo version 若出现类似下图反应表示安装成功。
-3.创建 Hugo 网站 # 进入想要存放网站文件夹的目录 cd /save dir path/ # 新建一个 Hugo 网站（yang-blog是名字） hugo new site yang-blog 4.修改主题 在 yang-blog 中新建一个 themes 的文件夹用于存储主题。
-Hugo Themes: https://themes.gohugo.io
-在上面链接中选择合适的主题，点击后进入主题介绍界面，其中包含安装说明，以Mainroad为例，分为以下两种情况：
-4.1 已安装Git 使用 git 下载主题，主题说明界面会看到如下安装说明。
-	</div>
-</article>
-</main>
 
+     <div class="jumbotron masthead" role="main">
+       <div class="container">
+	 <div class="row">
 
-			</div>
-			
+ 	   <div class="col-lg-8 col-lg-offset-2 ">
+	   
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div id="post">
+	<h2>Posts &nbsp;</h2>
+	<hr/>
+	
+	<h3>2020</h3>
+	<div itemscorpe itemtype="http://schema.org/ItemList" itemListElement>
+	<ul>
+	  
+	  <li>Sun, Apr 12, 2020&nbsp;<a itemListElement  itemtype="http://schema.org/ListItem" href="https://pengpengyang94.github.io/post/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+	      <span itemprop="name">Hugo搭建博客中所碰到的问题</span></a>
+	    <meta itemprop="datePublished"  content="Apr 12, 2020" />
+	    <meta  itemprop="url" content="https://pengpengyang94.github.io/post/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+	  </li>
+	  
+	  <li>Fri, Apr 10, 2020&nbsp;<a itemListElement  itemtype="http://schema.org/ListItem" href="https://pengpengyang94.github.io/post/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2winsows%E7%89%88/">
+	      <span itemprop="name">Hugo搭建个人博客（Winsows版）</span></a>
+	    <meta itemprop="datePublished"  content="Apr 10, 2020" />
+	    <meta  itemprop="url" content="https://pengpengyang94.github.io/post/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2winsows%E7%89%88/"/>
+	  </li>
+	  
+	</ul></div>
+	
+	<hr/>
+	
 
-		</div>
-		<footer class="footer">
-	<div class="container footer__container flex">
-		
-		<div class="footer__copyright">
-			&copy; 2020 Yangpengpeng&#39;s blog.
-			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
-		</div>
-	</div>
-</footer>
-	</div>
-<script async defer src="/js/menu.js"></script>
-</body>
-</html>
+	
+      </div>
+    </div>
+    </div>
+
+	 </div>
+
+	 </div>
+       </div>
+     </div>
+
+ <div class="container footer">
+  <div class="row">
+    <div class="col-lg-10">
+      <small class="text-muted"> Theme:<a href="https://heyuanfei.com/">LeonHe</a></small>
+    </div>
+    <div class="col-lg-2">
+      <small class="text-muted"></small>
+      </div>
+   </div>
+ </div>
+
+   </body>
+     </html>
