@@ -17,16 +17,7 @@
       <pubDate>Fri, 10 Apr 2020 19:09:18 +0800</pubDate>
       
       <guid>https://pengpengyang94.github.io/post/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
-      <description>在搭建的过程中，报错主要出现在将 Hugo 和 Github 进行关联的过程中，以下记录了我所碰到的一些报错。
-1.未填写用户名和邮箱 在运行 git commit -m &amp;quot;Add a new post&amp;quot; 命令后，出现如下报错信息：
-解决方案：
-按照提示将用户名和邮箱按照如下命令提交即可（根据实际情况修改成自己的邮箱和用户）。
-git config --global user.email &amp;quot;yangpengpeng.1993@live.com&amp;quot; git config --global user.name &amp;quot;YangPengPeng&amp;quot; 2.出现 fatal: Could not read from remote repository. 在运行git push -u origin master命令后，出现如下报错信息：
-解决方案：
-删除当前 key，然后重新生成 key，具体步骤如下。
-1.执行如下命令后一直回车，会产生 id_rsa 和 id_rsa.pub 两个文件，如下图所示。
-ssh-keygen -t rsa -C &amp;quot;yangpengpeng.1993@live.com&amp;quot; 2.到 https://github.com/settings/keys 的 SSH keys 中点击下图所示的 New SSH key。
-3.将 id_rsa.pub 中的内容复制到下图中的 key 中，title 中可以填写相应的说明，填写完毕后，点击 Add SSH key 即可。</description>
+      <description></description>
     </item>
     
     <item>
@@ -35,7 +26,8 @@ ssh-keygen -t rsa -C &amp;quot;yangpengpeng.1993@live.com&amp;quot; 2.到 https:
       <pubDate>Fri, 10 Apr 2020 19:04:50 +0800</pubDate>
       
       <guid>https://pengpengyang94.github.io/post/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2winsows%E7%89%88/</guid>
-      <description>1.新建 GitHub 库 新建 repository：https://github.com/new
+      <description>本文主要介绍如何利用 Hugo + github 搭建自己的个人博客，选择 Hugo 的原因主要是操作流程比较简单，而且主题多!!!
+1.新建 GitHub 库 新建 repository：https://github.com/new
 Repository name 中填写 name.github.io，注意 name 必须是github的账户名。
 2.下载并安装对应版本的 Hugo 不同版本下载地址：https://github.com/gohugoio/hugo/releases
 我的电脑是Windows 64位的系统，所以下载下图所示版本的软件。
@@ -46,9 +38,8 @@ Repository name 中填写 name.github.io，注意 name 必须是github的账户�
 # 进入安装目录，若添加到系统环境变量中则不需要进入安装文件夹中 cd /install dir path/ # 检查是否安装成功 hugo version 若出现类似下图反应表示安装成功。
 3.创建 Hugo 网站 # 进入想要存放网站文件夹的目录 cd /save dir path/ # 新建一个 Hugo 网站（yang-blog是名字） hugo new site yang-blog 4.修改主题 在 yang-blog 中新建一个 themes 的文件夹用于存储主题。
 Hugo Themes: https://themes.gohugo.io
-在上面链接中选择偏爱的主题，点击后进入主题介绍界面，其中包含安装说明，以Mainroad为例，分为以下两种情况：
-4.1 已安装Git 使用 git 下载主题，主题说明界面会看到如下安装说明。
-# 进入themes目录中 cd .\yang-blog\themes # 下载 mainroad 主题 git clone https://github.</description>
+在上面链接中选择合适的主题，点击后进入主题介绍界面，其中包含安装说明，以Mainroad为例，分为以下两种情况：
+4.1 已安装Git 使用 git 下载主题，主题说明界面会看到如下安装说明。</description>
     </item>
     
   </channel>
