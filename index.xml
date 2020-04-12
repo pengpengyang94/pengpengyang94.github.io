@@ -18,9 +18,9 @@
       
       <guid>https://pengpengyang94.github.io/post/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2winsows%E7%89%88/</guid>
       <description>本文主要介绍如何利用 Hugo + github 搭建自己的个人博客，选择 Hugo 的原因主要是操作流程比较简单，而且主题多!!!
-1.新建 GitHub 库 新建 repository：https://github.com/new
+1.新建 GitHub 库 新建 repository: https://github.com/new
 Repository name 中填写 name.github.io，注意 name 必须是github的账户名。
-2.下载并安装对应版本的 Hugo 不同版本下载地址：https://github.com/gohugoio/hugo/releases
+2.下载并安装对应版本的 Hugo 不同版本下载地址: https://github.com/gohugoio/hugo/releases
 我的电脑是Windows 64位的系统，所以下载下图所示版本的软件。
 注意：
 1.解压后的目录即是安装目录，根据需求设定解压位置。
