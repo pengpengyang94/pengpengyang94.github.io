@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Yang&#39;s blog</title>
+    <title>Categories on 一个慵懒之人的随笔</title>
     <link>https://pengpengyang94.github.io/categories/</link>
-    <description>Recent content in Categories on Yang&#39;s blog</description>
+    <description>Recent content in Categories on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 12 Apr 2020 17:09:51 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>个人博客</title>
+      <link>https://pengpengyang94.github.io/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Sun, 12 Apr 2020 17:09:51 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

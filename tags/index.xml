@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Yang&#39;s blog</title>
+    <title>Tags on 一个慵懒之人的随笔</title>
     <link>https://pengpengyang94.github.io/tags/</link>
-    <description>Recent content in Tags on Yang&#39;s blog</description>
+    <description>Recent content in Tags on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 12 Apr 2020 17:09:51 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://pengpengyang94.github.io/tags/hugo/</link>
+      <pubDate>Sun, 12 Apr 2020 17:09:51 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

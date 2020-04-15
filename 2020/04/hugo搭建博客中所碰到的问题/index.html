@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Ezio">
+<meta name="keywords" content="">
+<meta name="description" content="由于第一次利用类似工具搭建个人博客，在搭建的过程中，遇到了一些问题，本文主要记录了我遇到的问题及对应的解决方案。问题主要出现在将 Hugo 和 Github 进行关联的过程中，还有在插入图片的一些问题。">
+
+
+<meta property="og:description" content="由于第一次利用类似工具搭建个人博客，在搭建的过程中，遇到了一些问题，本文主要记录了我遇到的问题及对应的解决方案。问题主要出现在将 Hugo 和 Github 进行关联的过程中，还有在插入图片的一些问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hugo搭建博客中所碰到的问题">
+<meta name="twitter:title" content="Hugo搭建博客中所碰到的问题">
+<meta property="og:url" content="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+<meta property="twitter:url" content="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+<meta property="og:site_name" content="一个慵懒之人的随笔">
+<meta property="og:description" content="由于第一次利用类似工具搭建个人博客，在搭建的过程中，遇到了一些问题，本文主要记录了我遇到的问题及对应的解决方案。问题主要出现在将 Hugo 和 Github 进行关联的过程中，还有在插入图片的一些问题。">
+<meta name="twitter:description" content="由于第一次利用类似工具搭建个人博客，在搭建的过程中，遇到了一些问题，本文主要记录了我遇到的问题及对应的解决方案。问题主要出现在将 Hugo 和 Github 进行关联的过程中，还有在插入图片的一些问题。">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-04-12T17:09:51">
+  
+  
+    <meta property="article:modified_time" content="2020-04-12T17:09:51">
+  
+  
+  
+    
+      <meta property="article:section" content="个人博客">
+    
+  
+  
+    
+      <meta property="article:tag" content="Hugo">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="//i.loli.net/2020/04/15/LwgGkl3N2VrOhHz.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/04/15/LwgGkl3N2VrOhHz.png">
+
+
+  <meta property="og:image" content="//i.loli.net/2020/04/15/LwgGkl3N2VrOhHz.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/04/15/LwgGkl3N2VrOhHz.png">
+
+
+
+
+  <meta property="og:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+  <meta property="twitter:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+
+
+    <title>Hugo搭建博客中所碰到的问题</title>
+
+    <link rel="icon" href="https://pengpengyang94.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://pengpengyang94.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://pengpengyang94.github.io/">一个慵懒之人的随笔</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://pengpengyang94.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://pengpengyang94.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Ezio</h4>
+        
+          <h5 class="sidebar-profile-bio">学习、记录、变强，最后 <strong>变秃</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/pengpengyang94" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//i.loli.net/2020/04/15/LwgGkl3N2VrOhHz.png')"
+       data-behavior="5">
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaOut
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      Hugo搭建博客中所碰到的问题
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-04-12T17:09:51&#43;08:00">
+        
+  April 12, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://pengpengyang94.github.io/categories/%e4%b8%aa%e4%ba%ba%e5%8d%9a%e5%ae%a2">个人博客</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>由于第一次利用类似工具搭建个人博客，在搭建的过程中，遇到了一些问题，本文主要记录了我遇到的问题及对应的解决方案。问题主要出现在将 <strong>Hugo</strong> 和 <strong>Github</strong> 进行关联的过程中，还有在插入图片的一些问题。</p>
+<h2 id="1未填写用户名和邮箱">1.未填写用户名和邮箱</h2>
+<p>在运行 <code>git commit -m &quot;Add a new post&quot;</code> 命令后，出现如下报错信息：</p>
+<p><img src="https://i.loli.net/2020/04/12/CFg7PinS8m2sLWf.png" alt="Hugo搭建博客中所碰到的问题-1.png"></p>
+<p><strong>解决方案：</strong><br>
+按照提示将用户名和邮箱按照如下命令提交即可（根据实际情况修改成自己的邮箱和用户）。</p>
+<pre><code>git config --global user.email &quot;yangpengpeng.1993@live.com&quot;
+git config --global user.name &quot;YangPengPeng&quot;
+</code></pre><h2 id="2出现-fatal-could-not-read-from-remote-repository">2.出现 <code>fatal: Could not read from remote repository.</code></h2>
+<p>在运行<code>git push -u origin master</code>命令后，出现如下报错信息：</p>
+<p><img src="https://i.loli.net/2020/04/12/dz8AFgfoY315ycS.png" alt="Hugo搭建博客中所碰到的问题-2.png"></p>
+<p><strong>解决方案：</strong><br>
+删除当前 <strong>key</strong>，然后重新生成 <strong>key</strong>，具体步骤如下。</p>
+<p>1.执行如下命令后一直回车，会产生 <strong>id_rsa</strong> 和 <strong>id_rsa.pub</strong> 两个文件，如下图所示。</p>
+<pre><code>ssh-keygen -t rsa -C &quot;yangpengpeng.1993@live.com&quot;
+</code></pre><p><img src="https://i.loli.net/2020/04/12/g9OTILonz8tEq2w.png" alt="Hugo搭建博客中所碰到的问题-3.png"></p>
+<p>2.到 <a href="https://github.com/settings/keys">https://github.com/settings/keys</a> 的 <strong>SSH keys</strong> 中点击下图所示的 <strong>New SSH key</strong>。</p>
+<p><img src="https://i.loli.net/2020/04/12/2bD3TB6GwzpcPqE.png" alt="Hugo搭建博客中所碰到的问题-4.png"></p>
+<p>3.将 <strong>id_rsa.pub</strong> 中的内容复制到下图中的 <strong>key</strong> 中，<strong>title</strong> 中可以填写相应的说明，填写完毕后，点击 <strong>Add SSH key</strong> 即可。</p>
+<p><img src="https://i.loli.net/2020/04/12/KgRFAhIksDJum5U.png" alt="Hugo搭建博客中所碰到的问题-5.png"></p>
+<h2 id="3出现-error-failed-to-push-some-refs-to-gitgithubcompengpengyang94pengpengyang94githubiogit">3.出现 <code>error: failed to push some refs to 'git@github.com:pengpengyang94/pengpengyang94.github.io.git'</code></h2>
+<p>在运行<code>git push -u origin master</code>命令后，出现如下报错信息：</p>
+<p><img src="https://i.loli.net/2020/04/12/F1eDpwiItkAZSEH.png" alt="Hugo搭建博客中所碰到的问题-6.png"></p>
+<p>解决方案：<br>
+由于 <strong>GitHub</strong> 远程仓库中的 <strong>README.md</strong> 文件不在本地仓库中。运行 <code>git pull --rebase origin master</code>，即可看到本地代码库中多了 <strong>README.md</strong> 文件。</p>
+<h2 id="4图片插入">4.图片插入</h2>
+<h2 id="41-格式及尺寸">4.1 格式及尺寸</h2>
+<p>没有图片的文章，是不完整的。因为之前一直用 <strong>html</strong> 格式来插入图片，但发现 <strong>Hugo</strong> 并不支持 <strong>html</strong> 格式的转换，只支持 <strong>markdown</strong> 格式。而 <strong>markdown</strong> 格式不能改变图片大小，这点是我为啥不用这种格式的原因。<br>
+为了解决上述问题，我所能想到的是改变原始图片的尺寸，因为主要针对的是网页文章的排版，经过一些摸索，我自己得到下面2个信息，当然这个可以个人来发挥。</p>
+<ul>
+<li>宽度在800至900：这个宽度基本就是网页的宽度了，适合展示比较大点的图片</li>
+<li>宽度在350至450：适合展示小点的图片</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"># html 格式
+&lt;img src=&#34;picture.png&#34; width=&#34;600&#34; hegiht=&#34;100&#34; align=center /&gt;
+# markdown 格式
+![<span style="color:#f92672">picture name</span>](<span style="color:#a6e22e">picture.png</span>)
+</code></pre></div><h2 id="41-图床">4.1 图床</h2>
+<p>最终目的是为了发布到网上，比较方便的做法是先将图片存于图床中，然后再调用图片的 <strong>url</strong> 。有想过用 <strong>github</strong> 作为图床，但是鉴于网络原因，果断打消了这个想法。目前可以作为图床的网站还是有一些的，目前我是用的 <strong>sm.ms</strong> 作为图床，也有推荐 <strong><a href="https://www.aliimg.site/">阿里图床</a></strong> 的，自行选择即可，下面简单介绍 <strong>sm.ms</strong> 的优点和用法。</p>
+<p><strong>sm.ms</strong>: <a href="https://sm.ms/">https://sm.ms/</a></p>
+<ul>
+<li>完全免费，当然付费会有更好的服务，但是对于个人来说，免费的已经够用了，更重要的一点是穷！！！</li>
+<li>不用注册</li>
+<li>批量上传图片后可以直接产生不同格式的图片引用格式，包含 markdown 的格式，比较方便</li>
+</ul>
+<p><strong>sm.ms</strong> 的使用：<br>
+1.打开网址，会出现下图所示界面，点击 <strong>Select image</strong> 在文件夹中进行选择或者直接将图片拖拽进入虚线框中均可。</p>
+<p><img src="https://i.loli.net/2020/04/12/anrAxgw6OskFVDS.png" alt="Hugo搭建博客中所碰到的问题-7.png"></p>
+<p>2.选择完需要上传的图片后，点击下图中 <strong>Upload</strong> 选项，等待一段时间后，会出现下图中多种带有图片 <strong>url</strong> 的插入格式，复制 <strong>Markdown</strong> 中的文本即可直接放在 <strong>md</strong> 文档中用来插入图片。</p>
+<p><img src="https://i.loli.net/2020/04/12/ZX4hFcbuUPBNOMf.png" alt="Hugo搭建博客中所碰到的问题-8.png"></p>
+<hr>
+<p><strong>参考资料：</strong><br>
+<a href="https://mp.weixin.qq.com/s?__biz=MjM5NTk0Mzg2Nw==&amp;mid=2247484995&amp;idx=1&amp;sn=83e18324ea00c53b247cd16d1f9add2a&amp;chksm=a6f1829791860b819ec6defda9f80d873c976a7cfef48e7c92980f837be9d78cafce73df019e&amp;scene=126&amp;sessionid=1586488871&amp;key=226bbf49838413066e59280f7faac9d3f2821c5090556899beda15482a02be371989952761f8d6d4d75333282f2b3f5909b92063eb3c3d1cbe4ea877c3eb630c49380b774b35e291e9b0a292fc93250a&amp;ascene=1&amp;uin=NjkwMTYwNDgw&amp;devicetype=Windows+10&amp;version=62080085&amp;lang=zh_CN&amp;exportkey=AcsOU9Df63wlonDyF%2Be6QXk%3D&amp;pass_ticket=p4WcsOF6zsWg1Mj6ISTHohus3kEjhtwhmF%2B7UPeOSXB%2BNfeZmq1apuS5Wtb4RpPa">1.GIT简单入门（1）</a><br>
+<a href="https://blog.csdn.net/Leolu007/article/details/79129446">2.fatal: Could not read from remote repository.的解决办法</a><br>
+<a href="https://www.cnblogs.com/aeolian/p/10346235.html">3.IDEA分享项目到GitHub出现Could not read from remote repository</a><br>
+<a href="https://www.cnblogs.com/sjhsszl/p/8708471.html">4.如何解决failed to push some refs to git</a><br>
+<a href="https://blog.csdn.net/hunhun1122/article/details/79752188">5.git push报错error: failed to push some refs to &lsquo;git@github.com:</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/hugo/">Hugo</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2winsows%E7%89%88/" data-tooltip="Hugo搭建个人博客（Winsows版）">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Ezio. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2winsows%E7%89%88/" data-tooltip="Hugo搭建个人博客（Winsows版）">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F04%2Fhugo%25E6%2590%25AD%25E5%25BB%25BA%25E5%258D%259A%25E5%25AE%25A2%25E4%25B8%25AD%25E6%2589%2580%25E7%25A2%25B0%25E5%2588%25B0%25E7%259A%2584%25E9%2597%25AE%25E9%25A2%2598%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F04%2Fhugo%25E6%2590%25AD%25E5%25BB%25BA%25E5%258D%259A%25E5%25AE%25A2%25E4%25B8%25AD%25E6%2589%2580%25E7%25A2%25B0%25E5%2588%25B0%25E7%259A%2584%25E9%2597%25AE%25E9%25A2%2598%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F04%2Fhugo%25E6%2590%25AD%25E5%25BB%25BA%25E5%258D%259A%25E5%25AE%25A2%25E4%25B8%25AD%25E6%2589%2580%25E7%25A2%25B0%25E5%2588%25B0%25E7%259A%2584%25E9%2597%25AE%25E9%25A2%2598%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Ezio</h4>
+    
+      <div id="about-card-bio">学习、记录、变强，最后 <strong>变秃</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        生物信息学
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国 云南 昆明
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://pengpengyang94.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://pengpengyang94.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/pengpengyang94.github.io\/2020\/04\/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98\/';
+          
+            this.page.identifier = '\/2020\/04\/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
