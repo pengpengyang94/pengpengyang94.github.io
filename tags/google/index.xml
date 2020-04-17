@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Google on 一个慵懒之人的随笔</title>
+    <link>https://pengpengyang94.github.io/tags/google/</link>
+    <description>Recent content in Google on 一个慵懒之人的随笔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 17 Apr 2020 21:43:07 +0800</lastBuildDate>
+    
+	<atom:link href="https://pengpengyang94.github.io/tags/google/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>好用的Google浏览器</title>
+      <link>https://pengpengyang94.github.io/2020/04/%E5%A5%BD%E7%94%A8%E7%9A%84google%E6%B5%8F%E8%A7%88%E5%99%A8/</link>
+      <pubDate>Fri, 17 Apr 2020 21:43:07 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2020/04/%E5%A5%BD%E7%94%A8%E7%9A%84google%E6%B5%8F%E8%A7%88%E5%99%A8/</guid>
+      <description>&lt;p&gt;　　为什么别人都说Google浏览器好用，比如用IE打不开一些网页了，有经验的人一般会建议换个浏览器试试，比如Google浏览器，这招有时候确实挺管用的。但是自己装的Google浏览器，发现功能太简陋，界面太丑，而且还不能上谷歌，这是别人口中好用的Google浏览器吗？本文主要就是解决这些新手的疑惑。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

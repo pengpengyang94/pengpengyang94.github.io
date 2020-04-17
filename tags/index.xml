@@ -6,10 +6,73 @@
     <description>Recent content in Tags on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 17 Apr 2020 13:32:24 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 17 Apr 2020 22:34:19 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>FastTree</title>
+      <link>https://pengpengyang94.github.io/tags/fasttree/</link>
+      <pubDate>Fri, 17 Apr 2020 22:34:19 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/fasttree/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://pengpengyang94.github.io/tags/windows/</link>
+      <pubDate>Fri, 17 Apr 2020 22:34:19 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>构建进化树</title>
+      <link>https://pengpengyang94.github.io/tags/%E6%9E%84%E5%BB%BA%E8%BF%9B%E5%8C%96%E6%A0%91/</link>
+      <pubDate>Fri, 17 Apr 2020 22:34:19 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/%E6%9E%84%E5%BB%BA%E8%BF%9B%E5%8C%96%E6%A0%91/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mafft</title>
+      <link>https://pengpengyang94.github.io/tags/mafft/</link>
+      <pubDate>Fri, 17 Apr 2020 22:23:33 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/mafft/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>序列比对</title>
+      <link>https://pengpengyang94.github.io/tags/%E5%BA%8F%E5%88%97%E6%AF%94%E5%AF%B9/</link>
+      <pubDate>Fri, 17 Apr 2020 22:23:33 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/%E5%BA%8F%E5%88%97%E6%AF%94%E5%AF%B9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google</title>
+      <link>https://pengpengyang94.github.io/tags/google/</link>
+      <pubDate>Fri, 17 Apr 2020 21:43:07 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/google/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IDM</title>
+      <link>https://pengpengyang94.github.io/tags/idm/</link>
+      <pubDate>Fri, 17 Apr 2020 21:43:07 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/idm/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Hugo</title>
@@ -26,15 +89,6 @@
       <pubDate>Fri, 17 Apr 2020 13:32:24 +0800</pubDate>
       
       <guid>https://pengpengyang94.github.io/tags/markerdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Windows</title>
-      <link>https://pengpengyang94.github.io/tags/windows/</link>
-      <pubDate>Fri, 10 Apr 2020 19:04:50 +0800</pubDate>
-      
-      <guid>https://pengpengyang94.github.io/tags/windows/</guid>
       <description></description>
     </item>
     

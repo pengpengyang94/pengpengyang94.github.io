@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Ezio">
+<meta name="keywords" content="">
+<meta name="description" content="　　一提到多重序列比对，很多人禁不住就想到ClustalW（Clustalx为ClustalW的GUI版），其实有一款多重序列比对软件－MAFFT，不论从比对速度（Muscle&gt;MAFFT&gt;ClustalW&gt;T-Coffee），还是比对准确性（MAFFT&gt;Muscle&gt;T-Coffee&gt;ClustalW）来说，其相比于ClustalW（或ClustalX）有过之而无不及，所以这里强烈推荐使用MAFFT这款多重比对软件。
+　　">
+
+
+<meta property="og:description" content="　　一提到多重序列比对，很多人禁不住就想到ClustalW（Clustalx为ClustalW的GUI版），其实有一款多重序列比对软件－MAFFT，不论从比对速度（Muscle&gt;MAFFT&gt;ClustalW&gt;T-Coffee），还是比对准确性（MAFFT&gt;Muscle&gt;T-Coffee&gt;ClustalW）来说，其相比于ClustalW（或ClustalX）有过之而无不及，所以这里强烈推荐使用MAFFT这款多重比对软件。
+　　">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mafft快速入门（Windows版）">
+<meta name="twitter:title" content="Mafft快速入门（Windows版）">
+<meta property="og:url" content="https://pengpengyang94.github.io/2020/04/mafft%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8windows%E7%89%88/">
+<meta property="twitter:url" content="https://pengpengyang94.github.io/2020/04/mafft%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8windows%E7%89%88/">
+<meta property="og:site_name" content="一个慵懒之人的随笔">
+<meta property="og:description" content="　　一提到多重序列比对，很多人禁不住就想到ClustalW（Clustalx为ClustalW的GUI版），其实有一款多重序列比对软件－MAFFT，不论从比对速度（Muscle&gt;MAFFT&gt;ClustalW&gt;T-Coffee），还是比对准确性（MAFFT&gt;Muscle&gt;T-Coffee&gt;ClustalW）来说，其相比于ClustalW（或ClustalX）有过之而无不及，所以这里强烈推荐使用MAFFT这款多重比对软件。
+　　">
+<meta name="twitter:description" content="　　一提到多重序列比对，很多人禁不住就想到ClustalW（Clustalx为ClustalW的GUI版），其实有一款多重序列比对软件－MAFFT，不论从比对速度（Muscle&gt;MAFFT&gt;ClustalW&gt;T-Coffee），还是比对准确性（MAFFT&gt;Muscle&gt;T-Coffee&gt;ClustalW）来说，其相比于ClustalW（或ClustalX）有过之而无不及，所以这里强烈推荐使用MAFFT这款多重比对软件。
+　　">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-04-17T22:23:33">
+  
+  
+    <meta property="article:modified_time" content="2020-04-17T22:23:33">
+  
+  
+  
+    
+      <meta property="article:section" content="软件说明">
+    
+  
+  
+    
+      <meta property="article:tag" content="mafft">
+    
+      <meta property="article:tag" content="Windows">
+    
+      <meta property="article:tag" content="序列比对">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="//i.loli.net/2020/04/17/Lq5HmlQpjxaRrIT.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/04/17/Lq5HmlQpjxaRrIT.png">
+
+
+  <meta property="og:image" content="//i.loli.net/2020/04/17/Lq5HmlQpjxaRrIT.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/04/17/Lq5HmlQpjxaRrIT.png">
+
+
+
+
+  <meta property="og:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+  <meta property="twitter:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+
+
+    <title>Mafft快速入门（Windows版）</title>
+
+    <link rel="icon" href="https://pengpengyang94.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://pengpengyang94.github.io/2020/04/mafft%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8windows%E7%89%88/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://pengpengyang94.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://pengpengyang94.github.io/">一个慵懒之人的随笔</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://pengpengyang94.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://pengpengyang94.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Ezio</h4>
+        
+          <h5 class="sidebar-profile-bio">学习、记录、变强，最后 <strong>变秃</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder-open"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user-o"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/pengpengyang94" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://space.bilibili.com/87148526" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-caret-square-o-right"></i>
+      
+      <span class="sidebar-button-desc">Bilibili</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.bioinfo.info/?/people/Ezio" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitch"></i>
+      
+      <span class="sidebar-button-desc">Bioinfo</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//i.loli.net/2020/04/17/Lq5HmlQpjxaRrIT.png')"
+       data-behavior="5">
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaOut
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      Mafft快速入门（Windows版）
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-04-17T22:23:33&#43;08:00">
+        
+  April 17, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://pengpengyang94.github.io/categories/%e8%bd%af%e4%bb%b6%e8%af%b4%e6%98%8e">软件说明</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>　　一提到多重序列比对，很多人禁不住就想到ClustalW（Clustalx为ClustalW的GUI版），其实有一款多重序列比对软件－MAFFT，不论从比对速度（Muscle&gt;MAFFT&gt;ClustalW&gt;T-Coffee），还是比对准确性（MAFFT&gt;Muscle&gt;T-Coffee&gt;ClustalW）来说，其相比于ClustalW（或ClustalX）有过之而无不及，所以这里强烈推荐使用MAFFT这款多重比对软件。<br>
+　　</p>
+<h2 id="1下载">1.下载</h2>
+<p>　　从<a href="https://mafft.cbrc.jp/alignment/software/windows_without_cygwin.html">mafft官网</a>下载所需版本的软件，下图展示的是本文所需的的 Windows 版mafft软件。</p>
+<p><img src="https://i.loli.net/2020/04/17/iIpK7eSGjMTkVPl.png" alt="1.png"></p>
+<p>注意：</p>
+<ul>
+<li>mafft是免安装的软件，解压即用！！！</li>
+<li>解压后的存放路径必须<strong>全英文路径</strong>，否则不能正常打开！！！</li>
+</ul>
+<h2 id="2使用">2.使用</h2>
+<p>1.cmd 切换至 mafft 解压后的路径，推荐使用 cmdhere 进入<br>
+2.打开 mafft，官方提供两种方法进入 mafft 界面：</p>
+<ul>
+<li><strong>双击</strong> mafft-win文件夹中的 <code>mafft.bat</code></li>
+<li><strong>右键</strong> <code>mafft-signed.ps1</code> 后，点击 <code>使用Power Shell 运行</code></li>
+</ul>
+<p>mafft主界面如下：</p>
+<p><img src="https://i.loli.net/2020/04/17/4cUWobJwe1q8zny.png" alt="2.png"></p>
+<p>3.按照提示输入input文件的路径<br>
+　　本文演示的 mafft 是直接解压在桌面，同时所需比对的序列文件是1.fa，输入以下指令即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 建议使用绝对路径，具体看个人偏好
+C:\Users\yangp\Desktop\mafft-win\1.fas<span style="color:#75715e"></span>
+</code></pre></div><p><img src="https://i.loli.net/2020/04/17/hkTKLmpU9xfNuVs.png" alt="3.png"></p>
+<p>4.按照提示输入output文件相关信息<br>
+　　要输入 output 文件名称和 output 文件存放位置。<br>
+　　本文将输出文件称为1.fa，并置于 mafft-win文件夹中，故输入下面指令。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 建议使用绝对路径，具体看个人偏好
+C:\Users\yangp\Desktop\mafft-win\1.fas<span style="color:#75715e"></span>
+</code></pre></div><p><img src="https://i.loli.net/2020/04/17/gFm4VIUAO6w3d8N.png" alt="4.png"></p>
+<p>5.选择输出的格式<br>
+　　有6种格式可供选择，根据自己的要求进行选择，一般选择3或4。（注意：如果下一步采用fasttree进行建树的话，必须选择3或4，其他格式fasttree不支持）</p>
+<p><img src="https://i.loli.net/2020/04/17/t26vHIpUjDuAgPZ.png" alt="5.png"></p>
+<p>6.选择比对策略<br>
+　　根据需求选择，不知道需求选择 <code>1. --auto</code> 即可</p>
+<p><img src="https://i.loli.net/2020/04/17/NTQSjc6t95UvsYa.png" alt="6.png"></p>
+<p>7.是否需要添加其他选项<br>
+　　没有需求直接<strong>回车</strong>即可。其他选项信息详见第三部分mafft的详细指令描述。</p>
+<p><img src="https://i.loli.net/2020/04/17/eJRZXnzO6xBlTjs.png" alt="7.png"></p>
+<p>8.确认以上输入信息<br>
+　　输入<strong>Y</strong>确认信息。</p>
+<p><img src="https://i.loli.net/2020/04/17/EtpzeWQIU2uRPXg.png" alt="8.png"></p>
+<p>9.进行比对<br>
+　　等待比对完成，比对完成后会显示比对结果，空格键为翻页，回车键为下一行，翻到底部后会提示按回车键退出。</p>
+<p><img src="https://i.loli.net/2020/04/17/WwYmLhpSCETHOIl.png" alt="9.png"></p>
+<h2 id="3mafft详细指令描述">3.mafft详细指令描述</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 输入如下指令
+mafft.bat -help
+# 出现 mafft 的帮助文档
+High speed:
+  % mafft in &gt; out
+  % mafft --retree 1 in &gt; out (fast)
+
+High accuracy (for &lt;~200 sequences x &lt;~2,000 aa/nt):
+  % mafft --maxiterate 1000 --localpair  in &gt; out (% linsi in &gt; out is also ok)
+  % mafft --maxiterate 1000 --genafpair  in &gt; out (% einsi in &gt; out)
+  % mafft --maxiterate 1000 --globalpair in &gt; out (% ginsi in &gt; out)
+
+<span style="color:#66d9ef">If</span> unsure<span style="color:#960050;background-color:#1e0010"> which option to use:</span>
+  % mafft --auto in &gt; out
+
+--op # Gap opening penalty, default: 1.53
+--ep # Offset (works like gap extension penalty), default: 0.0
+--maxiterate # Maximum number of iterative refinement, default: 0
+--clustalout :Output: clustal format, default: fasta
+--reorder :Outorder: aligned, default: input order
+--quiet :Do not report progress
+--thread # Number of threads (if unsure, --thread -1)
+--dash :Add structural information (Rozewicki et al, submitted)
+</code></pre></div><h2 id="4网页版mafft使用指南">4.网页版mafft使用指南</h2>
+<p><a href="https://mafft.cbrc.jp/alignment/server/">MAFFT version 7 Online version</a></p>
+<p>1.打开网页版地址，按照下图进行勾选</p>
+<p><img src="https://i.loli.net/2020/04/17/MGjyc45ndSWY927.png" alt="10.png"></p>
+<p>2.需要填写正确的邮箱，因为结果发到填写的邮箱中</p>
+<p>3.结果邮件的内容如下，点击链接进入结果界面</p>
+<p><img src="https://i.loli.net/2020/04/17/rg3BmvRMixTfKQw.png" alt="11.png"></p>
+<p>4.结果界面<br>
+　　点击 <strong>Fasta format</strong> 后，将其全部内容复制到一个新的txt中，保存后将文件类型由txt改为fas（或fasta一类的格式），修改后的文件可直接使用fasttree进行建树</p>
+<p><img src="https://i.loli.net/2020/04/17/KB5yMzdsJZico1j.png" alt="12.png"></p>
+<p>注意：比对结果链接有效期为 <strong>96 小时</strong>！！！</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/mafft/">mafft</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/windows/">Windows</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/%E5%BA%8F%E5%88%97%E6%AF%94%E5%AF%B9/">序列比对</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/04/fasttree%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8windows%E7%89%88/" data-tooltip="FastTree快速入门（Windows版）">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/04/%E5%A5%BD%E7%94%A8%E7%9A%84google%E6%B5%8F%E8%A7%88%E5%99%A8/" data-tooltip="好用的Google浏览器">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/04/mafft%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8windows%E7%89%88/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/04/mafft%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8windows%E7%89%88/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/04/mafft%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8windows%E7%89%88/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Ezio. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/04/fasttree%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8windows%E7%89%88/" data-tooltip="FastTree快速入门（Windows版）">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/04/%E5%A5%BD%E7%94%A8%E7%9A%84google%E6%B5%8F%E8%A7%88%E5%99%A8/" data-tooltip="好用的Google浏览器">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/04/mafft%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8windows%E7%89%88/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/04/mafft%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8windows%E7%89%88/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/04/mafft%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8windows%E7%89%88/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F04%2Fmafft%25E5%25BF%25AB%25E9%2580%259F%25E5%2585%25A5%25E9%2597%25A8windows%25E7%2589%2588%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F04%2Fmafft%25E5%25BF%25AB%25E9%2580%259F%25E5%2585%25A5%25E9%2597%25A8windows%25E7%2589%2588%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F04%2Fmafft%25E5%25BF%25AB%25E9%2580%259F%25E5%2585%25A5%25E9%2597%25A8windows%25E7%2589%2588%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Ezio</h4>
+    
+      <div id="about-card-bio">学习、记录、变强，最后 <strong>变秃</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        生物信息学
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国 云南 昆明
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://pengpengyang94.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://pengpengyang94.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/pengpengyang94.github.io\/2020\/04\/mafft%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8windows%E7%89%88\/';
+          
+            this.page.identifier = '\/2020\/04\/mafft%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8windows%E7%89%88\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
