@@ -8,25 +8,25 @@
 <meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Ezio">
 <meta name="keywords" content="">
-<meta name="description" content="由于第一次利用类似工具搭建个人博客，在搭建的过程中，遇到了一些问题，本文主要记录了我遇到的问题及对应的解决方案。问题主要出现在将 Hugo 和 Github 进行关联的过程中，还有在插入图片的一些问题。">
+<meta name="description" content="本文主要记录了我利用 Hugo &#43; github 来搭建个人博客的主要流程，最初选择 Hugo 是无意中看到了一篇推文，后来在慢慢的了解下发现 Hugo 有搭建速度快、主题多这两大优势，尤其在搭建速度方面。">
 
 
-<meta property="og:description" content="由于第一次利用类似工具搭建个人博客，在搭建的过程中，遇到了一些问题，本文主要记录了我遇到的问题及对应的解决方案。问题主要出现在将 Hugo 和 Github 进行关联的过程中，还有在插入图片的一些问题。">
+<meta property="og:description" content="本文主要记录了我利用 Hugo &#43; github 来搭建个人博客的主要流程，最初选择 Hugo 是无意中看到了一篇推文，后来在慢慢的了解下发现 Hugo 有搭建速度快、主题多这两大优势，尤其在搭建速度方面。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hugo搭建博客中所碰到的问题">
-<meta name="twitter:title" content="Hugo搭建博客中所碰到的问题">
-<meta property="og:url" content="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
-<meta property="twitter:url" content="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+<meta property="og:title" content="Hugo搭建个人博客（Windows版）">
+<meta name="twitter:title" content="Hugo搭建个人博客（Windows版）">
+<meta property="og:url" content="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2windows%E7%89%88/">
+<meta property="twitter:url" content="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2windows%E7%89%88/">
 <meta property="og:site_name" content="一个慵懒之人的随笔">
-<meta property="og:description" content="由于第一次利用类似工具搭建个人博客，在搭建的过程中，遇到了一些问题，本文主要记录了我遇到的问题及对应的解决方案。问题主要出现在将 Hugo 和 Github 进行关联的过程中，还有在插入图片的一些问题。">
-<meta name="twitter:description" content="由于第一次利用类似工具搭建个人博客，在搭建的过程中，遇到了一些问题，本文主要记录了我遇到的问题及对应的解决方案。问题主要出现在将 Hugo 和 Github 进行关联的过程中，还有在插入图片的一些问题。">
+<meta property="og:description" content="本文主要记录了我利用 Hugo &#43; github 来搭建个人博客的主要流程，最初选择 Hugo 是无意中看到了一篇推文，后来在慢慢的了解下发现 Hugo 有搭建速度快、主题多这两大优势，尤其在搭建速度方面。">
+<meta name="twitter:description" content="本文主要记录了我利用 Hugo &#43; github 来搭建个人博客的主要流程，最初选择 Hugo 是无意中看到了一篇推文，后来在慢慢的了解下发现 Hugo 有搭建速度快、主题多这两大优势，尤其在搭建速度方面。">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2020-04-12T17:09:51">
+    <meta property="article:published_time" content="2020-04-10T19:04:50">
   
   
-    <meta property="article:modified_time" content="2020-04-12T17:09:51">
+    <meta property="article:modified_time" content="2020-04-10T19:04:50">
   
   
   
@@ -37,6 +37,8 @@
   
     
       <meta property="article:tag" content="Hugo">
+    
+      <meta property="article:tag" content="Windows">
     
   
 
@@ -49,12 +51,12 @@
 
 
 
-  <meta property="og:image" content="//i.loli.net/2020/04/15/LwgGkl3N2VrOhHz.png">
-  <meta property="twitter:image" content="//i.loli.net/2020/04/15/LwgGkl3N2VrOhHz.png">
+  <meta property="og:image" content="//i.loli.net/2020/04/15/WfcOyPXHKwdJQn9.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/04/15/WfcOyPXHKwdJQn9.png">
 
 
-  <meta property="og:image" content="//i.loli.net/2020/04/15/LwgGkl3N2VrOhHz.png">
-  <meta property="twitter:image" content="//i.loli.net/2020/04/15/LwgGkl3N2VrOhHz.png">
+  <meta property="og:image" content="//i.loli.net/2020/04/15/WfcOyPXHKwdJQn9.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/04/15/WfcOyPXHKwdJQn9.png">
 
 
 
@@ -63,14 +65,14 @@
   <meta property="twitter:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
 
 
-    <title>Hugo搭建博客中所碰到的问题</title>
+    <title>Hugo搭建个人博客（Windows版）</title>
 
     <link rel="icon" href="https://pengpengyang94.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+    <link rel="canonical" href="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2windows%E7%89%88/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -232,7 +234,7 @@
   <div class="post-header-cover
               text-center
               "
-       style="background-image:url('//i.loli.net/2020/04/15/LwgGkl3N2VrOhHz.png')"
+       style="background-image:url('//i.loli.net/2020/04/15/WfcOyPXHKwdJQn9.png')"
        data-behavior="5">
     
   </div>
@@ -248,15 +250,15 @@
             <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title" itemprop="headline">
-      Hugo搭建博客中所碰到的问题
+      Hugo搭建个人博客（Windows版）
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2020-04-12T17:09:51&#43;08:00">
+      <time itemprop="datePublished" datetime="2020-04-10T19:04:50&#43;08:00">
         
-  April 12, 2020
+  April 10, 2020
 
       </time>
     
@@ -275,63 +277,107 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>由于第一次利用类似工具搭建个人博客，在搭建的过程中，遇到了一些问题，本文主要记录了我遇到的问题及对应的解决方案。问题主要出现在将 <strong>Hugo</strong> 和 <strong>Github</strong> 进行关联的过程中，还有在插入图片的一些问题。</p>
-<h2 id="1未填写用户名和邮箱">1.未填写用户名和邮箱</h2>
-<p>在运行 <code>git commit -m &quot;Add a new post&quot;</code> 命令后，出现如下报错信息：</p>
-<p><img src="https://i.loli.net/2020/04/12/CFg7PinS8m2sLWf.png" alt="Hugo搭建博客中所碰到的问题-1.png"></p>
-<p><strong>解决方案：</strong><br>
-按照提示将用户名和邮箱按照如下命令提交即可（根据实际情况修改成自己的邮箱和用户）。</p>
-<pre><code>git config --global user.email &quot;yangpengpeng.1993@live.com&quot;
-git config --global user.name &quot;YangPengPeng&quot;
-</code></pre><h2 id="2出现-fatal-could-not-read-from-remote-repository">2.出现 <code>fatal: Could not read from remote repository.</code></h2>
-<p>在运行<code>git push -u origin master</code>命令后，出现如下报错信息：</p>
-<p><img src="https://i.loli.net/2020/04/12/dz8AFgfoY315ycS.png" alt="Hugo搭建博客中所碰到的问题-2.png"></p>
-<p><strong>解决方案：</strong><br>
-删除当前 <strong>key</strong>，然后重新生成 <strong>key</strong>，具体步骤如下。</p>
-<p>1.执行如下命令后一直回车，会产生 <strong>id_rsa</strong> 和 <strong>id_rsa.pub</strong> 两个文件，如下图所示。</p>
-<pre><code>ssh-keygen -t rsa -C &quot;yangpengpeng.1993@live.com&quot;
-</code></pre><p><img src="https://i.loli.net/2020/04/12/g9OTILonz8tEq2w.png" alt="Hugo搭建博客中所碰到的问题-3.png"></p>
-<p>2.到 <a href="https://github.com/settings/keys">https://github.com/settings/keys</a> 的 <strong>SSH keys</strong> 中点击下图所示的 <strong>New SSH key</strong>。</p>
-<p><img src="https://i.loli.net/2020/04/12/2bD3TB6GwzpcPqE.png" alt="Hugo搭建博客中所碰到的问题-4.png"></p>
-<p>3.将 <strong>id_rsa.pub</strong> 中的内容复制到下图中的 <strong>key</strong> 中，<strong>title</strong> 中可以填写相应的说明，填写完毕后，点击 <strong>Add SSH key</strong> 即可。</p>
-<p><img src="https://i.loli.net/2020/04/12/KgRFAhIksDJum5U.png" alt="Hugo搭建博客中所碰到的问题-5.png"></p>
-<h2 id="3出现-error-failed-to-push-some-refs-to-gitgithubcompengpengyang94pengpengyang94githubiogit">3.出现 <code>error: failed to push some refs to 'git@github.com:pengpengyang94/pengpengyang94.github.io.git'</code></h2>
-<p>在运行<code>git push -u origin master</code>命令后，出现如下报错信息：</p>
-<p><img src="https://i.loli.net/2020/04/12/F1eDpwiItkAZSEH.png" alt="Hugo搭建博客中所碰到的问题-6.png"></p>
-<p>解决方案：<br>
-由于 <strong>GitHub</strong> 远程仓库中的 <strong>README.md</strong> 文件不在本地仓库中。运行 <code>git pull --rebase origin master</code>，即可看到本地代码库中多了 <strong>README.md</strong> 文件。</p>
-<h2 id="4图片插入">4.图片插入</h2>
-<h2 id="41-格式及尺寸">4.1 格式及尺寸</h2>
-<p>没有图片的文章，是不完整的。因为之前一直用 <strong>html</strong> 格式来插入图片，但发现 <strong>Hugo</strong> 并不支持 <strong>html</strong> 格式的转换，只支持 <strong>markdown</strong> 格式。而 <strong>markdown</strong> 格式不能改变图片大小，这点是我为啥不用这种格式的原因。<br>
-为了解决上述问题，我所能想到的是改变原始图片的尺寸，因为主要针对的是网页文章的排版，经过一些摸索，我自己得到下面2个信息，当然这个可以个人来发挥。</p>
-<ul>
-<li>宽度在800至900：这个宽度基本就是网页的宽度了，适合展示比较大点的图片</li>
-<li>宽度在350至450：适合展示小点的图片</li>
-</ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"># html 格式
-&lt;img src=&#34;picture.png&#34; width=&#34;600&#34; hegiht=&#34;100&#34; align=center /&gt;
-# markdown 格式
-![<span style="color:#f92672">picture name</span>](<span style="color:#a6e22e">picture.png</span>)
-</code></pre></div><h2 id="41-图床">4.1 图床</h2>
-<p>最终目的是为了发布到网上，比较方便的做法是先将图片存于图床中，然后再调用图片的 <strong>url</strong> 。有想过用 <strong>github</strong> 作为图床，但是鉴于网络原因，果断打消了这个想法。目前可以作为图床的网站还是有一些的，目前我是用的 <strong>sm.ms</strong> 作为图床，也有推荐 <strong><a href="https://www.aliimg.site/">阿里图床</a></strong> 的，自行选择即可，下面简单介绍 <strong>sm.ms</strong> 的优点和用法。</p>
-<p><strong>sm.ms</strong>: <a href="https://sm.ms/">https://sm.ms/</a></p>
-<ul>
-<li>完全免费，当然付费会有更好的服务，但是对于个人来说，免费的已经够用了，更重要的一点是穷！！！</li>
-<li>不用注册</li>
-<li>批量上传图片后可以直接产生不同格式的图片引用格式，包含 markdown 的格式，比较方便</li>
-</ul>
-<p><strong>sm.ms</strong> 的使用：<br>
-1.打开网址，会出现下图所示界面，点击 <strong>Select image</strong> 在文件夹中进行选择或者直接将图片拖拽进入虚线框中均可。</p>
-<p><img src="https://i.loli.net/2020/04/12/anrAxgw6OskFVDS.png" alt="Hugo搭建博客中所碰到的问题-7.png"></p>
-<p>2.选择完需要上传的图片后，点击下图中 <strong>Upload</strong> 选项，等待一段时间后，会出现下图中多种带有图片 <strong>url</strong> 的插入格式，复制 <strong>Markdown</strong> 中的文本即可直接放在 <strong>md</strong> 文档中用来插入图片。</p>
-<p><img src="https://i.loli.net/2020/04/12/ZX4hFcbuUPBNOMf.png" alt="Hugo搭建博客中所碰到的问题-8.png"></p>
-<hr>
+              <p>本文主要记录了我利用 Hugo + github 来搭建个人博客的主要流程，最初选择 Hugo 是无意中看到了一篇推文，后来在慢慢的了解下发现 Hugo 有搭建速度快、主题多这两大优势，尤其在搭建速度方面。</p>
+<h2 id="1新建-github-库">1.新建 GitHub 库</h2>
+<p>新建 <strong>repository</strong>: <a href="https://github.com/new">https://github.com/new</a><br>
+<strong>Repository name</strong> 中填写 <code>name.github.io</code>，注意 <strong>name</strong> 必须是github的账户名。</p>
+<p><img src="https://i.loli.net/2020/04/12/coRt5mWrwfpL2hK.png" alt="Hugo搭建个人博客（Winsows版）-1.png"></p>
+<h2 id="2下载并安装对应版本的-hugo">2.下载并安装对应版本的 Hugo</h2>
+<p>不同版本下载地址: <a href="https://github.com/gohugoio/hugo/releases">https://github.com/gohugoio/hugo/releases</a><br>
+我的电脑是Windows 64位的系统，所以下载下图所示版本的软件。</p>
+<p><img src="https://i.loli.net/2020/04/12/HY5RdL4SAtBDOIX.png" alt="Hugo搭建个人博客（Winsows版）-2.png"></p>
+<p>注意：<br>
+1.<strong>解压后的目录即是安装目录</strong>，根据需求设定解压位置。<br>
+2.建议将安装目录添加到系统环境变量中以方便日后调用。</p>
+<p>安装结束后，在 <strong>cmd</strong> 中运行如下命令检查是否安装成功。</p>
+<pre><code># 进入安装目录，若添加到系统环境变量中则不需要进入安装文件夹中
+cd /install dir path/ 
+# 检查是否安装成功
+hugo version
+</code></pre><p>若出现类似下图反应表示安装成功。</p>
+<p><img src="https://i.loli.net/2020/04/12/36BgRcPWbsHUF74.png" alt="Hugo搭建个人博客（Winsows版）-7.png"></p>
+<h2 id="3创建-hugo-网站">3.创建 Hugo 网站</h2>
+<pre><code># 进入想要存放网站文件夹的目录
+cd /save dir path/ 
+# 新建一个 Hugo 网站（yang-blog是名字）
+hugo new site yang-blog
+</code></pre><h2 id="4修改主题">4.修改主题</h2>
+<p>在 <strong>yang-blog</strong> 中新建一个 <strong>themes</strong> 的文件夹用于存储主题。<br>
+Hugo Themes: <a href="https://themes.gohugo.io">https://themes.gohugo.io</a></p>
+<p>在上面链接中选择合适的主题，点击后进入主题介绍界面，其中包含安装说明，以<strong>Mainroad</strong>为例，分为以下两种情况：</p>
+<h3 id="41-已安装git">4.1 已安装Git</h3>
+<p>使用 <code>git</code> 下载主题，主题说明界面会看到如下安装说明。</p>
+<p><img src="https://i.loli.net/2020/04/12/LAoqbGi7WPQsOxI.png" alt="Hugo搭建个人博客（Winsows版）-3.png"></p>
+<pre><code># 进入themes目录中
+cd .\yang-blog\themes
+# 下载 mainroad 主题
+git clone https://github.com/vimux/mainroad
+</code></pre><h3 id="42-未安装git">4.2 未安装Git</h3>
+<p>点击下图中的 **Download **选项，进入主题的 <strong>Github</strong> 界面。</p>
+<p><img src="https://i.loli.net/2020/04/12/Jy63FwNs4gfHxhU.png" alt="Hugo搭建个人博客（Winsows版）-4.png"></p>
+<p>按照下图所示点击 <strong>Clone or download</strong> 中的 <strong>Download ZIP</strong> 选项，再将压缩包解压至 <strong>themes</strong> 文件夹中。</p>
+<p><img src="https://i.loli.net/2020/04/12/Tc4ld2akoj6Qsx8.png" alt="Hugo搭建个人博客（Winsows版）-5.png"></p>
+<p>最后在 <strong>yang-blog</strong> 文件夹下的 <code>config.toml</code> 中添加一行 <code>theme = &quot;mainroad&quot;</code>，引号中间的是主题名称，至此主题就已经修改好了。</p>
+<p>注意：可以在 <code>config.toml</code> 添加 <code>themesDir = &quot;./themes/&quot;</code> 来设置存放主题的文件夹。</p>
+<h2 id="5新建文章">5.新建文章</h2>
+<pre><code># 进入想要存放网站文件夹的目录
+cd .\yang-blog
+# 新建文章（yang-blog是名字）
+hugo new post/Hugo搭建个人博客（Winsows版）.md
+# 随后在 Hugo搭建个人博客（Winsows版）.md 中添加内容即可
+</code></pre><p>注意：新创建的 <strong>md</strong> 文档需要将原来 <strong>draft</strong> 后的 <strong>true</strong> 改为如下所示的 <strong>false</strong> 才能在预览的时候加载出来。</p>
+<p><img src="https://i.loli.net/2020/04/12/85qYcsCxUaSMr9W.png" alt="Hugo搭建个人博客（Winsows版）-6.png"></p>
+<h2 id="6本地预览网站效果">6.本地预览网站效果</h2>
+<pre><code># 启动 Hugo
+hugo server -D
+# 终止
+Ctrl+C
+</code></pre><p>浏览器中打开 http://localhost:1313 即可预览。</p>
+<p>注意：须至少有一篇文章才能预览。</p>
+<h2 id="7构建-hugo-网站">7.构建 Hugo 网站</h2>
+<p>在 <strong>yang-blog</strong> 目录下执行 <code>hugo</code> 指令来构建你的 <strong>Hugo</strong> 网站，默认会将静态站点保存到 <strong>public</strong> 目录中。</p>
+<h2 id="8将网站文件夹转换为-git-库">8.将网站文件夹转换为 Git 库</h2>
+<p>在 <code>/yang-blog/public</code> 目录下执行如下指令。</p>
+<pre><code>## 初始化 Git 库
+git init  
+## 查看会多一个 .git 的隐藏文件
+ls -a
+</code></pre><h2 id="9将-git-本地库关联至远程库">9.将 Git 本地库关联至远程库</h2>
+<p>在 <code>/yang-blog/public</code> 目录下执行如下指令。</p>
+<pre><code># 根据实际情况进行修改
+git remote add origin git@github.com:pengpengyang94/pengpengyang94.github.io .git
+</code></pre><p>注意：上面命令中的&quot;pengpengyang94/pengpengyang94.github.io .git&rdquo; 含义是 &ldquo;your-github-id/your-github-id.github.io.git&rdquo;。</p>
+<h2 id="10提交修改至本地库">10.提交修改至本地库</h2>
+<p>在 <code>/yang-blog/public</code> 目录下执行如下指令。</p>
+<pre><code>git status  # 查看当前修改状态
+git add .  # 添加所有修改过的文件
+git commit -m &quot;Add a new post&quot;  # 引号内容是本次提交的说明
+</code></pre><h2 id="11将你的修改推至远程库">11.将你的修改推至远程库</h2>
+<p>在 <code>/yang-blog/public</code> 目录下执行如下指令。</p>
+<pre><code>git push -u origin master
+</code></pre><p>至此，就完成了整个 <strong>blog</strong> 的构建步骤，后面就可以愉快的在这更新文章了！！！</p>
+<h2 id="12日常编辑及上传文章流程">12.日常编辑及上传文章流程</h2>
+<pre><code># ./yang-blog 目录下执行下面命令新建文章
+hugo new post/paper.md
+# 将更新的内容，保存到 public 目录下
+hugo
+
+# 编辑完成后，更新github上的内容
+# /yang-blog/public 目录下
+git status  # 查看当前修改状态
+git add .  # 添加所有修改过的文件
+git commit -m &quot;Add a new post&quot;  # 引号内容是本次提交的说明
+git push -u origin master
+</code></pre><hr>
 <p><strong>参考资料：</strong><br>
-<a href="https://mp.weixin.qq.com/s?__biz=MjM5NTk0Mzg2Nw==&amp;mid=2247484995&amp;idx=1&amp;sn=83e18324ea00c53b247cd16d1f9add2a&amp;chksm=a6f1829791860b819ec6defda9f80d873c976a7cfef48e7c92980f837be9d78cafce73df019e&amp;scene=126&amp;sessionid=1586488871&amp;key=226bbf49838413066e59280f7faac9d3f2821c5090556899beda15482a02be371989952761f8d6d4d75333282f2b3f5909b92063eb3c3d1cbe4ea877c3eb630c49380b774b35e291e9b0a292fc93250a&amp;ascene=1&amp;uin=NjkwMTYwNDgw&amp;devicetype=Windows+10&amp;version=62080085&amp;lang=zh_CN&amp;exportkey=AcsOU9Df63wlonDyF%2Be6QXk%3D&amp;pass_ticket=p4WcsOF6zsWg1Mj6ISTHohus3kEjhtwhmF%2B7UPeOSXB%2BNfeZmq1apuS5Wtb4RpPa">1.GIT简单入门（1）</a><br>
-<a href="https://blog.csdn.net/Leolu007/article/details/79129446">2.fatal: Could not read from remote repository.的解决办法</a><br>
-<a href="https://www.cnblogs.com/aeolian/p/10346235.html">3.IDEA分享项目到GitHub出现Could not read from remote repository</a><br>
-<a href="https://www.cnblogs.com/sjhsszl/p/8708471.html">4.如何解决failed to push some refs to git</a><br>
-<a href="https://blog.csdn.net/hunhun1122/article/details/79752188">5.git push报错error: failed to push some refs to &lsquo;git@github.com:</a></p>
+<a href="https://www.jianshu.com/p/ca04631f4438">1.如何利用 GitHub Pages 和 Hugo 轻松搭建个人博客？</a><br>
+<a href="https://linux.cn/article-10048-1.html">2.用 Hugo 30 分钟搭建静态博客</a><br>
+<a href="https://blog.csdn.net/u013233097/article/details/79780016">3.HuGo+ github个人博客搭建（步骤一：初始化一个hugo项目）</a><br>
+<a href="https://www.jianshu.com/p/68da4f350d97">4.hugo+github博客搭建教程！</a><br>
+<a href="https://www.jianshu.com/p/e57bb9cf0bc7">5.Hugo +github 简单快捷搭建完成个人博</a><br>
+<a href="https://www.bilibili.com/video/BV1q4411i7gL?t=695">6.手把手教你从0开始搭建自己的个人博客 |第二种姿势 | hugo</a><br>
+<a href="https://gohugo.io/">7.HUGO</a><br>
+<a href="https://www.gohugo.cn/">8.HUGO中文网</a></p>
               
             </div>
           </div>
@@ -345,6 +391,8 @@ git config --global user.name &quot;YangPengPeng&quot;
                     
   <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/hugo/">Hugo</a>
 
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/windows/">Windows</a>
+
                   </div>
                 
               
@@ -356,7 +404,7 @@ git config --global user.name &quot;YangPengPeng&quot;
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/04/%E5%8D%9A%E5%AE%A2%E7%BB%86%E8%8A%82%E9%85%8D%E7%BD%AE/" data-tooltip="博客细节配置">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" data-tooltip="Hugo搭建博客中所碰到的问题">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -364,7 +412,7 @@ git config --global user.name &quot;YangPengPeng&quot;
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2windows%E7%89%88/" data-tooltip="Hugo搭建个人博客（Windows版）">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -382,19 +430,19 @@ git config --global user.name &quot;YangPengPeng&quot;
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2windows%E7%89%88/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2windows%E7%89%88/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2windows%E7%89%88/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -442,7 +490,7 @@ git config --global user.name &quot;YangPengPeng&quot;
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/04/%E5%8D%9A%E5%AE%A2%E7%BB%86%E8%8A%82%E9%85%8D%E7%BD%AE/" data-tooltip="博客细节配置">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" data-tooltip="Hugo搭建博客中所碰到的问题">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -450,7 +498,7 @@ git config --global user.name &quot;YangPengPeng&quot;
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2windows%E7%89%88/" data-tooltip="Hugo搭建个人博客（Windows版）">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -468,19 +516,19 @@ git config --global user.name &quot;YangPengPeng&quot;
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2windows%E7%89%88/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2windows%E7%89%88/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/04/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2windows%E7%89%88/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -510,19 +558,19 @@ git config --global user.name &quot;YangPengPeng&quot;
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F04%2Fhugo%25E6%2590%25AD%25E5%25BB%25BA%25E5%258D%259A%25E5%25AE%25A2%25E4%25B8%25AD%25E6%2589%2580%25E7%25A2%25B0%25E5%2588%25B0%25E7%259A%2584%25E9%2597%25AE%25E9%25A2%2598%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F04%2Fhugo%25E6%2590%25AD%25E5%25BB%25BA%25E4%25B8%25AA%25E4%25BA%25BA%25E5%258D%259A%25E5%25AE%25A2windows%25E7%2589%2588%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F04%2Fhugo%25E6%2590%25AD%25E5%25BB%25BA%25E5%258D%259A%25E5%25AE%25A2%25E4%25B8%25AD%25E6%2589%2580%25E7%25A2%25B0%25E5%2588%25B0%25E7%259A%2584%25E9%2597%25AE%25E9%25A2%2598%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F04%2Fhugo%25E6%2590%25AD%25E5%25BB%25BA%25E4%25B8%25AA%25E4%25BA%25BA%25E5%258D%259A%25E5%25AE%25A2windows%25E7%2589%2588%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F04%2Fhugo%25E6%2590%25AD%25E5%25BB%25BA%25E5%258D%259A%25E5%25AE%25A2%25E4%25B8%25AD%25E6%2589%2580%25E7%25A2%25B0%25E5%2588%25B0%25E7%259A%2584%25E9%2597%25AE%25E9%25A2%2598%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F04%2Fhugo%25E6%2590%25AD%25E5%25BB%25BA%25E4%25B8%25AA%25E4%25BA%25BA%25E5%258D%259A%25E5%25AE%25A2windows%25E7%2589%2588%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -614,9 +662,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/pengpengyang94.github.io\/2020\/04\/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98\/';
+          this.page.url = 'https:\/\/pengpengyang94.github.io\/2020\/04\/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2windows%E7%89%88\/';
           
-            this.page.identifier = '\/2020\/04\/hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%89%80%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98\/'
+            this.page.identifier = '\/2020\/04\/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2windows%E7%89%88\/'
           
         };
         (function() {

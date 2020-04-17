@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Markerdown on 一个慵懒之人的随笔</title>
+    <link>https://pengpengyang94.github.io/tags/markerdown/</link>
+    <description>Recent content in Markerdown on 一个慵懒之人的随笔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 17 Apr 2020 13:32:24 +0800</lastBuildDate>
+    
+	<atom:link href="https://pengpengyang94.github.io/tags/markerdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>博客细节配置</title>
+      <link>https://pengpengyang94.github.io/2020/04/%E5%8D%9A%E5%AE%A2%E7%BB%86%E8%8A%82%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 17 Apr 2020 13:32:24 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2020/04/%E5%8D%9A%E5%AE%A2%E7%BB%86%E8%8A%82%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;p&gt;想要获得美观的博客界面，最快的方式是先选择主题，然后根据主题的说明进行配置，大神请无视。本文主要记录了我配置 &lt;a href=&#34;https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md&#34;&gt;hugo-tranquilpeak-theme&lt;/a&gt; 的过程及 &lt;strong&gt;md&lt;/strong&gt; 文档的一些特殊语法。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
