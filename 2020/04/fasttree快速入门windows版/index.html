@@ -53,12 +53,12 @@
 
 
 
-  <meta property="og:image" content="//">
-  <meta property="twitter:image" content="//">
+  <meta property="og:image" content="//i.loli.net/2020/04/18/yzrMqejfFKLC8tp.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/04/18/yzrMqejfFKLC8tp.png">
 
 
-  <meta property="og:image" content="//">
-  <meta property="twitter:image" content="//">
+  <meta property="og:image" content="//i.loli.net/2020/04/18/yzrMqejfFKLC8tp.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/04/18/yzrMqejfFKLC8tp.png">
 
 
 
@@ -236,7 +236,7 @@
   <div class="post-header-cover
               text-center
               "
-       style="background-image:url('//')"
+       style="background-image:url('//i.loli.net/2020/04/18/yzrMqejfFKLC8tp.png')"
        data-behavior="5">
     
   </div>
@@ -280,6 +280,53 @@
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>　　以前接到过在 Windows 下使用 FastTree 的任务，由于当时理解能力还不够，并且网上关于 FastTree 的说明太少（可能是由于官方文档太详细了！），对于接触命令行的人来说可能比较好理解，但是对于纯小白来说，可能就会有点困难（反正我还是小白的时候理解起来比较困难），针对此情况就有写此文档的想法。</p>
+<h2 id="1下载">1.下载</h2>
+<p>　　进入 <a href="http://www.microbesonline.org/fasttree/#How">FastTree官方网站</a> ，在官网上找到下图所示界面，根据情况下载对应版本的软件，本文主要对 Windows 下 FastTree 的使用进行说明，所以本文下载的是 Windows 版本的 FastTree 软件。</p>
+<p><img src="https://i.loli.net/2020/04/18/iU6rCT7ueVGsEcK.png" alt="1.png"></p>
+<p>　　下载完成后会出现 <code>FastTree.exe</code> 的文件，可放到任意文件夹中，但是<strong>必须知道此文件的路径</strong>。可用如下图方式查看文件的路径，右键此文件后点击最下方的“属性”，弹出对话框如下图，复制框中所示内容。</p>
+<p><img src="https://i.loli.net/2020/04/18/LdGJzDmt7RvBbop.png" alt="2.png"></p>
+<h2 id="2进入cmd界面">2.进入cmd界面</h2>
+<p>　　右键屏幕最左下方的 <strong>Windows键</strong>，出现下图点击 <code>运行</code> （或使用键盘上的 <strong>Windows键 + R</strong>），输入  <code>cmd</code>  后回车即可进入命令界面。</p>
+<p><img src="https://i.loli.net/2020/04/18/BGroLu8eFMailfH.png" alt="3.png"></p>
+<p>注意：FastTree是免安装的软件，直接可用！！！</p>
+<h2 id="3fasttree的使用">3.FastTree的使用</h2>
+<h3 id="31-cmd-切换至fasttreeexe所在目录">3.1 cmd 切换至<code>FastTree.exe</code>所在目录</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 本文演示时的exe文件存放于桌面，所以路径如下，根基实际情况修改路径</span>
+cd C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\y</span>angp<span style="color:#ae81ff">\D</span>esktop
+<span style="color:#75715e"># 此时可以输入下面指令获得软件的帮助文档</span>
+FastTree.exe --help
+</code></pre></div><p>Tips：推荐使用 cmdhere 来直接进入 FastTree 所在的目录。</p>
+<h3 id="32-建树">3.2 建树</h3>
+<p>　　本文演示时的 exe 文件存放于桌面，根据实际情况修改路径。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">## 快速使用——对核酸序列进行建树</span>
+FastTree  -gtr -nt  nucleotides-seq.fas &gt; tree.nwk
+<span style="color:#75715e"># -gtr 使用gtr模型进行建树，默认核酸使用Jukes-Cantor模型</span>
+<span style="color:#75715e"># -nt 指定核酸比对，默认蛋白比对</span>
+
+<span style="color:#75715e">## 具体示例说明</span>
+<span style="color:#75715e"># 1.对比对后的蛋白序列使用 JTT+CAT 建树可以输入以下指令</span>
+FastTree &lt; alignment_file &gt; tree_file 
+FastTree alignment.file &gt; tree_file 
+<span style="color:#75715e"># 添加-wag  表示使用 WAG+CAT 模型进行建树</span>
+<span style="color:#75715e"># 添加-lg  表示使用 LG+CAT 模型进行建树</span>
+
+<span style="color:#75715e"># 2.对比对后的核酸序列使用 GTR+CAT 建树可以输入以下指令</span> 
+FastTree -gtr -nt &lt; alignment.file &gt; tree_file 
+FastTree -gtr -nt alignment_file &gt; tree_file 
+<span style="color:#75715e"># If you do not specify -gtr, then FastTree will use the Jukes-Cantor + CAT model instead</span>
+<span style="color:#75715e"># 如果去掉 -gtr 选项，表示使用Jukes-Cantor + CAT模型进行建树</span>
+</code></pre></div><p>注意：</p>
+<ul>
+<li><strong>.fas</strong> 和 <strong>.nwk</strong> 是文件名，需要对应</li>
+<li>nucleotides-seq.fas需为<strong>已比对且修剪好</strong>的序列，不只是fas格式文件，faste一类格式的文件都可以</li>
+<li>建议将FastTree.exe和Alignment-seq.fas<strong>放在同一个文件夹</strong>内方便管理</li>
+<li>tree.nwk为输出文件，名字可自行修改，格式一般为nwk，默认存放在FastTree.exe同一个目录下</li>
+<li>nwk的文件官方推荐<strong>比较小</strong>的树用<strong>MEGA</strong>查看，<strong>比较大</strong>的数用<strong>Archaeopteryx</strong>查看，<strong>非常大</strong>的16S trees用<strong>Arb</strong>查看</li>
+<li>GTR(general time reversible model) 和 Jukes-Cantor都是比较常用的一种建树算法</li>
+</ul>
+<h3 id="33-示例">3.3 示例</h3>
+<p>　　使用一个叫1.fas的比对好的核酸序列文件进行建树，输出一个叫1.nwk的树文件的全过程截图。</p>
+<p><img src="https://i.loli.net/2020/04/18/yzm6iJNDu93vXG4.png" alt="4.png"></p>
               
             </div>
           </div>
