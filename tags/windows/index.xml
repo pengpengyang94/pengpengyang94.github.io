@@ -6,10 +6,19 @@
     <description>Recent content in Windows on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 17 Apr 2020 22:34:19 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2020 11:29:09 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>R和Python大礼包说明（Windows版）</title>
+      <link>https://pengpengyang94.github.io/2020/05/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88/</link>
+      <pubDate>Sun, 03 May 2020 11:29:09 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2020/05/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88/</guid>
+      <description>&lt;p&gt;　　本文主要介绍 R 和 Python 安装及一些推荐的 IDE，注意根据实际情况下载最版本的软件。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>FastTree快速入门（Windows版）</title>

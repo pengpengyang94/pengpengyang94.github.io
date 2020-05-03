@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Ezio">
+<meta name="keywords" content="">
+<meta name="description" content="　　本文主要介绍 R 和 Python 安装及一些推荐的 IDE，注意根据实际情况下载最版本的软件。">
+
+
+<meta property="og:description" content="　　本文主要介绍 R 和 Python 安装及一些推荐的 IDE，注意根据实际情况下载最版本的软件。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R和Python大礼包说明（Windows版）">
+<meta name="twitter:title" content="R和Python大礼包说明（Windows版）">
+<meta property="og:url" content="https://pengpengyang94.github.io/2020/05/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88/">
+<meta property="twitter:url" content="https://pengpengyang94.github.io/2020/05/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88/">
+<meta property="og:site_name" content="一个慵懒之人的随笔">
+<meta property="og:description" content="　　本文主要介绍 R 和 Python 安装及一些推荐的 IDE，注意根据实际情况下载最版本的软件。">
+<meta name="twitter:description" content="　　本文主要介绍 R 和 Python 安装及一些推荐的 IDE，注意根据实际情况下载最版本的软件。">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-05-03T11:29:09">
+  
+  
+    <meta property="article:modified_time" content="2020-05-03T11:29:09">
+  
+  
+  
+    
+      <meta property="article:section" content="软件说明">
+    
+  
+  
+    
+      <meta property="article:tag" content="R">
+    
+      <meta property="article:tag" content="Python">
+    
+      <meta property="article:tag" content="Windows">
+    
+      <meta property="article:tag" content="Jupyter notebook">
+    
+      <meta property="article:tag" content="cmd">
+    
+      <meta property="article:tag" content="Markdown">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="//i.loli.net/2020/05/03/EquGO8f1aQAJ7Lt.jpg">
+  <meta property="twitter:image" content="//i.loli.net/2020/05/03/EquGO8f1aQAJ7Lt.jpg">
+
+
+  <meta property="og:image" content="//i.loli.net/2020/05/03/wJ21cRDhfeIYLB8.jpg">
+  <meta property="twitter:image" content="//i.loli.net/2020/05/03/wJ21cRDhfeIYLB8.jpg">
+
+
+
+
+  <meta property="og:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+  <meta property="twitter:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+
+
+    <title>R和Python大礼包说明（Windows版）</title>
+
+    <link rel="icon" href="https://pengpengyang94.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://pengpengyang94.github.io/2020/05/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://pengpengyang94.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://pengpengyang94.github.io/">一个慵懒之人的随笔</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://pengpengyang94.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://pengpengyang94.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Ezio</h4>
+        
+          <h5 class="sidebar-profile-bio">学习、记录、变强，最后 <strong>变秃</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder-open"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user-o"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/pengpengyang94" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://space.bilibili.com/87148526" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-caret-square-o-right"></i>
+      
+      <span class="sidebar-button-desc">Bilibili</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.bioinfo.info/?/people/Ezio" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitch"></i>
+      
+      <span class="sidebar-button-desc">Bioinfo</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//i.loli.net/2020/05/03/wJ21cRDhfeIYLB8.jpg')"
+       data-behavior="5">
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaOut
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      R和Python大礼包说明（Windows版）
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-05-03T11:29:09&#43;08:00">
+        
+  May 3, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://pengpengyang94.github.io/categories/%e8%bd%af%e4%bb%b6%e8%af%b4%e6%98%8e">软件说明</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>　　本文主要介绍 R 和 Python 安装及一些推荐的 IDE，注意根据实际情况下载最版本的软件。</p>
+<h2 id="1r和rstudio的安装">1.R和RStudio的安装</h2>
+<ul>
+<li>先安装R（R-3.5.2-win.exe），再安装RStudio（RStudio-1.1.463.exe）</li>
+<li>双击exe，根据提示进行选择，使用默认设置即可</li>
+</ul>
+<h2 id="2python的安装及使用">2.Python的安装及使用</h2>
+<p>　　推荐直接安装Anaconda，其自带Python、常用模快及Jupyter notebook，非常方便，对新手十分友好。</p>
+<h3 id="21-anaconda的下载">2.1 Anaconda的下载</h3>
+<p>　　由于Anaconda的服务器位于国外，所以直接从官网下载<strong>非常慢</strong>，推荐使用国内镜像网站，如中科大，清华，阿里云的镜像网站。</p>
+<p>　　中科大Anaconda镜像地址（根据自己系统进行选择下载，文件中已经下载了Windows_64位的软件，<strong>Anaconda3-5.3.1-Windows-x86_64.exe</strong> ）：
+<a href="https://mirrors.ustc.edu.cn/anaconda/archive/">https://mirrors.ustc.edu.cn/anaconda/archive/</a></p>
+<p>Anaconda安装注意事项</p>
+<ul>
+<li>安装路径不能有空格（空格会在后期产生各种未知的错误）</li>
+<li>安装界面勾选加入环境变量（即PATH），避免后续自己设置环境变量</li>
+<li>Anaconda安装所需空间较大，不建议安装到C盘（土豪请无视！）</li>
+</ul>
+<p>　　Anaconda会默认安装好Python，下一步就需要一个顺手好用的IDE来进行对Python代码的书写，使用最广泛的两款IDE是<strong>pycharm</strong>和<strong>Jupyter notebook</strong>，其中<strong>Jupyter notebook</strong>是Anaconda自带的一款进行Python编写的IDE，经过改装后有着不下于pycharm的便捷，并且能够书写成较为美观的文本形式供其他人阅读。<br>
+　　个人推荐使用的是Jupyter notebook这款IDE。（想使用pycharm的可以自行查找相关资料，在此不做说明）</p>
+<h3 id="22-jupyter-notebook简单介绍及相关插件的安装">2.2 Jupyter notebook简单介绍及相关插件的安装</h3>
+<h4 id="221-进入-jupyter-notebook">2.2.1 进入 Jupyter notebook</h4>
+<p>　　进入cmd界面，切换到所需编辑目录（输入<code>cd C:\destop</code>），输入 <code>jupyter notebook</code> 后并回车，稍等数秒默认浏览器就会弹出jupyter notebook的主界面，即可进行相关操作操作(<strong>文尾有关于cmd实用的小工具</strong>)，下图为主界面及相应介绍。</p>
+<p><strong>注意</strong>：在使用Jupyter notebook的过程中，<strong>不要</strong>关闭cmd界面</p>
+<p><img src="https://i.loli.net/2020/05/03/OJXyfkLaCYBHFU3.png" alt="jupyter_notebook界面.png"></p>
+<h4 id="222-jupyter-notebook的使用">2.2.2 Jupyter notebook的使用</h4>
+<p>　　下图为编辑界面简单说明</p>
+<p><img src="https://i.loli.net/2020/05/03/PuDL5U9FSZoycKx.png" alt="编辑界面.png"></p>
+<p>Jupyter notebook的相关用法参考下面链接(推荐详细细阅读)：<br>
+<a href="https://www.jianshu.com/p/91365f343585">Jupyter Notebook介绍、安装及使用教程</a></p>
+<h4 id="223-退出-jupyter-notebook">2.2.3 退出 Jupyter notebook</h4>
+<p>　　首先关闭网页版的编辑界面，然后切换到cmd界面键盘按<code>Control + C</code>，等待数秒后退出，或者不等待直接关闭cmd窗口退出。</p>
+<h4 id="224-jupyter-notebook设置代码补全">2.2.4 Jupyter notebook设置代码补全</h4>
+<ol>
+<li>进入cdm界面（初始cmd界面中输入指令即可）</li>
+<li>安装nbextensions和nbextensions_configurator，输入下面命令</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">#install nbextensions
+pip install --user jupyter_contrib_nbextensions -i https://pypi.mirrors.ustc.edu.cn/simple
+jupyter contrib nbextension install --user
+#install nbextensions_configurator
+pip install --user jupyter_nbextensions_configurator 
+jupyter nbextensions_configurator enable --user
+</code></pre></div><p>　　安装成功后，启动Jupyter，可以看见标签页多了一个<code>Nbextensions</code>标签进入<code>Nbextensions</code>标签页面，该页面即为Jupyter的插件中心。勾选<code>Hinterland</code>即打开了自动补全功能，就可以愉快的敲代码了。</p>
+<p><strong>其他可选功能</strong>
+　　插件中心中还有很多其他好用的功能：</p>
+<ul>
+<li>代码折叠 ：Codefolding</li>
+<li>标题折叠：Collapsible Headings</li>
+<li>格式化代码：安装<strong>yadf</strong>（cmd中执行<code>pip install yadf</code>），然后在插件中心中勾选<strong>Code prettify</strong>，点击标题可以自己设置快捷键</li>
+<li>勾选<code>Table of Contents ⑵</code>可以在markdown中选择生成<strong>目录</strong></li>
+</ul>
+<p>参考：<br>
+<a href="https://blog.csdn.net/qq_37087781/article/details/85110040">Jupyter Notebook代码自动补全</a></p>
+<h4 id="225-修改jupyter-notebook主题">2.2.5 修改Jupyter notebook主题</h4>
+<h5 id="安装主题">安装主题</h5>
+<p>　　默认Jupyter notebook的主题过于简洁不符合，至少是不符合我的审美，尤其是字体和字号不能随意调节，下面就说说怎么修改主题。</p>
+<ol>
+<li>进入cmd界面（cmd初始界面中输入指令即可）</li>
+<li>安装主题，cmd中运行下面代码</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">pip install --upgrade jupyterthemes
+</code></pre></div><p><strong>注意：</strong></p>
+<ul>
+<li>若提示pip版本过低则运行下面命令
+<code>python -m pip install --upgrade pip</code></li>
+<li>若提示尝试使用<code>--user</code>，则为权限问题，运行下面命令即可
+<code>python -m pip install --upgrade pip --user</code></li>
+</ul>
+<h5 id="查看主题">查看主题</h5>
+<p>cmd中运行<code>jt -l</code>命令查看有多少主题</p>
+<p>根据个人喜好做了以下调整:<br>
+　　字号变大，编写界面加宽，字体修改，颜色修改&hellip;&hellip;（效果自行体会）<br>
+调整命令如下：<br>
+<code>jt -t grade3 -f fira -fs 13 -cellw 90% -ofs 11 -dfs 11 -T</code></p>
+<p>想自己DIY的可以参考下面链接中的的参数说明：<br>
+<a href="https://blog.csdn.net/qq_30565883/article/details/79444750">jupyter notebook 修改主题、字体、字号等</a><br>
+<a href="https://www.cnblogs.com/qiuxirufeng/p/9609031.html">Jupyter Notebook主题字体设置及自动代码补全</a></p>
+<h4 id="226-jupyter-notebook关联conda">2.2.6 Jupyter notebook关联conda</h4>
+<p>　　Conda下对conda环境和包进行一系列操作，conda界面如下:（我反正是没成功，写给有缘人!!!）</p>
+<p><img src="https://i.loli.net/2020/05/03/93frRumgsGvalZ5.png" alt="conda界面.png"></p>
+<ul>
+<li>安装
+<code>conda install nb_conda</code></li>
+<li>出现CondaHTTPError则需要设置镜像源，运行下面命令可以解决</li>
+</ul>
+<pre><code>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --set show_channel_urls yes
+</code></pre><p>如果还是提示失败可以参考下面文档链接：<br>
+<a href="https://blog.csdn.net/ada0915/article/details/78529877">CondaHTTPError: HTTP 000 CONNECTION FAILED for url</a></p>
+<h4 id="227-jupyter-notebook关联rr推荐使用rstudio进行编写">2.2.7 Jupyter notebook关联R(R推荐使用RStudio进行编写)</h4>
+<p>直接打开RStudio，成功运行下面代码后即可关联R</p>
+<pre><code>#安装所需R包，耐心等待
+install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))
+devtools::install_github('IRkernel/IRkernel')
+#根据情况选择（推荐在系统下安装）
+IRkernel::installspec() #只在当前用户下安装
+IRkernel::installspec(user = FALSE) #在系统下安装
+</code></pre><h4 id="228-cmd小工具cmdhere强烈推荐使用">2.2.8 cmd小工具cmdhere（强烈推荐使用）</h4>
+<p>　　cmdhere主要是在右键选项中添加cmdhere选项，就不需要在cmd中切换到所需目录，极大的方便了进入任意目录下的cmd</p>
+<ul>
+<li>新建一个名为cmdhere的txt文件</li>
+<li>将下面代码复制到txt中</li>
+</ul>
+<pre><code>REGEDIT4
+ 
+[HKEY_CLASSES_ROOT\*\shell\cmdhere]
+@=&quot;Cmd&amp;Here&quot;
+ 
+[HKEY_CLASSES_ROOT\*\shell\cmdhere\command]
+@=&quot;cmd.exe /c start cmd.exe /k pushd \&quot;%L\\..\&quot;&quot;
+ 
+[HKEY_CLASSES_ROOT\Folder\shell\cmdhere]
+@=&quot;Cmd&amp;Here&quot;
+ 
+[HKEY_CLASSES_ROOT\Folder\shell\cmdhere\command]
+@=&quot;cmd.exe /c start cmd.exe /k pushd \&quot;%L\&quot;&quot;
+</code></pre><ul>
+<li>点击保存后将文件类型由<strong>txt</strong>修改成<strong>reg</strong>，在弹出的提示框中点击<strong>确认修改</strong></li>
+<li>双击运行，待运行结束后，随便选中一个文件夹或者文件右键，就会出现cmdhere的选项，表示设置成功</li>
+</ul>
+<p><strong>几点说明：</strong></p>
+<ul>
+<li>选中一个<strong>文件夹</strong>右键cmdhere表示cdm切换到这个<strong>文件夹</strong>中</li>
+<li>选中一个<strong>文件</strong>右键cmdhere表示cdm切换到这个<strong>文件所处的位置</strong></li>
+<li>文件夹中也提供了制作好的<strong>cmdhere.reg</strong></li>
+</ul>
+<h2 id="3markdown的介绍">3.Markdown的介绍</h2>
+<p>　　看了上面这么长的文档，有没有发现排版很清爽，有没有疑惑这是怎么用word做出来的，有这种疑惑就对了，以下的几分钟将会解决这一疑惑。<br>
+　　这篇文档使用<strong>Markdown</strong>来进行编写的，Markdown的理念就是<strong>简单，易读</strong>，只要掌握少量的语法就可以做出类似本文档的效果，并且可以存为pdf，HTML和doc等 格式的文档，所以使用Markdown来码字比在word上面码子更加<strong>舒服便捷</strong>。</p>
+<h3 id="31-typora">3.1 Typora</h3>
+<p>　　支持Markdown的软件非常多，Jupyter notebook中就支持，但是并不能完美的支持Markdown所有语法，还有其他一些专门的软件，我推荐<strong>Typora</strong>，同时支持Windows，mac和linux三系统，完美支持Markdown所有语法，界面十分简约。</p>
+<ul>
+<li>双击文件夹中<strong>typora-setup-x64.exe</strong>，根据提示进行选择即可</li>
+<li>默认保存的文后缀为<code>.md</code></li>
+</ul>
+<h3 id="32-markdown语法">3.2 Markdown语法</h3>
+<p>Markdown<strong>常用语法</strong>主要包含：</p>
+<p>　　<strong>标题、强调、图片与链接</strong>、引用、代码、表格、分割线、脚注及字体大小。</p>
+<p><a href="https://www.jianshu.com/p/82e730892d42">Markdown的常用语法(个人总结)</a>(<strong>快速上手</strong>Markdown必看)<br>
+<a href="https://www.jianshu.com/p/b03a8d7b1719">Markdown 语法整理大集合2017</a>(进阶使用必看)</p>
+<hr>
+<p>　　说在最后，由于本文主要针对初学者，同时代码部分较少且主要是文字说明，所以选择 Markdown 进行编写并转换成pdf供大家阅读（pdf看到此部分的可以在安装好Typora后，用Typora打开<code>说明.md</code>这个文件再次阅读），以后若大部分为代码或者代码总结，均使用<strong>Jupyter notebook</strong>（文件后缀为<code>.ipynb</code>的文件）或<strong>Typora</strong>进行编写，不再转换成pdf文件。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/r/">R</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/python/">Python</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/windows/">Windows</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/jupyter-notebook/">Jupyter notebook</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/cmd/">cmd</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/markdown/">Markdown</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/05/%E7%A0%81%E5%AD%97%E5%BF%85%E5%A4%87%E7%9A%84markdown%E8%AF%AD%E6%B3%95/" data-tooltip="码字必备的Markdown语法">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/05/gg.gap%E7%94%BB%E6%88%AA%E6%96%AD%E5%9B%BE/" data-tooltip="gg.gap画截断图">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/05/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/05/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/05/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Ezio. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/05/%E7%A0%81%E5%AD%97%E5%BF%85%E5%A4%87%E7%9A%84markdown%E8%AF%AD%E6%B3%95/" data-tooltip="码字必备的Markdown语法">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/05/gg.gap%E7%94%BB%E6%88%AA%E6%96%AD%E5%9B%BE/" data-tooltip="gg.gap画截断图">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/05/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/05/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/05/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F05%2Fr%25E5%2592%258Cpython%25E5%25A4%25A7%25E7%25A4%25BC%25E5%258C%2585%25E8%25AF%25B4%25E6%2598%258Ewindows%25E7%2589%2588%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F05%2Fr%25E5%2592%258Cpython%25E5%25A4%25A7%25E7%25A4%25BC%25E5%258C%2585%25E8%25AF%25B4%25E6%2598%258Ewindows%25E7%2589%2588%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F05%2Fr%25E5%2592%258Cpython%25E5%25A4%25A7%25E7%25A4%25BC%25E5%258C%2585%25E8%25AF%25B4%25E6%2598%258Ewindows%25E7%2589%2588%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Ezio</h4>
+    
+      <div id="about-card-bio">学习、记录、变强，最后 <strong>变秃</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        生物信息学
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国 云南 昆明
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://pengpengyang94.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://pengpengyang94.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/pengpengyang94.github.io\/2020\/05\/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88\/';
+          
+            this.page.identifier = '\/2020\/05\/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

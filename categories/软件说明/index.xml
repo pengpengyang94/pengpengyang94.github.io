@@ -6,10 +6,33 @@
     <description>Recent content in 软件说明 on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 17 Apr 2020 22:34:19 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2020 11:57:16 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/categories/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>码字必备的Markdown语法</title>
+      <link>https://pengpengyang94.github.io/2020/05/%E7%A0%81%E5%AD%97%E5%BF%85%E5%A4%87%E7%9A%84markdown%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Sun, 03 May 2020 11:57:16 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2020/05/%E7%A0%81%E5%AD%97%E5%BF%85%E5%A4%87%E7%9A%84markdown%E8%AF%AD%E6%B3%95/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;写在前面：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本文推荐&lt;strong&gt;Typora&lt;/strong&gt;码字，软件安装见&lt;code&gt;Y01_1_R和Python大礼包（初学必备）.md&lt;/code&gt;中&lt;code&gt;Markdown的介绍&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;本文主要对&lt;strong&gt;码字常用&lt;/strong&gt;Markdown语法进行说明，如标题、目录、强调、换行、图片与链接、引用、代码、和分割线，其他语法详见文末参考资料。&lt;/li&gt;
+&lt;li&gt;本文为了便于快速记忆且不混淆，大部语法只对其中最便于使用的方式进行说明。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>R和Python大礼包说明（Windows版）</title>
+      <link>https://pengpengyang94.github.io/2020/05/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88/</link>
+      <pubDate>Sun, 03 May 2020 11:29:09 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2020/05/r%E5%92%8Cpython%E5%A4%A7%E7%A4%BC%E5%8C%85%E8%AF%B4%E6%98%8Ewindows%E7%89%88/</guid>
+      <description>&lt;p&gt;　　本文主要介绍 R 和 Python 安装及一些推荐的 IDE，注意根据实际情况下载最版本的软件。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>FastTree快速入门（Windows版）</title>

@@ -6,10 +6,91 @@
     <description>Recent content in Tags on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 03 May 2020 10:55:28 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2020 12:39:52 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Linux</title>
+      <link>https://pengpengyang94.github.io/tags/linux/</link>
+      <pubDate>Sun, 03 May 2020 12:39:52 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>环境变量</title>
+      <link>https://pengpengyang94.github.io/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Sun, 03 May 2020 12:39:52 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Markdown</title>
+      <link>https://pengpengyang94.github.io/tags/markdown/</link>
+      <pubDate>Sun, 03 May 2020 11:57:16 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>typora</title>
+      <link>https://pengpengyang94.github.io/tags/typora/</link>
+      <pubDate>Sun, 03 May 2020 11:57:16 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/typora/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cmd</title>
+      <link>https://pengpengyang94.github.io/tags/cmd/</link>
+      <pubDate>Sun, 03 May 2020 11:29:09 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/cmd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jupyter notebook</title>
+      <link>https://pengpengyang94.github.io/tags/jupyter-notebook/</link>
+      <pubDate>Sun, 03 May 2020 11:29:09 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/jupyter-notebook/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://pengpengyang94.github.io/tags/python/</link>
+      <pubDate>Sun, 03 May 2020 11:29:09 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://pengpengyang94.github.io/tags/r/</link>
+      <pubDate>Sun, 03 May 2020 11:29:09 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://pengpengyang94.github.io/tags/windows/</link>
+      <pubDate>Sun, 03 May 2020 11:29:09 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/windows/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>gg.gap</title>
@@ -30,29 +111,11 @@
     </item>
     
     <item>
-      <title>R</title>
-      <link>https://pengpengyang94.github.io/tags/r/</link>
-      <pubDate>Sun, 03 May 2020 10:55:28 +0800</pubDate>
-      
-      <guid>https://pengpengyang94.github.io/tags/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>FastTree</title>
       <link>https://pengpengyang94.github.io/tags/fasttree/</link>
       <pubDate>Fri, 17 Apr 2020 22:34:19 +0800</pubDate>
       
       <guid>https://pengpengyang94.github.io/tags/fasttree/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Windows</title>
-      <link>https://pengpengyang94.github.io/tags/windows/</link>
-      <pubDate>Fri, 17 Apr 2020 22:34:19 +0800</pubDate>
-      
-      <guid>https://pengpengyang94.github.io/tags/windows/</guid>
       <description></description>
     </item>
     

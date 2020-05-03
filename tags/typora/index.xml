@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>typora on 一个慵懒之人的随笔</title>
+    <link>https://pengpengyang94.github.io/tags/typora/</link>
+    <description>Recent content in typora on 一个慵懒之人的随笔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 03 May 2020 11:57:16 +0800</lastBuildDate>
+    
+	<atom:link href="https://pengpengyang94.github.io/tags/typora/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>码字必备的Markdown语法</title>
+      <link>https://pengpengyang94.github.io/2020/05/%E7%A0%81%E5%AD%97%E5%BF%85%E5%A4%87%E7%9A%84markdown%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Sun, 03 May 2020 11:57:16 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2020/05/%E7%A0%81%E5%AD%97%E5%BF%85%E5%A4%87%E7%9A%84markdown%E8%AF%AD%E6%B3%95/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;写在前面：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本文推荐&lt;strong&gt;Typora&lt;/strong&gt;码字，软件安装见&lt;code&gt;Y01_1_R和Python大礼包（初学必备）.md&lt;/code&gt;中&lt;code&gt;Markdown的介绍&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;本文主要对&lt;strong&gt;码字常用&lt;/strong&gt;Markdown语法进行说明，如标题、目录、强调、换行、图片与链接、引用、代码、和分割线，其他语法详见文末参考资料。&lt;/li&gt;
+&lt;li&gt;本文为了便于快速记忆且不混淆，大部语法只对其中最便于使用的方式进行说明。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
