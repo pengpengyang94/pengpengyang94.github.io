@@ -6,10 +6,37 @@
     <description>Recent content in Tags on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 17 Apr 2020 22:34:19 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2020 10:55:28 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>gg.gap</title>
+      <link>https://pengpengyang94.github.io/tags/gg.gap/</link>
+      <pubDate>Sun, 03 May 2020 10:55:28 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/gg.gap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ggplot2</title>
+      <link>https://pengpengyang94.github.io/tags/ggplot2/</link>
+      <pubDate>Sun, 03 May 2020 10:55:28 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/ggplot2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://pengpengyang94.github.io/tags/r/</link>
+      <pubDate>Sun, 03 May 2020 10:55:28 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/r/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>FastTree</title>
@@ -30,11 +57,11 @@
     </item>
     
     <item>
-      <title>构建进化树</title>
-      <link>https://pengpengyang94.github.io/tags/%E6%9E%84%E5%BB%BA%E8%BF%9B%E5%8C%96%E6%A0%91/</link>
+      <title>系统进化树</title>
+      <link>https://pengpengyang94.github.io/tags/%E7%B3%BB%E7%BB%9F%E8%BF%9B%E5%8C%96%E6%A0%91/</link>
       <pubDate>Fri, 17 Apr 2020 22:34:19 +0800</pubDate>
       
-      <guid>https://pengpengyang94.github.io/tags/%E6%9E%84%E5%BB%BA%E8%BF%9B%E5%8C%96%E6%A0%91/</guid>
+      <guid>https://pengpengyang94.github.io/tags/%E7%B3%BB%E7%BB%9F%E8%BF%9B%E5%8C%96%E6%A0%91/</guid>
       <description></description>
     </item>
     
