@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R语言作图 on 一个慵懒之人的随笔</title>
-    <link>https://pengpengyang94.github.io/categories/r%E8%AF%AD%E8%A8%80%E4%BD%9C%E5%9B%BE/</link>
-    <description>Recent content in R语言作图 on 一个慵懒之人的随笔</description>
+    <title>Heatmap on 一个慵懒之人的随笔</title>
+    <link>https://pengpengyang94.github.io/tags/heatmap/</link>
+    <description>Recent content in Heatmap on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 13 May 2020 12:38:37 +0800</lastBuildDate>
     
-	<atom:link href="https://pengpengyang94.github.io/categories/r%E8%AF%AD%E8%A8%80%E4%BD%9C%E5%9B%BE/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://pengpengyang94.github.io/tags/heatmap/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://pengpengyang94.github.io/2020/05/complexheatmap%E4%B8%AD%E6%96%87%E7%89%88%E8%AF%B4%E6%98%8E/</guid>
       <description>&lt;p&gt;　　本文主要是对 &lt;strong&gt;&lt;a href=&#34;https://jokergoo.github.io/ComplexHeatmap-reference/book/&#34;&gt;ComplexHeatmap Complete Reference&lt;/a&gt;&lt;/strong&gt;（last revised on 2020-04-29）内容的翻译及理解，并且根据理解修改了部分示例以缩短原文的内容，主要是为了记录学习 &lt;strong&gt;ComplexHeatmap&lt;/strong&gt; 包的过程，方便日后翻阅。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>gg.gap画截断图</title>
-      <link>https://pengpengyang94.github.io/2020/05/gg.gap%E7%94%BB%E6%88%AA%E6%96%AD%E5%9B%BE/</link>
-      <pubDate>Sun, 03 May 2020 10:55:28 +0800</pubDate>
-      
-      <guid>https://pengpengyang94.github.io/2020/05/gg.gap%E7%94%BB%E6%88%AA%E6%96%AD%E5%9B%BE/</guid>
-      <description>&lt;p&gt;主要记录使用 &lt;strong&gt;gg.gap&lt;/strong&gt; 画截断图的过程及所碰到的一点问题。&lt;/p&gt;</description>
     </item>
     
   </channel>
