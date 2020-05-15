@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Ezio">
+<meta name="keywords" content="">
+<meta name="description" content="　　VMD 主要用来可视化化蛋白质三维结构，但是其功能远远限于此，本文只是对一些基本操作进行说明。">
+
+
+<meta property="og:description" content="　　VMD 主要用来可视化化蛋白质三维结构，但是其功能远远限于此，本文只是对一些基本操作进行说明。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VMD使用简单说明">
+<meta name="twitter:title" content="VMD使用简单说明">
+<meta property="og:url" content="https://pengpengyang94.github.io/2020/05/vmd%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/">
+<meta property="twitter:url" content="https://pengpengyang94.github.io/2020/05/vmd%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/">
+<meta property="og:site_name" content="一个慵懒之人的随笔">
+<meta property="og:description" content="　　VMD 主要用来可视化化蛋白质三维结构，但是其功能远远限于此，本文只是对一些基本操作进行说明。">
+<meta name="twitter:description" content="　　VMD 主要用来可视化化蛋白质三维结构，但是其功能远远限于此，本文只是对一些基本操作进行说明。">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-05-15T08:36:43">
+  
+  
+    <meta property="article:modified_time" content="2020-05-15T08:36:43">
+  
+  
+  
+    
+      <meta property="article:section" content="软件说明">
+    
+  
+  
+    
+      <meta property="article:tag" content="三维结构">
+    
+      <meta property="article:tag" content="VMD">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="//i.loli.net/2020/05/15/qFWYsKbwuxr2vSi.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/05/15/qFWYsKbwuxr2vSi.png">
+
+
+  <meta property="og:image" content="//i.loli.net/2020/05/15/dR1wm24rS96coJy.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/05/15/dR1wm24rS96coJy.png">
+
+
+
+
+  <meta property="og:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+  <meta property="twitter:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+
+
+    <title>VMD使用简单说明</title>
+
+    <link rel="icon" href="https://pengpengyang94.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://pengpengyang94.github.io/2020/05/vmd%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://pengpengyang94.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://pengpengyang94.github.io/">一个慵懒之人的随笔</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://pengpengyang94.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://pengpengyang94.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Ezio</h4>
+        
+          <h5 class="sidebar-profile-bio">学习、记录、变强，最后 <strong>变秃</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder-open"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user-o"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/pengpengyang94" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://space.bilibili.com/87148526" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-caret-square-o-right"></i>
+      
+      <span class="sidebar-button-desc">Bilibili</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.bioinfo.info/?/people/Ezio" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitch"></i>
+      
+      <span class="sidebar-button-desc">Bioinfo</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//i.loli.net/2020/05/15/dR1wm24rS96coJy.png')"
+       data-behavior="5">
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaOut
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      VMD使用简单说明
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-05-15T08:36:43&#43;08:00">
+        
+  May 15, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://pengpengyang94.github.io/categories/%e8%bd%af%e4%bb%b6%e8%af%b4%e6%98%8e">软件说明</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>　　<strong>VMD</strong> 主要用来可视化化蛋白质三维结构，但是其功能远远限于此，本文只是对一些基本操作进行说明。</p>
+<h2 id="1vmd的下载及安装">1.<strong>VMD</strong>的下载及安装</h2>
+<p>　　进入 <a href="http://www.ks.uiuc.edu/Research/vmd/"><strong>VMD官网</strong></a> 按照下图箭头提示进入下载界面。</p>
+<p><img src="https://i.loli.net/2020/05/15/uJeqg2tmBUZx35o.png" alt="1.png"></p>
+<p>　　下载界面如下图所示，<strong>VMD</strong> 非常良心的三系统均支持，本文下载 Windows 版本，文件夹中 <code>vmd193win32cuda.msi</code> 是下载好的安装包，双击安装且无需任何依赖库或语言，非常方便。</p>
+<p><img src="https://i.loli.net/2020/05/15/kEIorL3qaAOeXt1.png" alt="2.png"></p>
+<h2 id="2文件的导入保存及图片的导出">2.文件的导入、保存及图片的导出</h2>
+<p>　　打开 <strong>VMD</strong> 会出现下图三个对话框，其中<strong>左边</strong>为三维图像展示界面，<strong>右上方</strong>为 <strong>VMD</strong> 主菜单界面，<strong>右下方</strong>为 <strong>Windows</strong> 的 <strong>cmd</strong> 界面（注意：不同平台对应相应的命令行界面）</p>
+<p><img src="https://i.loli.net/2020/05/15/qrEQhDPwF7pRGAU.png" alt="3.png"></p>
+<h3 id="21-pdb文件的导入">2.1 <strong>pdb</strong>文件的导入</h3>
+<p>　　导入 <strong>pdb</strong> 文件有两种方式：一是将 <strong>pdb</strong> 文件直接拖拽至 <strong>VMD</strong> 主菜单或<strong>图像展示界面</strong>中；二是从 <strong>VMD</strong> 主菜单界面中点击导入，具体过程见下图。</p>
+<p><img src="https://i.loli.net/2020/05/15/EXvpC8ekQz2sfdm.png" alt="4.png"></p>
+<p>　　按照上图进行选择后弹出下图对话框，如下图本文导入软件自带 <strong>pdb</strong> 文件作为示范。</p>
+<p><img src="https://i.loli.net/2020/05/15/8MHnrTJVEBCoIvA.png" alt="5.png"></p>
+<p>　　导入后在 <strong>VMD</strong> 主菜单界面中显示如下，可以导入<strong>多个 pdb</strong> 文件进行操作。</p>
+<p><img src="https://i.loli.net/2020/05/15/tfJChsbBXi6dVlE.png" alt="6.png"></p>
+<p>上图红圈部分含义如下：</p>
+<ol>
+<li><code>T</code>  top是置顶，<strong>类似</strong>于图层的概念，导入多个三维结构时有意义</li>
+<li><code>A</code>  active是活动，激活为<strong>不活动</strong></li>
+<li><code>D</code>  displayed是显示，激活为<strong>不显示</strong></li>
+<li><code>F</code>  fixed为固定，激活为<strong>不固定</strong></li>
+<li>字母<strong>红色</strong>代表<strong>激活</strong>，黑色表示未激活</li>
+</ol>
+<h3 id="22-pdb文件的保存">2.2 <strong>pdb</strong>文件的保存</h3>
+<p>　　根据下图所示来保存修改后的 <strong>pdb</strong> 文件。</p>
+<p><img src="https://i.loli.net/2020/05/15/S6cUhJDmPI25vdp.png" alt="11.png"></p>
+<h3 id="23-图片的导出">2.3 图片的导出</h3>
+<p>　　根据下图所示将图片导出，其中导出文件的格式建议<strong>不省略</strong>。</p>
+<p><img src="https://i.loli.net/2020/05/15/fT7R58Aeajyq4WY.png" alt="12.png"></p>
+<p>　　默认背景是黑色，但是出图一般需要<strong>白色</strong>背景，根据下图所示修改将背景为白色。</p>
+<p><img src="https://i.loli.net/2020/05/15/n3mxay5sGgQWijU.png" alt="13.png"></p>
+<p>　　出图一般还需要<strong>去除坐标轴</strong>，根据下图所示去除坐标轴。</p>
+<p><img src="https://i.loli.net/2020/05/15/lg39Erv7JiDKk6n.png" alt="14.png"></p>
+<h2 id="3vmd主菜单界面的基本介绍">3.VMD主菜单界面的基本介绍</h2>
+<p><strong>VMD main</strong>界面中上方共有7个选项，主要选项作用如下：</p>
+<ol>
+<li><code>File</code>：有文件导入、文件导出、文件保存及退出程序等</li>
+<li><code>Molecule</code>：设置导入文件的T、A、D、F及对导入文件的重命名删除等操作，具体说明见<strong>pdb文件的导入</strong>部分</li>
+<li><code>Graphics</code>：对三维结构进行修饰，如风格，颜色等</li>
+<li><code>Display</code>：对三维结构的演示效果进行修改，如视角、光源、坐标轴、背景等</li>
+<li><code>Mouse</code>：设置鼠标的模式，平移、缩放、缩放等</li>
+<li><code>Extensions</code>：拓展功能</li>
+</ol>
+<p>　　三维文件导入显示区域见上一小结，下图中红框部分为在导入分子动力学模拟的文件时候，调整播放的一些参数，类似于视频播放器的一些按键，如播放进度、速度及方式等。</p>
+<p><img src="https://i.loli.net/2020/05/15/aoM9gIjGWq8Tzv3.png" alt="7.png"></p>
+<h3 id="31-graphics中的representations">3.1 <strong>Graphics</strong>中的<strong>Representations</strong></h3>
+<h4 id="311-stylecolor-和-selection">3.1.1 Style、Color 和 Selection</h4>
+<p>　　如下图，我们主要在 <strong>Representations</strong> 窗口来对三维结构进行修饰。通过修改 <strong>Style</strong>、<strong>Color</strong> 和 <strong>Selection</strong> 将三维结构变成更能体现实际问题的样式（其实就是美化）。</p>
+<p><img src="https://i.loli.net/2020/05/15/DJdk9gyp3rlocaz.png" alt="8.png"></p>
+<ol>
+<li><code>Style</code> 对应下方的 <strong>Drawing Method</strong>，其中常用的有 <strong>Lines</strong>、<strong>Bonds</strong>、<strong>DynamicBonds</strong>、<strong>VDW</strong> 和 <strong>CPK</strong></li>
+<li><code>Color</code> 对应下方的 <strong>Coloring Method</strong>，其中常用的 <strong>Name</strong> 和 <strong>Element</strong></li>
+<li><code>Selection</code> 对应下方的 <strong>Selected Atoms</strong>，这里可以输入需要修改原子的名称，可以按照下图所示来查看文件中所包含的原子</li>
+<li><code>Material</code> 是选择显示的透明度，其中 <strong>opaque</strong> 是不透明，其余均为不同的透明样式。</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/15/MPWLbvR48KeIzXQ.png" alt="9.png"></p>
+<h4 id="312-图层">3.1.2 图层</h4>
+<p>　　想要制作更为复杂的图就需要引入<strong>图层</strong>，通过不同图层的叠加来获得更加凸显问题的结构模式。<br>
+　　通过下图中 <strong>Create Rep</strong> 创建一个与当前三维结构完全相同的三维结构，即新建一个图层，<strong>Delete Rep</strong> 来删除图层；<strong>鼠标双击</strong>来选择是否显示图层，<strong>黑色</strong>为<strong>显示</strong>状态，<strong>红色</strong>为<strong>隐藏</strong>状态，对不同图层进行编辑，最后通过图层的叠加来获得所需的结构模式。</p>
+<p><img src="https://i.loli.net/2020/05/15/CTVKX7BMzklStu1.png" alt="10.png"></p>
+<h3 id="32-display">3.2 <strong>Display</strong></h3>
+<p>　　<strong>Display</strong> 中子目录主要说明见下图。</p>
+<p><img src="https://i.loli.net/2020/05/15/mxWlrXdMfpEVo9s.png" alt="15.png"></p>
+<h3 id="33-mouse">3.3 <strong>Mouse</strong></h3>
+<p>　　<strong>Mouse</strong> 中子目录主要说明见下图，其中每个子选项后面的单个字母为快捷键。</p>
+<p><img src="https://i.loli.net/2020/05/15/BuvL16iZMJINtqU.png" alt="16.png"></p>
+<h2 id="4修改示例">4.修改示例</h2>
+<p>　　示例结构如下图，本节讲解此图的制作过程。</p>
+<p><img src="https://i.loli.net/2020/05/15/qFWYsKbwuxr2vSi.png" alt="17.png"></p>
+<p>上图有如下特征：</p>
+<ol>
+<li>半透明的蛋白外表面</li>
+<li>蛋白质的二级结构模型，并用不同颜色标记不同二级结构</li>
+<li>将<strong>ALA</strong>用球棍模型红色显示，并做文字标识</li>
+</ol>
+<p>　　此图使用3个图层重叠而来，分别使用蛋白的 <strong>Surf</strong>、<strong>CPK</strong> 和 <strong>NewCartoon</strong>三种 <strong>Style</strong> 修改而来。<br>
+　　具体步骤如下：（从导入文件后进行说明）</p>
+<h3 id="41-surf-图层的修改">4.1 <strong>Surf</strong> 图层的修改</h3>
+<ol>
+<li><strong>Display</strong> → <strong>Rendermode</strong> → <strong>GLSL</strong></li>
+<li><strong>Graphics</strong> → <strong>Representations</strong></li>
+<li>按照下图修改即可完成该图层的修改</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/15/PZWIAmwE7i385O4.png" alt="18.png"></p>
+<h3 id="42-newcartoon-图层的修改">4.2 **NewCartoon **图层的修改</h3>
+<ol>
+<li>点击 <strong>Create Rep</strong> 创建新的图层</li>
+<li>按照下图修改即可完成该图层的修改</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/15/yQBVAqt8KZX2k9e.png" alt="19.png"></p>
+<h3 id="43-cpk-图层的修改">4.3 **CPK **图层的修改</h3>
+<ol>
+<li>点击 **Create Rep **创建新的图层</li>
+<li>按照下图修改即可完成该图层的修改</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/15/3K4yqd8CB6ksIwA.png" alt="20.png"></p>
+<ol start="3">
+<li><strong>Mouse</strong> → <strong>Label</strong> → <strong>Atoms</strong> 可将鼠标设定标记模式，在结构界面单击需要标记的原子即可</li>
+<li>按照下图所示设置 <strong>label</strong> 的<strong>颜色</strong></li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/15/ky3dFMcALvG9JNh.png" alt="21.png"></p>
+<ol start="5">
+<li>按照下图所示设置 <strong>label</strong> 的<strong>大小</strong>和<strong>粗细</strong></li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/15/CzskVGJB3f5Xced.png" alt="22.png"></p>
+<p>　　至此，可以满足大部分的修改需求，本文只是对常用的部分进行了说明，其他部分有兴趣可以自己探究，比如拓展部分的内容等。</p>
+<hr>
+<p><strong>参考资料</strong>：<br>
+<a href="https://www.jianshu.com/p/c875b1254959">1. VMD蛋白质三级结构可视化 </a><br>
+<a href="https://www.bilibili.com/video/av45744144?from=search&amp;seid=7907549838235692870">2. vmd基础使用教学视频</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/%E4%B8%89%E7%BB%B4%E7%BB%93%E6%9E%84/">三维结构</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/vmd/">VMD</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/05/swiss-pdbviewer%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/" data-tooltip="Swiss PdbViewer简要说明">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/05/vmd%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/05/vmd%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/05/vmd%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Ezio. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/05/swiss-pdbviewer%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/" data-tooltip="Swiss PdbViewer简要说明">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/05/vmd%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/05/vmd%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/05/vmd%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F05%2Fvmd%25E4%25BD%25BF%25E7%2594%25A8%25E7%25AE%2580%25E5%258D%2595%25E8%25AF%25B4%25E6%2598%258E%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F05%2Fvmd%25E4%25BD%25BF%25E7%2594%25A8%25E7%25AE%2580%25E5%258D%2595%25E8%25AF%25B4%25E6%2598%258E%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F05%2Fvmd%25E4%25BD%25BF%25E7%2594%25A8%25E7%25AE%2580%25E5%258D%2595%25E8%25AF%25B4%25E6%2598%258E%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Ezio</h4>
+    
+      <div id="about-card-bio">学习、记录、变强，最后 <strong>变秃</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        生物信息学
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国 云南 昆明
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://pengpengyang94.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://pengpengyang94.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/pengpengyang94.github.io\/2020\/05\/vmd%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E\/';
+          
+            this.page.identifier = '\/2020\/05\/vmd%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

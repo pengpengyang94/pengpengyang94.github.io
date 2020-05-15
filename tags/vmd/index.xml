@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VMD on 一个慵懒之人的随笔</title>
+    <link>https://pengpengyang94.github.io/tags/vmd/</link>
+    <description>Recent content in VMD on 一个慵懒之人的随笔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 15 May 2020 08:36:43 +0800</lastBuildDate>
+    
+	<atom:link href="https://pengpengyang94.github.io/tags/vmd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VMD使用简单说明</title>
+      <link>https://pengpengyang94.github.io/2020/05/vmd%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/</link>
+      <pubDate>Fri, 15 May 2020 08:36:43 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2020/05/vmd%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/</guid>
+      <description>&lt;p&gt;　　&lt;strong&gt;VMD&lt;/strong&gt; 主要用来可视化化蛋白质三维结构，但是其功能远远限于此，本文只是对一些基本操作进行说明。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
