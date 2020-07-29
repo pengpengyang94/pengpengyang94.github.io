@@ -6,10 +6,19 @@
     <description>Recent content in R on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 28 Jun 2020 17:00:51 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2020 09:54:41 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Pheatmap骚操作之提取聚类后的基因集</title>
+      <link>https://pengpengyang94.github.io/2020/07/pheatmap%E9%AA%9A%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%8F%90%E5%8F%96%E8%81%9A%E7%B1%BB%E5%90%8E%E7%9A%84%E5%9F%BA%E5%9B%A0%E9%9B%86/</link>
+      <pubDate>Wed, 29 Jul 2020 09:54:41 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2020/07/pheatmap%E9%AA%9A%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%8F%90%E5%8F%96%E8%81%9A%E7%B1%BB%E5%90%8E%E7%9A%84%E5%9F%BA%E5%9B%A0%E9%9B%86/</guid>
+      <description>&lt;p&gt;如题就是记录解决如何从已经用 &lt;strong&gt;pheatmap&lt;/strong&gt; 包中提取已聚类后的基因列表。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>拼图利器patchwork</title>
