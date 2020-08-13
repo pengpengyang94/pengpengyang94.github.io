@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Ezio">
+<meta name="keywords" content="">
+<meta name="description" content="　　如题记录使用 CanvasXpress 中的一点理解，若未下载示例数据，只需要将 ./data/ 中的 . 替换成 https://www.canvasxpress.org 即可运行下面代码。">
+
+
+<meta property="og:description" content="　　如题记录使用 CanvasXpress 中的一点理解，若未下载示例数据，只需要将 ./data/ 中的 . 替换成 https://www.canvasxpress.org 即可运行下面代码。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CanvasXpress 制作交互式图片">
+<meta name="twitter:title" content="CanvasXpress 制作交互式图片">
+<meta property="og:url" content="https://pengpengyang94.github.io/2020/08/canvasxpress-%E5%88%B6%E4%BD%9C%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%9B%BE%E7%89%87/">
+<meta property="twitter:url" content="https://pengpengyang94.github.io/2020/08/canvasxpress-%E5%88%B6%E4%BD%9C%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%9B%BE%E7%89%87/">
+<meta property="og:site_name" content="一个慵懒之人的随笔">
+<meta property="og:description" content="　　如题记录使用 CanvasXpress 中的一点理解，若未下载示例数据，只需要将 ./data/ 中的 . 替换成 https://www.canvasxpress.org 即可运行下面代码。">
+<meta name="twitter:description" content="　　如题记录使用 CanvasXpress 中的一点理解，若未下载示例数据，只需要将 ./data/ 中的 . 替换成 https://www.canvasxpress.org 即可运行下面代码。">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-08-13T15:17:08">
+  
+  
+    <meta property="article:modified_time" content="2020-08-13T15:17:08">
+  
+  
+  
+    
+      <meta property="article:section" content="R语言作图">
+    
+  
+  
+    
+      <meta property="article:tag" content="R">
+    
+      <meta property="article:tag" content="CanvasXpress">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="//i.loli.net/2020/08/10/H8TRIZ4vp7sScdz.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/08/10/H8TRIZ4vp7sScdz.png">
+
+
+  <meta property="og:image" content="//i.loli.net/2020/08/10/v3TOhWREpDun7rB.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/08/10/v3TOhWREpDun7rB.png">
+
+
+
+
+  <meta property="og:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+  <meta property="twitter:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+
+
+    <title>CanvasXpress 制作交互式图片</title>
+
+    <link rel="icon" href="https://pengpengyang94.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://pengpengyang94.github.io/2020/08/canvasxpress-%E5%88%B6%E4%BD%9C%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%9B%BE%E7%89%87/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://pengpengyang94.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://pengpengyang94.github.io/">一个慵懒之人的随笔</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://pengpengyang94.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://pengpengyang94.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Ezio</h4>
+        
+          <h5 class="sidebar-profile-bio">学习、记录、变强，最后 <strong>变秃</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder-open"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user-o"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/pengpengyang94" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://space.bilibili.com/87148526" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-caret-square-o-right"></i>
+      
+      <span class="sidebar-button-desc">Bilibili</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.bioinfo.info/?/people/Ezio" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitch"></i>
+      
+      <span class="sidebar-button-desc">Bioinfo</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//i.loli.net/2020/08/10/v3TOhWREpDun7rB.png')"
+       data-behavior="5">
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaOut
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      CanvasXpress 制作交互式图片
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-08-13T15:17:08&#43;08:00">
+        
+  August 13, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://pengpengyang94.github.io/categories/r%e8%af%ad%e8%a8%80%e4%bd%9c%e5%9b%be">R语言作图</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>　　如题记录使用 CanvasXpress 中的一点理解，若未下载示例数据，只需要将 <code>./data/</code> 中的 <code>.</code> 替换成 <code>https://www.canvasxpress.org</code> 即可运行下面代码。</p>
+<h2 id="1安装">1.安装</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">devtools<span style="color:#f92672">::</span><span style="color:#a6e22e">install_github</span>(<span style="color:#e6db74">&#39;neuhausi/canvasXpress&#39;</span>)
+</code></pre></div><h2 id="2使用">2.使用</h2>
+<h3 id="21-散点图-3d">2.1 散点图-3D</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">y <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-irist-dat.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, 
+                quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+z <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-irist-var.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;\t&#34;</span>, 
+                quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+
+<span style="color:#a6e22e">canvasXpress</span>(data      <span style="color:#f92672">=</span> y,
+             varAnnot  <span style="color:#f92672">=</span> z, <span style="color:#75715e"># 行注释</span>
+             graphType <span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Scatter3D&#34;</span>, <span style="color:#75715e"># 图形类型</span>
+             colorBy   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Species&#34;</span>, <span style="color:#75715e"># 颜色</span>
+             ellipseBy <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Species&#34;</span>, <span style="color:#75715e"># 置信圈</span>
+             xAxis     <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>(<span style="color:#e6db74">&#34;Sepal.Length&#34;</span>),
+             yAxis     <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>(<span style="color:#e6db74">&#34;Petal.Width&#34;</span>),
+             zAxis     <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>(<span style="color:#e6db74">&#34;Petal.Length&#34;</span>),
+             theme     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;CanvasXpress&#34;</span>,
+             title     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Iris Data Set&#34;</span>,
+             axisTickScaleFontFactor  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>, <span style="color:#75715e"># 坐标轴刻度字体大小</span>
+             axisTitleScaleFontFactor <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>) <span style="color:#75715e"># 坐标轴标题字体大小</span>
+</code></pre></div><p><img src="https://i.loli.net/2020/08/10/GF1HaOBf2KsmUkS.png" alt="CanvasXpress-1.png"></p>
+<h3 id="22-散点图-2d">2.2 散点图-2D</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">rm</span>(list <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls</span>())
+y <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-irist-dat.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, 
+                quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+z <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-irist-var.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;\t&#34;</span>, 
+                quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+
+<span style="color:#a6e22e">canvasXpress</span>(data              <span style="color:#f92672">=</span> y,
+             varAnnot          <span style="color:#f92672">=</span> z,
+             graphType         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Scatter2D&#34;</span>,
+             colorBy           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Species&#34;</span>,
+             layoutAdjust      <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>,
+             scatterPlotMatrix <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>, <span style="color:#75715e"># 图矩阵</span>
+             <span style="color:#75715e"># scatterPlotMatrix = FALSE,</span>
+             width             <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>,
+             height            <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>,
+             theme             <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;CanvasXpress&#34;</span>)
+</code></pre></div><p><img src="https://i.loli.net/2020/08/10/eM7F5qWXOTfU3pn.png" alt="CanvasXpress-2.png"></p>
+<p>　　由于给定数据集中有 <strong>4</strong> 个变量，所以两两做二维散点图总共有 <strong>9</strong> 种。这是由 <code>scatterPlotMatrix</code> 参数来决定的，若将改参数修改为 <code>FALSE</code> ，则选择前两个变量来画一个二维散点图。</p>
+<h3 id="23-箱线图">2.3 箱线图</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">rm</span>(list <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls</span>())
+y <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-toothgrowth-dat.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, 
+                quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+x <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-toothgrowth-smp.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, 
+                quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+
+<span style="color:#a6e22e">canvasXpress</span>(data                  <span style="color:#f92672">=</span> y,
+             smpAnnot              <span style="color:#f92672">=</span> x, <span style="color:#75715e"># 列注释</span>
+             graphType             <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Boxplot&#34;</span>,
+             groupingFactors       <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>(<span style="color:#e6db74">&#34;dose&#34;</span>, <span style="color:#e6db74">&#34;supp&#34;</span>), <span style="color:#75715e"># 分组因子</span>
+             stringSampleFactors   <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>(<span style="color:#e6db74">&#34;dose&#34;</span>), <span style="color:#75715e"># 字符串化样本因子</span>
+             graphOrientation      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;vertical&#34;</span>, <span style="color:#75715e"># 图形方向</span>
+             colorBy               <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dose&#34;</span>,
+             title                 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The Effect of Vitamin C on Tooth Growth in Guinea Pigs&#34;</span>,
+             smpTitle              <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dose&#34;</span>, <span style="color:#75715e"># 样本标题</span>
+             xAxisTitle            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;len&#34;</span>, <span style="color:#75715e"># x轴标题</span>
+             smpLabelRotate        <span style="color:#f92672">=</span> <span style="color:#ae81ff">90</span>, <span style="color:#75715e"># 样本标题角度</span>
+             xAxisMinorTicks       <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>, <span style="color:#75715e"># 不显示x轴最小等高线</span>
+             xAxis2Show            <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>, <span style="color:#75715e"># 不显示x轴2边的坐标</span>
+             width                 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>,
+             height                <span style="color:#f92672">=</span> <span style="color:#ae81ff">600</span>,
+             legendScaleFontFactor <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.8</span>) <span style="color:#75715e"># legend字体大小</span>
+</code></pre></div><p><img src="https://i.loli.net/2020/08/10/gQYDsncbCwixVdO.png" alt="CanvasXpress-3.png"></p>
+<h3 id="24-热图">2.4 热图</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">rm</span>(list <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls</span>())
+y  <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-multidimensionalheatmap-dat.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, 
+                 quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+y2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-multidimensionalheatmap-dat2.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, 
+                 quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+y3 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-multidimensionalheatmap-dat3.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, 
+                 quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+y4 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-multidimensionalheatmap-dat4.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, 
+                 quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+x  <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-multidimensionalheatmap-smp.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;\t&#34;</span>, 
+                 quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+z  <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-multidimensionalheatmap-var.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;\t&#34;</span>, 
+                 quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+
+<span style="color:#a6e22e">canvasXpress</span>(data                 <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>(y <span style="color:#f92672">=</span> y, data2 <span style="color:#f92672">=</span> y2, data3 <span style="color:#f92672">=</span> y3, data4 <span style="color:#f92672">=</span> y4),
+             smpAnnot             <span style="color:#f92672">=</span> x,
+             varAnnot             <span style="color:#f92672">=</span> z,
+             graphType            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Heatmap&#34;</span>,
+             guides               <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>, <span style="color:#75715e"># 背景网格线</span>
+             outlineBy            <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Outline&#34;</span>, <span style="color:#75715e"># 边框</span>
+             outlineByData        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;data2&#34;</span>, <span style="color:#75715e"># 边框数据</span>
+             shapeBy              <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Shape&#34;</span>, <span style="color:#75715e"># 形状</span>
+             shapeByData          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;data3&#34;</span>, <span style="color:#75715e"># 形状数据</span>
+             sizeBy               <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Size&#34;</span>, <span style="color:#75715e"># 尺寸</span>
+             sizeByData           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;data4&#34;</span>, <span style="color:#75715e"># 尺寸数据</span>
+             showHeatmapIndicator <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>, <span style="color:#75715e"># 热图legend</span>
+             width                <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>,
+             height               <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>,
+             varLabelRotate        <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#75715e"># 变量标题角度</span>
+             afterRender          <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>(<span style="color:#a6e22e">list</span>(<span style="color:#e6db74">&#34;clusterSamples&#34;</span>)))
+</code></pre></div><p><img src="https://i.loli.net/2020/08/10/N2sRACO3eILxa7d.png" alt="CanvasXpress-4.png"></p>
+<p>　　上图引入了 <code>outline</code> 、 <code>shape</code> 和 <code>size</code> 三个维度，所以和常见的热图并看起来不太一样，注释掉这三个变量就是常见的热图了。</p>
+<h3 id="25-venn图">2.5 Venn图</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">rm</span>(list <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls</span>())
+data <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(AC<span style="color:#f92672">=</span><span style="color:#ae81ff">456</span>, A<span style="color:#f92672">=</span><span style="color:#ae81ff">340</span>, ABC<span style="color:#f92672">=</span><span style="color:#ae81ff">552</span>, ABCD<span style="color:#f92672">=</span><span style="color:#ae81ff">148</span>, BC<span style="color:#f92672">=</span><span style="color:#ae81ff">915</span>, ACD<span style="color:#f92672">=</span><span style="color:#ae81ff">298</span>, BCD<span style="color:#f92672">=</span><span style="color:#ae81ff">613</span>, 
+                   B<span style="color:#f92672">=</span><span style="color:#ae81ff">562</span>, CD<span style="color:#f92672">=</span><span style="color:#ae81ff">143</span>, ABD<span style="color:#f92672">=</span><span style="color:#ae81ff">578</span>, C<span style="color:#f92672">=</span><span style="color:#ae81ff">620</span>, D<span style="color:#f92672">=</span><span style="color:#ae81ff">592</span>, AB<span style="color:#f92672">=</span><span style="color:#ae81ff">639</span>, BD<span style="color:#f92672">=</span><span style="color:#ae81ff">354</span>, AD<span style="color:#f92672">=</span><span style="color:#ae81ff">257</span>)
+<span style="color:#a6e22e">canvasXpress</span>(vennData   <span style="color:#f92672">=</span> data,
+             graphType  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Venn&#34;</span>,
+             vennLegend <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>(A<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;List 1&#34;</span>, D<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;List 4&#34;</span>, C<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;List 3&#34;</span>, B<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;List 2&#34;</span>),
+             vennGroups <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>, <span style="color:#75715e"># venn组数</span>
+             width      <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>,
+             height     <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>)
+</code></pre></div><p><img src="https://i.loli.net/2020/08/10/KjPiJOdCgQrNSBT.png" alt="CanvasXpress-5.png"></p>
+<h3 id="26-网络图">2.6 网络图</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">rm</span>(list <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls</span>())
+nodes<span style="color:#f92672">=</span><span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-lesmiserable-nodes.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+edges<span style="color:#f92672">=</span><span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-lesmiserable-edges.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+nodes<span style="color:#f92672">$</span>group1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">paste</span>(<span style="color:#e6db74">&#39;group&#39;</span>,nodes<span style="color:#f92672">$</span>group,sep <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;_&#39;</span>)
+
+<span style="color:#a6e22e">canvasXpress</span>(
+  nodeData<span style="color:#f92672">=</span>nodes,
+  edgeData<span style="color:#f92672">=</span>edges,
+  colorNodeBy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;group1&#34;</span>, <span style="color:#75715e"># node颜色</span>
+  shapeNodeBy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;group1&#34;</span>, <span style="color:#75715e"># node形状</span>
+  colorSpectrum<span style="color:#f92672">=</span><span style="color:#a6e22e">list</span>(<span style="color:#e6db74">&#39;#a6cee3&#39;</span>,<span style="color:#e6db74">&#39;#1f78b4&#39;</span>,<span style="color:#e6db74">&#39;#b2df8a&#39;</span>,<span style="color:#e6db74">&#39;#33a02c&#39;</span>,<span style="color:#e6db74">&#39;#fb9a99&#39;</span>,
+                     <span style="color:#e6db74">&#39;#e31a1c&#39;</span>,<span style="color:#e6db74">&#39;#fdbf6f&#39;</span>,<span style="color:#e6db74">&#39;#ff7f00&#39;</span>,<span style="color:#e6db74">&#39;#cab2d6&#39;</span>,<span style="color:#e6db74">&#39;#6a3d9a&#39;</span>),
+  graphType<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Network&#34;</span>,
+  networkLayoutType<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;forceDirected&#34;</span>,
+  showAnimation<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, <span style="color:#75715e"># 显示构建的动画</span>
+  title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Les Miserable&#34;</span>, <span style="color:#75715e"># 标题</span>
+  width <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>,
+  height <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>)
+</code></pre></div><p><img src="https://i.loli.net/2020/08/13/uvfjUrEMkcbK5zi.png" alt="CanvasXpress-6.png"></p>
+<p>　　<strong>CanvasXpress</strong> 构建的网络图，对 <strong>node</strong> 位置进行调整比其他 R 包更为灵活，但是这个包的参数说明有点让人上头，比如指定 <strong>node</strong> 的颜色及形状还有 <strong>edge</strong> 相关的设置等我都没找到相关的参数说明，可能是因为我比较菜，反正就我目前这种情况，想要做一个更为灵活的网络图还是推荐 <strong>Cytoscape</strong>。</p>
+<h3 id="27-箱线图小提琴图">2.7 箱线图+小提琴图</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">rm</span>(list <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls</span>())
+y<span style="color:#f92672">=</span><span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-toothgrowth-dat.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+x<span style="color:#f92672">=</span><span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-toothgrowth-smp.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+
+<span style="color:#a6e22e">canvasXpress</span>(
+  data<span style="color:#f92672">=</span>y,
+  smpAnnot<span style="color:#f92672">=</span>x,
+  axisAlgorithm<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rPretty&#34;</span>, <span style="color:#75715e"># 坐标轴break计算方式</span>
+  axisTickScaleFontFactor<span style="color:#f92672">=</span><span style="color:#ae81ff">1.8</span>, <span style="color:#75715e"># 坐标轴刻度尺寸</span>
+  axisTitleFontStyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bold&#34;</span>, <span style="color:#75715e"># 坐标轴标题样式</span>
+  axisTitleScaleFontFactor<span style="color:#f92672">=</span><span style="color:#ae81ff">1.8</span>, <span style="color:#75715e"># 坐标轴标题尺寸</span>
+  background<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;white&#34;</span>, <span style="color:#75715e"># 背景颜色</span>
+  backgroundType<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;window&#34;</span>,  <span style="color:#75715e"># 背景类型</span>
+  backgroundWindow<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#E5E5E5&#34;</span>, <span style="color:#75715e"># window背景颜色</span>
+  graphOrientation<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vertical&#34;</span>, <span style="color:#75715e"># 图形方向</span>
+  graphType<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Boxplot&#34;</span>, <span style="color:#75715e"># 图形种类</span>
+  groupingFactors<span style="color:#f92672">=</span><span style="color:#a6e22e">list</span>(<span style="color:#e6db74">&#34;dose&#34;</span>), <span style="color:#75715e"># 分组</span>
+  guides<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;solid&#34;</span>, <span style="color:#75715e"># 参考线类型</span>
+  guidesColor<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;white&#34;</span>, <span style="color:#75715e"># 参考线颜色</span>
+  showBoxplotIfViolin<span style="color:#f92672">=</span>T, <span style="color:#75715e"># 显示legend</span>
+  showLegend<span style="color:#f92672">=</span>T, <span style="color:#75715e"># 显示legend</span>
+  legendScaleFontFactor<span style="color:#f92672">=</span><span style="color:#ae81ff">1.8</span>, <span style="color:#75715e"># legend尺寸</span>
+  showViolinBoxplot<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, <span style="color:#75715e"># 显示小提琴图和箱线图</span>
+  smpLabelRotate<span style="color:#f92672">=</span><span style="color:#ae81ff">90</span>, <span style="color:#75715e"># 样本标签角度</span>
+  smpLabelScaleFontFactor<span style="color:#f92672">=</span><span style="color:#ae81ff">1.8</span>, <span style="color:#75715e"># 样本标签尺寸</span>
+  smpTitle<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dose&#34;</span>, <span style="color:#75715e"># 样本标题</span>
+  smpTitleFontStyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bold&#34;</span>, <span style="color:#75715e"># 样本标题样式</span>
+  smpTitleScaleFontFactor<span style="color:#f92672">=</span><span style="color:#ae81ff">1.8</span>, <span style="color:#75715e"># 样本标题尺寸</span>
+  theme<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;CanvasXpress&#34;</span>, <span style="color:#75715e"># 主题</span>
+  title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;The Effect of Vitamin C on Tooth Growth in Guinea Pigs&#34;</span>, <span style="color:#75715e"># 标题</span>
+  violinScale<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;area&#34;</span>,
+  xAxis2Show<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>,
+  xAxisMinorTicks<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>,
+  xAxisTickColor<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;white&#34;</span>,
+  xAxisTitle<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;len&#34;</span>,
+  width<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,
+  height<span style="color:#f92672">=</span><span style="color:#ae81ff">600</span>)
+</code></pre></div><p><img src="https://i.loli.net/2020/08/13/gT9Acr627nU3Dxt.png" alt="CanvasXpress-7.png"></p>
+<h3 id="28-分面图">2.8 分面图</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">rm</span>(list <span style="color:#f92672">=</span> <span style="color:#a6e22e">ls</span>())
+y<span style="color:#f92672">=</span><span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-generic-dat.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+x<span style="color:#f92672">=</span><span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-generic-smp.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+z<span style="color:#f92672">=</span><span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;./data/cX-generic-var.txt&#34;</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, quote<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, fill<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, check.names<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>, stringsAsFactors<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+
+<span style="color:#a6e22e">canvasXpress</span>(
+  data<span style="color:#f92672">=</span>y,
+  smpAnnot<span style="color:#f92672">=</span>x,
+  varAnnot<span style="color:#f92672">=</span>z,
+  graphOrientation<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vertical&#34;</span>,
+  graphType<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Bar&#34;</span>,
+  layoutCollapse<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>,
+  layoutType<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rows&#34;</span>,
+  showTransition<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>,
+  theme<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;CanvasXpress&#34;</span>,
+  afterRender<span style="color:#f92672">=</span><span style="color:#a6e22e">list</span>(<span style="color:#a6e22e">list</span>(<span style="color:#e6db74">&#34;segregateVariables&#34;</span>, <span style="color:#a6e22e">list</span>(<span style="color:#e6db74">&#34;Annt2&#34;</span>)), <span style="color:#a6e22e">list</span>(<span style="color:#e6db74">&#34;segregateSamples&#34;</span>, <span style="color:#a6e22e">list</span>(<span style="color:#e6db74">&#34;Factor1&#34;</span>))),
+  width<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,
+  height<span style="color:#f92672">=</span><span style="color:#ae81ff">600</span>)
+</code></pre></div><p><img src="https://i.loli.net/2020/08/10/6xiWcQLrpJsBCM9.png" alt="CanvasXpress-8.png"></p>
+<p>重点是观察<strong>数据结构</strong>和 <strong>afterRender</strong> 后的关系设置。</p>
+<p>　　还有一个制作交互式图片的R包 <strong>recharts</strong>。其说明文档写的已经很详细了，故不再重复，链接见<strong>参考资料4</strong>。</p>
+<hr>
+<p><strong>参考资料：</strong></p>
+<p><a href="https://github.com/neuhausi/canvasXpress">1.neuhausi/canvasXpress</a><br>
+<a href="https://mp.weixin.qq.com/s?__biz=MzUzMjA4Njc1MA==&amp;mid=2247490164&amp;idx=4&amp;sn=d5e8e77029d7fda7da38bc6d02973591&amp;chksm=fab9f0c5cdce79d30a99ddea4a29e6af70a1d71cbf9d53d380bbf4012f16df0d4931bfd0a405&amp;mpshare=1&amp;scene=24&amp;srcid=&amp;sharer_sharetime=1589930848330&amp;sharer_shareid=f8b2e24dd2908ee609c68f7c987e97fe&amp;key=4bc1bbadb5ce2652a9c6d8968a9f6f221f5f4ed96b8fdc5e7ba9c5513a5b897f238f81005f095be17a92b9b219f99b6147cf30efe93feb0687283b2d02ea4152a4feb3b852813d0253309dad430abd69&amp;ascene=14&amp;uin=NjkwMTYwNDgw&amp;devicetype=Windows+10&amp;version=62080085&amp;lang=zh_CN&amp;exportkey=AdNlJxQE%2F3NtrfWsL5M5xb8%3D&amp;pass_ticket=DY8SqMjRv2%2B5oBMbhFgLMNaJis2phZ7VSsuGpDy4A7yuW0imdMm%2BJu9xeQOdlb7U">2.R语言交互式可视化包CanvasXpress</a><br>
+<a href="https://www.canvasxpress.org">3.CanvasXpress</a><br>
+<a href="http://madlogos.github.io/recharts/index_cn.html#-en">4.recharts: 百度ECharts 2的R语言接口</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/r/">R</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/canvasxpress/">CanvasXpress</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/08/%E8%A7%A3%E5%86%B3rstudio-automatically-be-signed-out/" data-tooltip="解决Rstudio automatically be signed out">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/07/pheatmap%E9%AA%9A%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%8F%90%E5%8F%96%E8%81%9A%E7%B1%BB%E5%90%8E%E7%9A%84%E5%9F%BA%E5%9B%A0%E9%9B%86/" data-tooltip="Pheatmap骚操作之提取聚类后的基因集">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/08/canvasxpress-%E5%88%B6%E4%BD%9C%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%9B%BE%E7%89%87/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/08/canvasxpress-%E5%88%B6%E4%BD%9C%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%9B%BE%E7%89%87/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/08/canvasxpress-%E5%88%B6%E4%BD%9C%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%9B%BE%E7%89%87/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Ezio. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/08/%E8%A7%A3%E5%86%B3rstudio-automatically-be-signed-out/" data-tooltip="解决Rstudio automatically be signed out">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/07/pheatmap%E9%AA%9A%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%8F%90%E5%8F%96%E8%81%9A%E7%B1%BB%E5%90%8E%E7%9A%84%E5%9F%BA%E5%9B%A0%E9%9B%86/" data-tooltip="Pheatmap骚操作之提取聚类后的基因集">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/08/canvasxpress-%E5%88%B6%E4%BD%9C%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%9B%BE%E7%89%87/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/08/canvasxpress-%E5%88%B6%E4%BD%9C%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%9B%BE%E7%89%87/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/08/canvasxpress-%E5%88%B6%E4%BD%9C%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%9B%BE%E7%89%87/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F08%2Fcanvasxpress-%25E5%2588%25B6%25E4%25BD%259C%25E4%25BA%25A4%25E4%25BA%2592%25E5%25BC%258F%25E5%259B%25BE%25E7%2589%2587%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F08%2Fcanvasxpress-%25E5%2588%25B6%25E4%25BD%259C%25E4%25BA%25A4%25E4%25BA%2592%25E5%25BC%258F%25E5%259B%25BE%25E7%2589%2587%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F08%2Fcanvasxpress-%25E5%2588%25B6%25E4%25BD%259C%25E4%25BA%25A4%25E4%25BA%2592%25E5%25BC%258F%25E5%259B%25BE%25E7%2589%2587%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Ezio</h4>
+    
+      <div id="about-card-bio">学习、记录、变强，最后 <strong>变秃</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        生物信息学
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国 云南 昆明
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://pengpengyang94.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://pengpengyang94.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/pengpengyang94.github.io\/2020\/08\/canvasxpress-%E5%88%B6%E4%BD%9C%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%9B%BE%E7%89%87\/';
+          
+            this.page.identifier = '\/2020\/08\/canvasxpress-%E5%88%B6%E4%BD%9C%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%9B%BE%E7%89%87\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>软件设置 on 一个慵懒之人的随笔</title>
+    <link>https://pengpengyang94.github.io/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E7%BD%AE/</link>
+    <description>Recent content in 软件设置 on 一个慵懒之人的随笔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 13 Aug 2020 15:20:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://pengpengyang94.github.io/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>解决Rstudio automatically be signed out</title>
+      <link>https://pengpengyang94.github.io/2020/08/%E8%A7%A3%E5%86%B3rstudio-automatically-be-signed-out/</link>
+      <pubDate>Thu, 13 Aug 2020 15:20:26 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2020/08/%E8%A7%A3%E5%86%B3rstudio-automatically-be-signed-out/</guid>
+      <description>&lt;p&gt;　　本文记录怎么去除 &lt;strong&gt;Rstudio&lt;/strong&gt; 登录界面中的  &lt;code&gt;Your will be automatically signed out after 60 minutes of inactivity.&lt;/code&gt; 提示 。该提示的作用即字面意思：60 mins 不操作就退出，此举虽是出于保护用户的目的，但是对我来说并不需要。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
