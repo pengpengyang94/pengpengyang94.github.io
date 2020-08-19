@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Ezio">
+<meta name="keywords" content="">
+<meta name="description" content="　　PyMOL 是一款基于 Python 开发的三维结构可视化的软件。个人觉得同 VMD 及 SPDBV 相比，其操作更加简单灵活、图形更加美观，而且可以使用命令行进行批处理，本文主要记录鼠标操作的相关内容。">
+
+
+<meta property="og:description" content="　　PyMOL 是一款基于 Python 开发的三维结构可视化的软件。个人觉得同 VMD 及 SPDBV 相比，其操作更加简单灵活、图形更加美观，而且可以使用命令行进行批处理，本文主要记录鼠标操作的相关内容。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyMOL：安装及入门笔记">
+<meta name="twitter:title" content="PyMOL：安装及入门笔记">
+<meta property="og:url" content="https://pengpengyang94.github.io/2020/08/pymol%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
+<meta property="twitter:url" content="https://pengpengyang94.github.io/2020/08/pymol%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
+<meta property="og:site_name" content="一个慵懒之人的随笔">
+<meta property="og:description" content="　　PyMOL 是一款基于 Python 开发的三维结构可视化的软件。个人觉得同 VMD 及 SPDBV 相比，其操作更加简单灵活、图形更加美观，而且可以使用命令行进行批处理，本文主要记录鼠标操作的相关内容。">
+<meta name="twitter:description" content="　　PyMOL 是一款基于 Python 开发的三维结构可视化的软件。个人觉得同 VMD 及 SPDBV 相比，其操作更加简单灵活、图形更加美观，而且可以使用命令行进行批处理，本文主要记录鼠标操作的相关内容。">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-08-19T19:43:11">
+  
+  
+    <meta property="article:modified_time" content="2020-08-19T19:43:11">
+  
+  
+  
+    
+      <meta property="article:section" content="软件说明">
+    
+  
+  
+    
+      <meta property="article:tag" content="三维结构">
+    
+      <meta property="article:tag" content="PyMOL">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="//i.loli.net/2020/08/19/U1WRIMO9BFsaYfZ.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/08/19/U1WRIMO9BFsaYfZ.png">
+
+
+  <meta property="og:image" content="//i.loli.net/2020/08/19/eTNq75yOcWHAJvQ.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/08/19/eTNq75yOcWHAJvQ.png">
+
+
+
+
+  <meta property="og:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+  <meta property="twitter:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+
+
+    <title>PyMOL：安装及入门笔记</title>
+
+    <link rel="icon" href="https://pengpengyang94.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://pengpengyang94.github.io/2020/08/pymol%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://pengpengyang94.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://pengpengyang94.github.io/">一个慵懒之人的随笔</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://pengpengyang94.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://pengpengyang94.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Ezio</h4>
+        
+          <h5 class="sidebar-profile-bio">学习、记录、变强，最后 <strong>变秃</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder-open"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user-o"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/pengpengyang94" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://space.bilibili.com/87148526" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-caret-square-o-right"></i>
+      
+      <span class="sidebar-button-desc">Bilibili</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.bioinfo.info/?/people/Ezio" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitch"></i>
+      
+      <span class="sidebar-button-desc">Bioinfo</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//i.loli.net/2020/08/19/eTNq75yOcWHAJvQ.png')"
+       data-behavior="5">
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaOut
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      PyMOL：安装及入门笔记
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-08-19T19:43:11&#43;08:00">
+        
+  August 19, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://pengpengyang94.github.io/categories/%e8%bd%af%e4%bb%b6%e8%af%b4%e6%98%8e">软件说明</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>　　<strong>PyMOL</strong> 是一款基于 <strong>Python</strong> 开发的三维结构可视化的软件。个人觉得同 <strong>VMD</strong> 及 <strong>SPDBV</strong> 相比，其操作更加简单灵活、图形更加美观，而且可以使用命令行进行批处理，本文主要记录鼠标操作的相关内容。</p>
+<h2 id="1安装">1.安装</h2>
+<p>　　由于 <strong>PyMOL</strong> 是基于 <strong>Python</strong> 开发的，所以需先安装 <strong>pmw</strong>（<strong>Python</strong> 可以通过直接安装来 <strong>Anoconda</strong> 完成）。其还依赖 <strong>Pmw</strong> ，可以通过 <code>pip install pmw</code> 提前安装好，若网络不好，可通过更改 <strong>pip</strong> 的镜像地址来改善，如使用清华源来安装 <code>pip install pmw -i https://pypi.tuna.tsinghua.edu.cn/simple</code>。<br>
+　　随后从下方链接中下载 <strong>pymol</strong>，其版本比较多所以在下载的时候需要根据<strong>系统</strong>及 <strong>Python 版本</strong>来进行选择，我的电脑是 <strong>Windows 64 位</strong>系统，<strong>Python</strong> 版本是 <strong>3.7</strong>，所以选择下载 <code>pymol-2.5.0a0-cp37-cp37m-win_amd64.whl</code>，然后在<strong>cmd</strong> 中运行 <code>pip install pymol-2.5.0a0-cp37-cp37m-win_amd64.whl</code> 来安装，故后续记录均针对该版本，老版本不做说明。</p>
+<p>下载地址：https://www.lfd.uci.edu/~gohlke/pythonlibs/</p>
+<p>　　下载地址中不仅包含 <strong>pymol</strong>，还有<strong>pmw</strong>，所以 <strong>pmw</strong> 同样可以使用如上方法本地安装，避免因网络问题而失败的情况。<br>
+　　安装完成后，启动图标位于 <code>C:\ProgramData\Anaconda3\Scripts\pymol.exe</code> ，双击即可启动，建议发送到桌面快捷方式或固定到开始屏幕。也可以将 <strong>bdb</strong> 文件的默认打开方式设置为 <strong>PyMOL</strong>。</p>
+<h2 id="2入门笔记">2.入门笔记</h2>
+<h3 id="21-主界面介绍">2.1 主界面介绍</h3>
+<p>　　<strong>PyMOL</strong> 的主界面如下，其中红框部分为 <strong>External GUI</strong>，可以点击 <code>Display</code> - <code>External GUI</code> - <code>Toggle Floating</code> 或使用快捷键 <code>Ctrl + E</code> 将该部分与初始界面分离或合并。<strong>External GUI</strong> 主要有三个功能模块：② 操作记录窗口、③ 常用命令窗口和 ④  命令输入窗口，余下模块分别如下：</p>
+<ul>
+<li>① 菜单栏</li>
+<li>⑤ 可视化窗口</li>
+<li>⑥ 对象窗口，显示编辑的文件，类似于图层的概念。</li>
+<li>⑦ 模式窗口，主要控制鼠标的控制模式</li>
+</ul>
+<p><img src="https://i.loli.net/2020/08/19/hHvMG3aV5nJks1r.png" alt="pymol-1-1.png"></p>
+<h3 id="22-切换工作路径及载入文件">2.2 切换工作路径及载入文件</h3>
+<p>　　可以通过点击 <code>File</code> - <code>Working Directory</code> - <code>Change...</code> 来切换路径，也可以输入指令进行切换，<strong>建议</strong>不同项目使用不同的工作路径。<br>
+载入文件有三种方式：</p>
+<ul>
+<li>点击 <code>File</code> - <code>Open...</code> 加载文件</li>
+<li>拖拽文件至可视化窗口</li>
+<li>使用 <code>load</code>指令</li>
+</ul>
+<pre><code># 切换至 C:\Users\DELL\Desktop\pymol\pdb 
+cd C:\Users\DELL\Desktop\pymol\pdb
+# 查看当前工作路径
+pwd
+# 加载 protein.pdb 
+load protein.pdb
+</code></pre><p>　　<strong>PyMOL</strong> 可以通过  <code>File</code> - <code>Get PDB...</code> 来下载 <strong>PDB</strong> 文件，如下图所示，只需在红框中填入 四字母的 <strong>PDB ID</strong>（如 <strong>4hbk</strong>），点击下方的 <strong>Download</strong> 即可。</p>
+<p><img src="https://i.loli.net/2020/08/19/UNT3iOZIrnuHVWy.png" alt="pymol-1-2.png"></p>
+<h3 id="23-简单的平移缩放">2.3 简单的平移、缩放</h3>
+<ul>
+<li>平移：按住鼠标中键不放后移动鼠标</li>
+<li>旋转：按住鼠标左键不放后移动鼠标</li>
+<li>缩放：按住鼠标右键不放后移动鼠标</li>
+<li>切割：滚动鼠标中键</li>
+</ul>
+<p>　　若鼠标功能与上述不符，可以点击 <code>File</code> - <code>Reinitialize</code> - <code>Original Settings</code> 来恢复默认设置。</p>
+<h3 id="24-设置背景颜色及显示结构的序列">2.4 设置背景颜色及显示结构的序列</h3>
+<p>设置背景颜色：<code>Display</code> - <code>Background</code> - <code>white</code><br>
+显示结构序列：<code>Display</code> - <code>Sequence</code> 或者直接点击<strong>模式窗口</strong>中的 <strong>S</strong>，如下图红框部分所示。</p>
+<p><img src="https://i.loli.net/2020/08/19/vyENThLGwrKk4Rn.png" alt="pymol-1-7.png"></p>
+<h3 id="25-对象窗口">2.5 对象窗口</h3>
+<p>　　载入 <strong>4hbk</strong> 蛋白后，使用鼠标随意选择几个氨基酸，对象窗口会出现三个object，其中 <code>all</code> 代表的是其中包含的所有项目，<code>4hbk</code> 则是刚刚载入的蛋白，而<code>（sele）</code>就是随意选择的几个氨基酸。</p>
+<p><img src="https://i.loli.net/2020/08/19/6zitKXBQgsFdvHr.png" alt="pymol-1-3.png"></p>
+<p>　　每个项目中后面均有A、S、H、L 和 C 五个选项，意义如下：</p>
+<ul>
+<li>A: Action，包含放大、剧中，复制，显示及比对等一系列的操作。</li>
+<li>S: Show，设置不同的显示方式。</li>
+<li>H: Hide，隐藏显示的方式，与 S 基本对应。</li>
+<li>L: Lable，设置不同的标记方式。</li>
+<li>C: Color，设置不同的着色方式。</li>
+</ul>
+<h4 id="251-show-和-hide">2.5.1 Show 和 Hide</h4>
+<p>　　需要注意 <strong>Show</strong> 中有如下两种改变外观的方式，以变化为 <strong>licorice</strong> 为例：</p>
+<ul>
+<li><code>S</code> - <code>licorice</code>：在原有的基础上，添加 <strong>licorice</strong> 这一层外观</li>
+<li><code>S</code> - <code>as</code> - <code>licorice</code>：改变外观为 <strong>licorice</strong></li>
+</ul>
+<p>　　了解了有无 <strong>as</strong> 的区别后，根据需求更改为所需样式即可。<strong>Hide</strong> 基本和 <strong>Show</strong> 基本对应，故在此不一一赘述。</p>
+<h4 id="252-action">2.5.2 Action</h4>
+<p>　　<strong>Action</strong> 中的包含如下所示较为多样的功能，需注意其中<strong>标红</strong>的为<strong>不可逆</strong>的操作，不能通过 <code>Ctrl + Z</code> 恢复。</p>
+<p><img src="https://i.loli.net/2020/08/19/EBNCqgaej2DVO4F.png" alt="pymol-1-4.png"></p>
+<h5 id="2521-action-中显示操作">2.5.2.1 Action 中显示操作</h5>
+<p>　　<strong>Action</strong> 中 <strong>preset</strong> 可以便捷的修改显示方式，主要有以下几种显示方式：</p>
+<ul>
+<li>simple：简单形式</li>
+<li>ball and stick：球棍模型</li>
+<li>b-factor putty：基于 b-factor 数值显示蛋白的柔性</li>
+<li>pretty：美观的 cartoon 样式</li>
+<li>publication：高质量出版标准</li>
+</ul>
+<p>　　<strong>preset</strong> 中还包含<strong>查看小分子和蛋白的氢键作用</strong>的功能，具体操作如下，其中 <strong>ligand sites</strong> 后有许多显示选项，根据需求选择。下图展示 <strong>cartoon</strong> 选项的结果，红色的小分子和蛋白作用的结果展示。</p>
+<ul>
+<li><code>A</code> - <code>preset</code> - <code>ligand sites</code></li>
+</ul>
+<p><img src="https://i.loli.net/2020/08/19/Hc4Zz6fyBsdn32N.png" alt="pymol-1-5.png"></p>
+<h5 id="2522-action-中对象的复制剪切删除和重命名">2.5.2.2 Action 中对象的复制、剪切、删除和重命名</h5>
+<ul>
+<li>复制：<code>A</code> - <code>Copy to object</code> - <code>new</code></li>
+<li>重命名：<code>A</code> - <code>rename object</code></li>
+<li>删除：<code>A</code> - <code>delete object</code></li>
+<li>剪切：<strong>选中</strong>需要剪切的部分后点击 <code>A</code> - <code>Extract</code></li>
+</ul>
+<h5 id="2523-action-中氢原子和水分子的相关操作">2.5.2.3 Action 中氢原子和水分子的相关操作</h5>
+<p>　　水分子只有标红的删除操作：<code>A</code> - <code>remove waters</code></p>
+<p>　　氢原子在 <strong>line</strong> 和 <strong>stick</strong> 模式下面可见，以 4hbk 为例，先将模式调整为 <code>S</code> - <code>as</code> - <code>licorice</code> ，再依次进行下面操作并体会变化。</p>
+<ul>
+<li><code>A</code> - <code>Hydrogens</code> - <code>add</code>：增加所有氢原子</li>
+<li><code>A</code> - <code>Hydrogens</code> - <code>remove non polar</code>：删除所有非极性氢原子，可以看到C上的氢原子全部被删除</li>
+<li><code>A</code> - <code>Hydrogens</code> - <code>remove</code>：再次删除所有氢原子</li>
+<li><code>A</code> - <code>Hydrogens</code> - <code>add polar</code>：增加极性氢原子</li>
+</ul>
+<h5 id="2524-action-显示蛋白的静电势图">2.5.2.4 Action 显示蛋白的静电势图</h5>
+<p>操作和结果如下所示：<br>
+<code>Action</code> - <code>generate</code> - <code>vacuum_electrostatics</code> - <code>protein contact potentia</code></p>
+<p><img src="https://i.loli.net/2020/08/19/yBhg6QjO3DeqA4i.png" alt="pymol-1-6.png"></p>
+<h4 id="253-color">2.5.3 Color</h4>
+<ul>
+<li><code>C</code> - <code>by element</code>：按原子类型着色</li>
+<li><code>C</code> - <code>by chain</code>：按链着色</li>
+<li><code>C</code> - <code>by ss</code>：按二级结构着色</li>
+<li><code>C</code> - <code>reds</code>：整体标红</li>
+</ul>
+<h4 id="254-lable">2.5.4 Lable</h4>
+<p>选择好需要 <strong>Lable</strong> 的对象后，可以对其进行如下不同方式的标记。</p>
+<ul>
+<li><code>L</code> - <code>residue</code>：在 α 碳原子上标记其氨基酸残基<strong>三</strong>字母名字和编号</li>
+<li><code>L</code> - <code>residue（oneletter）</code>：标记其氨基酸残基<strong>一</strong>字母名字和编号</li>
+<li><code>L</code> - <code>one letter code</code>：标记其氨基酸残基<strong>一</strong>字母名字</li>
+<li><code>L</code> - <code>element symbol</code>：显示对象上所有原子的元素名字</li>
+<li><code>L</code> - <code>vdw radius</code>：显示原子的范德华半径</li>
+<li><code>L</code> - <code>clear</code>：删除该对象上所有的 <strong>Label</strong></li>
+</ul>
+<p>　　由于后续会调整不同的角度，所以默认 <strong>Lable</strong> 位置很大概率需要调整，调整步骤如下：</p>
+<ol>
+<li>单击下图模式窗口中红框部分，将 <strong>Mouse Mode</strong> 由 <strong>Viewing</strong>  改为 <strong>Editing</strong>。</li>
+</ol>
+<p><img src="https://i.loli.net/2020/08/19/YapXwOuTERDKnBM.png" alt="pymol-1-8.png"></p>
+<ol start="2">
+<li>按住 <code>Ctrl</code> 后使用<strong>鼠标左键</strong>拖拽 <strong>Label</strong> 至适当的位置，拖拽过程中鼠标左键同样是<strong>按住不放</strong>的状态，调整结束后别忘了将 <strong>Mouse Mode</strong> 改回 <strong>Viewing</strong> 状态。</li>
+</ol>
+<h2 id="26-测量距离">2.6 测量距离</h2>
+<ol>
+<li>点击 <code>Wizard</code> - <code>Measurement</code>，如下图所示在界面右下方会出现 <strong>Measurement</strong> 界面。</li>
+<li>选择所需测量距离的两个原子，如有多个需要测量，成对选择即可。</li>
+<li>测量完成后，点击 <strong>done</strong> 结束。</li>
+</ol>
+<p><img src="https://i.loli.net/2020/08/19/JXkLqUNhzDy7Oam.png" alt="pymol-1-9.png"></p>
+<p>　　注意：默认测定的距离是保留 1 位小数，如果想要显示 2 位小数，可点击菜单栏中的 <code>Setting</code> - <code>Edit All</code>，然后搜索 <code>label_digits</code>，把后面的数值设置为2就可以了。</p>
+<h2 id="27-突变氨基酸残基">2.7 突变氨基酸残基</h2>
+<ol>
+<li>在菜单中点击 <code>wizard</code> - <code>mutagenesis</code> - <code>protein</code>，如下图所示打开氨基酸突变栏。</li>
+<li>选择所需突变的氨基酸。</li>
+<li>单击 <code>No Mutation</code> 后选择所需突变成的氨基酸。</li>
+<li>单击 <code>Apply</code> 将氨基酸替换为目的氨基酸。</li>
+<li>单击 <code>Done</code> 完成突变。</li>
+</ol>
+<p><img src="https://i.loli.net/2020/08/19/hgJoxCWLjlTrtZw.png" alt="pymol-1-10.png"></p>
+<h2 id="28-设置透明度和光照模式">2.8 设置透明度和光照模式</h2>
+<p>　　透明度设置位于 <code>Setting</code> 中的 <code>Transparency</code>。其中不仅可以设置<strong>不同模式的透明度</strong>（如cartoon、surface 和stick等），还预设有4种不同的<strong>透明方式</strong>，可以自行修改观察效果。</p>
+<p>　　光照模式位于 <code>Plugin</code> 中的 <code>lighting Settings</code> 中。里面预设 5 种类型（default, metal, plastic, rubber and X-ray），根据需求自行修改即可。</p>
+<p><img src="https://i.loli.net/2020/08/19/qNdmi4saIOHPtYg.png" alt="pymol-1-11.png"></p>
+<h2 id="29-鼠标的选择模式">2.9 鼠标的选择模式</h2>
+<p>　　如下图所示，简单介绍 <strong>Mouse Mode</strong> 为 <strong>Viewing</strong> 情况下的 <strong>Selecting</strong> 模式，有如下几种：</p>
+<ul>
+<li>Residues 残基选择模式</li>
+<li>Chain 链选择模式</li>
+<li>Segments 片段模式</li>
+<li>Objects 模式</li>
+<li>Molecules 分子选择模式</li>
+<li>C-alphas α碳原子模式</li>
+<li>Atoms 原子选择模式</li>
+</ul>
+<p><img src="https://i.loli.net/2020/08/19/n6p95eAKhPbli3w.png" alt="pymol-1-12.png"></p>
+<h2 id="210-保存项目及导出结果">2.10 保存项目及导出结果</h2>
+<ul>
+<li><code>File</code> - <code>Save Session</code>：保存为pse 文件，方便修改调整。</li>
+<li><code>File</code> - <code>export image as</code> - <code>png</code>：保存图片，可以使用如下图所示的 <code>Draw/Ray</code> 按钮，在设置图片大小及分辨率后保存图片。</li>
+<li><code>File</code> - <code>export molecule</code>：然后从 <code>selection</code> 的下拉框中选择需要导出的object，all 代表所有的object。</li>
+</ul>
+<p><img src="https://i.loli.net/2020/08/19/Xq5iPLsdmTORN9F.png" alt="pymol-1-13.png"></p>
+<hr>
+<p><strong>参考资料：</strong><br>
+<a href="http://pymol.chenzhaoqiang.com/">1.PyMOL中文教程</a><br>
+<a href="https://www.novopro.cn/articles/201906121184.html">2.免费开源版(非Edu版)PyMOL安装教程</a><br>
+<a href="https://jingyan.baidu.com/article/6f2f55a16dacf9b5b93e6cc0.html">3.win10系统下如何安装pymol？</a><br>
+<a href="https://blog.csdn.net/u012325865/article/details/105267132?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522159779951819724843357047%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&amp;request_id=159779951819724843357047&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~rank_blog_v1-1-105267132.pc_v2_rank_blog_v1&amp;utm_term=pymol&amp;spm=1018.2118.3001.4187">4.PyMOL | Pymol绘图教程（一）</a><br>
+<a href="https://blog.csdn.net/weixin_44887662/article/details/89156912">5.高质量PyMOL作图教程</a><br>
+<a href="https://blog.csdn.net/u012325865/article/details/77489112">6.Pymol（1.8.6）作图技巧之cartoon和surface镶嵌模型</a><br>
+<a href="https://novopro.cn/articles/201908091185.html">7.教程：Pymol, Chimera预测点突变蛋白结构</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/%E4%B8%89%E7%BB%B4%E7%BB%93%E6%9E%84/">三维结构</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/pymol/">PyMOL</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/08/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" data-tooltip="SparK: NGS数据可视化">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/08/pymol%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/08/pymol%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/08/pymol%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Ezio. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/08/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" data-tooltip="SparK: NGS数据可视化">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/08/pymol%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/08/pymol%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/08/pymol%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F08%2Fpymol%25E5%25AE%2589%25E8%25A3%2585%25E5%258F%258A%25E5%2585%25A5%25E9%2597%25A8%25E7%25AC%2594%25E8%25AE%25B0%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F08%2Fpymol%25E5%25AE%2589%25E8%25A3%2585%25E5%258F%258A%25E5%2585%25A5%25E9%2597%25A8%25E7%25AC%2594%25E8%25AE%25B0%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F08%2Fpymol%25E5%25AE%2589%25E8%25A3%2585%25E5%258F%258A%25E5%2585%25A5%25E9%2597%25A8%25E7%25AC%2594%25E8%25AE%25B0%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Ezio</h4>
+    
+      <div id="about-card-bio">学习、记录、变强，最后 <strong>变秃</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        生物信息学
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国 云南 昆明
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://pengpengyang94.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://pengpengyang94.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/pengpengyang94.github.io\/2020\/08\/pymol%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0\/';
+          
+            this.page.identifier = '\/2020\/08\/pymol%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
