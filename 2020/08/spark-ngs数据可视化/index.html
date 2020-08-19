@@ -335,7 +335,7 @@
 <p>　　可以将 <strong>bam</strong> 文件转换为 <strong>bdg</strong> 文件，注意<strong>必须</strong>添加 <code>-bs 1</code> 参数，该参数是将 <strong>bin</strong> 的大小设置成 <strong>1</strong>，所以不难想到 <strong>bdg</strong> 文件里面存储的是每个碱基对应的测序深度。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">bamCoverage -b bamfile.bam -o outputfilename.bdg -bs <span style="color:#ae81ff">1</span> -of bedgraph
 </code></pre></div><h3 id="32-bigwigtobedgraph">3.2 bigWigToBedGraph</h3>
-<p>　　需要注意的是 <strong>ChIP-seq</strong> 的数据<strong>不能</strong>使用上面方法转换 <strong>bdg</strong> 文件**!!!** 需使用 **bigWigToBedGraph** 将 **ChIP-seq** 流程中产生的 **bw** 文件转换成 **bgd** 文件。</p>
+<p>　　需要注意的是 <strong>ChIP-seq</strong> 的数据<strong>不能</strong>使用上面方法转换 <strong>bdg</strong> 文件!!! 需使用 <strong>bigWigToBedGraph</strong> 将 <strong>ChIP-seq</strong> 流程中产生的 <strong>bw</strong> 文件转换成 <strong>bgd</strong> 文件。</p>
 <p><strong>bigWigToBedGraph</strong> 也是一个下载即用的工具，下载地址如下。由于功能单一，所以使用也比较简单，使用之前需添加 <code>x</code> 的执行权限（指令：<code>chmod +x bedGraphToBigWig</code>）。</p>
 <p>下载地址：http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">### kent source version 402 ###</span>
