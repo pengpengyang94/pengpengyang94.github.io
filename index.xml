@@ -6,10 +6,19 @@
     <description>Recent content on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 13 Aug 2020 15:20:26 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2020 08:48:57 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SparK: NGS数据可视化</title>
+      <link>https://pengpengyang94.github.io/2020/08/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</link>
+      <pubDate>Wed, 19 Aug 2020 08:48:57 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2020/08/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</guid>
+      <description>&lt;p&gt;　　&lt;strong&gt;SparK&lt;/strong&gt; 是一款基于 &lt;strong&gt;Python&lt;/strong&gt; 来展示基因覆盖度的脚本，而且输出的是 &lt;strong&gt;svg&lt;/strong&gt; 格式的矢量图。在展示 &lt;strong&gt;ChIP-seq&lt;/strong&gt; 结果还是比较方便的。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>解决Rstudio automatically be signed out</title>

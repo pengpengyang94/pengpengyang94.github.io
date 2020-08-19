@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Ezio">
+<meta name="keywords" content="">
+<meta name="description" content="　　SparK 是一款基于 Python 来展示基因覆盖度的脚本，而且输出的是 svg 格式的矢量图。在展示 ChIP-seq 结果还是比较方便的。">
+
+
+<meta property="og:description" content="　　SparK 是一款基于 Python 来展示基因覆盖度的脚本，而且输出的是 svg 格式的矢量图。在展示 ChIP-seq 结果还是比较方便的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SparK: NGS数据可视化">
+<meta name="twitter:title" content="SparK: NGS数据可视化">
+<meta property="og:url" content="https://pengpengyang94.github.io/2020/08/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+<meta property="twitter:url" content="https://pengpengyang94.github.io/2020/08/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+<meta property="og:site_name" content="一个慵懒之人的随笔">
+<meta property="og:description" content="　　SparK 是一款基于 Python 来展示基因覆盖度的脚本，而且输出的是 svg 格式的矢量图。在展示 ChIP-seq 结果还是比较方便的。">
+<meta name="twitter:description" content="　　SparK 是一款基于 Python 来展示基因覆盖度的脚本，而且输出的是 svg 格式的矢量图。在展示 ChIP-seq 结果还是比较方便的。">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-08-19T08:48:57">
+  
+  
+    <meta property="article:modified_time" content="2020-08-19T08:48:57">
+  
+  
+  
+    
+      <meta property="article:section" content="NGS数据可视化">
+    
+  
+  
+    
+      <meta property="article:tag" content="Python">
+    
+      <meta property="article:tag" content="SparK">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="//i.loli.net/2020/08/18/IBNpS3rqYsoHilK.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/08/18/IBNpS3rqYsoHilK.png">
+
+
+  <meta property="og:image" content="//i.loli.net/2020/08/18/El6Skuc5nFsKQ81.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/08/18/El6Skuc5nFsKQ81.png">
+
+
+
+
+  <meta property="og:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+  <meta property="twitter:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+
+
+    <title>SparK: NGS数据可视化</title>
+
+    <link rel="icon" href="https://pengpengyang94.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://pengpengyang94.github.io/2020/08/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://pengpengyang94.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://pengpengyang94.github.io/">一个慵懒之人的随笔</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://pengpengyang94.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://pengpengyang94.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Ezio</h4>
+        
+          <h5 class="sidebar-profile-bio">学习、记录、变强，最后 <strong>变秃</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder-open"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user-o"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/pengpengyang94" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://space.bilibili.com/87148526" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-caret-square-o-right"></i>
+      
+      <span class="sidebar-button-desc">Bilibili</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.bioinfo.info/?/people/Ezio" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitch"></i>
+      
+      <span class="sidebar-button-desc">Bioinfo</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//i.loli.net/2020/08/18/El6Skuc5nFsKQ81.png')"
+       data-behavior="5">
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaOut
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      SparK: NGS数据可视化
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-08-19T08:48:57&#43;08:00">
+        
+  August 19, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://pengpengyang94.github.io/categories/ngs%e6%95%b0%e6%8d%ae%e5%8f%af%e8%a7%86%e5%8c%96">NGS数据可视化</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>　　<strong>SparK</strong> 是一款基于 <strong>Python</strong> 来展示基因覆盖度的脚本，而且输出的是 <strong>svg</strong> 格式的矢量图。在展示 <strong>ChIP-seq</strong> 结果还是比较方便的。</p>
+<h2 id="1安装">1.安装</h2>
+<p>　　<strong>SparK</strong> 是一个<strong>下载即用</strong>的 Python 脚本，推荐使用 <strong>Python3</strong> 运行，同时需安装 <strong>numpy</strong> 库。</p>
+<h2 id="2举例说明">2.举例说明</h2>
+<p><img src="https://i.loli.net/2020/08/18/prHti7skdwGa6LC.png" alt="SparK-1.png"></p>
+<p>上图代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python SparK.py <span style="color:#ae81ff">\</span>
+-pr chr12:6520512-6640512 <span style="color:#ae81ff">\ </span><span style="color:#75715e"># 作图区域</span>
+-cf ./data/Sample8.sorted_dupm.bdg ./data/Sample4.sorted_dupm.bdg <span style="color:#ae81ff">\ </span><span style="color:#75715e"># 对照组bdg文件，空格区分多个文件</span>
+-gtf /home/devdata/Genome/fasta_gtf/Homo_sapiens.GRCh38.93.gtf <span style="color:#ae81ff">\ </span><span style="color:#75715e"># gtf文件</span>
+-gl Sample8 Sample4 <span style="color:#ae81ff">\ </span><span style="color:#75715e"># 分组标签，顺序与 -cf 对应，空格区分多个文件</span>
+-dg GAPDH IFFO1 NOP2 CHD4 LPAR5 <span style="color:#ae81ff">\ </span><span style="color:#75715e"># 选择展示的基因，若无该参数，展示区域内所有基因</span>
+-o TEST1 <span style="color:#75715e"># 输出文件名</span>
+</code></pre></div><p><img src="https://i.loli.net/2020/08/18/BbP5ye8KWuANYVz.png" alt="SparK-2.png"></p>
+<p>上图代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python SparK.py <span style="color:#ae81ff">\</span>
+-pr chr12:6533612-6539012 <span style="color:#ae81ff">\</span>
+-tf ./data/Sample8.sorted_dupm.bdg ./data/Sample2.sorted_dupm.bdg <span style="color:#ae81ff">\ </span> <span style="color:#75715e"># 处理组bdg文件，空格区分多个文件</span>
+-cf ./data/Sample4.sorted_dupm.bdg ./data/Sample6.sorted_dupm.bdg <span style="color:#ae81ff">\</span>
+-tg <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">\ </span><span style="color:#75715e"># 处理组分组信息，空格区分多个分组信息</span>
+-cg <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">\ </span><span style="color:#75715e"># 对照组分组信息，空格区分多个分组信息</span>
+-gl Sample48 Sample26 <span style="color:#ae81ff">\</span>
+-gtf /home/devdata/Genome/fasta_gtf/Homo_sapiens.GRCh38.93.gtf <span style="color:#ae81ff">\</span>
+-dg GAPDH <span style="color:#ae81ff">\</span>
+-o TEST2
+</code></pre></div><p><img src="https://i.loli.net/2020/08/18/VG7w2csFUtC1Znd.png" alt="SparK-3.png"></p>
+<p>上图代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python SparK.py <span style="color:#ae81ff">\</span>
+-pr chr12:6533612-6539012 <span style="color:#ae81ff">\</span>
+-cf ./data/Sample8.sorted_dupm.bdg ./data/Sample4.sorted_dupm.bdg <span style="color:#ae81ff">\</span>
+-gtf /home/devdata/Genome/fasta_gtf/Homo_sapiens.GRCh38.93.gtf <span style="color:#ae81ff">\</span>
+-gl Sample8 Sample4 <span style="color:#ae81ff">\</span>
+-dg GAPDH <span style="color:#ae81ff">\</span>
+-sm <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">\ </span><span style="color:#75715e"># 平滑轨迹，数字为窗口大小</span>
+-o TEST3
+</code></pre></div><p><img src="https://i.loli.net/2020/08/18/wdLKJ8g6QVScv3Y.png" alt="SparK-4.png"></p>
+<p>上图代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python SparK.py <span style="color:#ae81ff">\</span>
+-pr chr12:6527512-6550512 <span style="color:#ae81ff">\</span>
+-tf ./data/Sample8.sorted_dupm.bdg ./data/Sample2.sorted_dupm.bdg <span style="color:#ae81ff">\</span>
+-cf ./data/Sample4.sorted_dupm.bdg ./data/Sample6.sorted_dupm.bdg <span style="color:#ae81ff">\</span>
+-tg <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">\</span>
+-cg <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">\</span>
+-gl Sample48 Sample26 <span style="color:#ae81ff">\</span>
+-l HepG2_cells K562_cells <span style="color:#ae81ff">\</span>
+-gtf /home/devdata/Genome/fasta_gtf/Homo_sapiens.GRCh38.93.gtf <span style="color:#ae81ff">\</span>
+-ps averages <span style="color:#ae81ff">\ </span><span style="color:#75715e"># Set to &#34;averages&#34; if replicates of control and treatment tracks should be averaged for all groups.</span>
+-f CE358B 005CFF <span style="color:#ae81ff">\ </span><span style="color:#75715e"># 填充色</span>
+-gs yes <span style="color:#ae81ff">\ </span><span style="color:#75715e"># y轴</span>
+-dc no <span style="color:#ae81ff">\ </span><span style="color:#75715e"># 染色体位置，top_left (默认), top_right, bottom_left, bottom_right 和 no</span>
+-o TEST4
+</code></pre></div><p>　　以上4个例子仅展示了部分参数，还有更多的参数详见软件的 <strong>help</strong> 文档，若没有相应参数可以修改所需修改的部分，也可以直接用 <strong>AI</strong> 打开 <strong>svg</strong> 的输出文件进行更加个性化的编辑。</p>
+<h2 id="3制作-bdg-文件">3.制作 <strong>bdg</strong> 文件</h2>
+<p>　　以上四个示例的输入均是 bdg 文件，并不是常见的 <strong>bam</strong>、<strong>bed</strong> 或 <strong>bw</strong> 文件，所以作者提供了两种转换为 <strong>bdg</strong> 文件的思路。</p>
+<h3 id="31-bamcoverage">3.1 bamCoverage</h3>
+<p>　　可以将 <strong>bam</strong> 文件转换为 <strong>bdg</strong> 文件，注意<strong>必须</strong>添加 <code>-bs 1</code> 参数，该参数是将 <strong>bin</strong> 的大小设置成 <strong>1</strong>，所以不难想到 <strong>bdg</strong> 文件里面存储的是每个碱基对应的测序深度。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">bamCoverage -b bamfile.bam -o outputfilename.bdg -bs <span style="color:#ae81ff">1</span> -of bedgraph
+</code></pre></div><h3 id="32-bigwigtobedgraph">3.2 bigWigToBedGraph</h3>
+<p>　　需要注意的是 <strong>ChIP-seq</strong> 的数据<strong>不能</strong>使用上面方法转换 <strong>bdg</strong> 文件**!!!** 需使用 **bigWigToBedGraph** 将 **ChIP-seq** 流程中产生的 **bw** 文件转换成 **bgd** 文件。</p>
+<p><strong>bigWigToBedGraph</strong> 也是一个下载即用的工具，下载地址如下。由于功能单一，所以使用也比较简单，使用之前需添加 <code>x</code> 的执行权限（指令：<code>chmod +x bedGraphToBigWig</code>）。</p>
+<p>下载地址：http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">### kent source version 402 ###</span>
+bigWigToBedGraph - Convert from bigWig to bedGraph format.
+usage:
+   bigWigToBedGraph in.bigWig out.bedGraph
+options:
+   -chrom<span style="color:#f92672">=</span>chr1 - <span style="color:#66d9ef">if</span> set restrict output to given chromosome
+   -start<span style="color:#f92672">=</span>N - <span style="color:#66d9ef">if</span> set, restrict output to only that over start
+   -end<span style="color:#f92672">=</span>N - <span style="color:#66d9ef">if</span> set, restict output to only that under end
+   -udcDir<span style="color:#f92672">=</span>/dir/to/cache - place to put cache <span style="color:#66d9ef">for</span> remote bigBed/bigWigs
+</code></pre></div><hr>
+<p>参考资料：<br>
+<a href="https://github.com/harbourlab/SparK">1.SparK - Publication quality NGS data plotting (Version 2.6.2)</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/python/">Python</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/spark/">SparK</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/08/%E8%A7%A3%E5%86%B3rstudio-automatically-be-signed-out/" data-tooltip="解决Rstudio automatically be signed out">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/08/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/08/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/08/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Ezio. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/08/%E8%A7%A3%E5%86%B3rstudio-automatically-be-signed-out/" data-tooltip="解决Rstudio automatically be signed out">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/08/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/08/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/08/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F08%2Fspark-ngs%25E6%2595%25B0%25E6%258D%25AE%25E5%258F%25AF%25E8%25A7%2586%25E5%258C%2596%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F08%2Fspark-ngs%25E6%2595%25B0%25E6%258D%25AE%25E5%258F%25AF%25E8%25A7%2586%25E5%258C%2596%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F08%2Fspark-ngs%25E6%2595%25B0%25E6%258D%25AE%25E5%258F%25AF%25E8%25A7%2586%25E5%258C%2596%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Ezio</h4>
+    
+      <div id="about-card-bio">学习、记录、变强，最后 <strong>变秃</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        生物信息学
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国 云南 昆明
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://pengpengyang94.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://pengpengyang94.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/pengpengyang94.github.io\/2020\/08\/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96\/';
+          
+            this.page.identifier = '\/2020\/08\/spark-ngs%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
