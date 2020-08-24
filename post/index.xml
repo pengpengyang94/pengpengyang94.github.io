@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 19 Aug 2020 19:43:11 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2020 15:40:50 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PyMOL：命令行操作学习笔记</title>
+      <link>https://pengpengyang94.github.io/2020/08/pymol%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 24 Aug 2020 15:40:50 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2020/08/pymol%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;p&gt;　　本文主要记录 &lt;strong&gt;PyMOL&lt;/strong&gt; 中的一些命令行操作，&lt;strong&gt;PyMOL&lt;/strong&gt; 的主界面虽然有两个输入指令的窗口，但个人认为 &lt;strong&gt;External GUI&lt;/strong&gt; 里面的指令输入框更为方便，不仅能查看输入的记录，也能在分离出主界面后放大并置于合适的位置进行命令行操作。另外 &lt;strong&gt;PyMOL&lt;/strong&gt; 自带 &lt;code&gt;tab 键&lt;/code&gt;补齐的功能，所以 &lt;strong&gt;PyMOL&lt;/strong&gt; 对命令行操作还是比较友好的。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>PyMOL：安装及入门笔记</title>

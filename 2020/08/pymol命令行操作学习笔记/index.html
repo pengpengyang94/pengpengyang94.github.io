@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Ezio">
+<meta name="keywords" content="">
+<meta name="description" content="　　本文主要记录 PyMOL 中的一些命令行操作，PyMOL 的主界面虽然有两个输入指令的窗口，但个人认为 External GUI 里面的指令输入框更为方便，不仅能查看输入的记录，也能在分离出主界面后放大并置于合适的位置进行命令行操作。另外 PyMOL 自带 tab 键补齐的功能，所以 PyMOL 对命令行操作还是比较友好的。">
+
+
+<meta property="og:description" content="　　本文主要记录 PyMOL 中的一些命令行操作，PyMOL 的主界面虽然有两个输入指令的窗口，但个人认为 External GUI 里面的指令输入框更为方便，不仅能查看输入的记录，也能在分离出主界面后放大并置于合适的位置进行命令行操作。另外 PyMOL 自带 tab 键补齐的功能，所以 PyMOL 对命令行操作还是比较友好的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyMOL：命令行操作学习笔记">
+<meta name="twitter:title" content="PyMOL：命令行操作学习笔记">
+<meta property="og:url" content="https://pengpengyang94.github.io/2020/08/pymol%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+<meta property="twitter:url" content="https://pengpengyang94.github.io/2020/08/pymol%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+<meta property="og:site_name" content="一个慵懒之人的随笔">
+<meta property="og:description" content="　　本文主要记录 PyMOL 中的一些命令行操作，PyMOL 的主界面虽然有两个输入指令的窗口，但个人认为 External GUI 里面的指令输入框更为方便，不仅能查看输入的记录，也能在分离出主界面后放大并置于合适的位置进行命令行操作。另外 PyMOL 自带 tab 键补齐的功能，所以 PyMOL 对命令行操作还是比较友好的。">
+<meta name="twitter:description" content="　　本文主要记录 PyMOL 中的一些命令行操作，PyMOL 的主界面虽然有两个输入指令的窗口，但个人认为 External GUI 里面的指令输入框更为方便，不仅能查看输入的记录，也能在分离出主界面后放大并置于合适的位置进行命令行操作。另外 PyMOL 自带 tab 键补齐的功能，所以 PyMOL 对命令行操作还是比较友好的。">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-08-24T15:40:50">
+  
+  
+    <meta property="article:modified_time" content="2020-08-24T15:40:50">
+  
+  
+  
+    
+      <meta property="article:section" content="软件说明">
+    
+  
+  
+    
+      <meta property="article:tag" content="三维结构">
+    
+      <meta property="article:tag" content="PyMOL">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="//i.loli.net/2020/08/19/U1WRIMO9BFsaYfZ.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/08/19/U1WRIMO9BFsaYfZ.png">
+
+
+  <meta property="og:image" content="//i.loli.net/2020/08/19/eTNq75yOcWHAJvQ.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/08/19/eTNq75yOcWHAJvQ.png">
+
+
+
+
+  <meta property="og:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+  <meta property="twitter:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+
+
+    <title>PyMOL：命令行操作学习笔记</title>
+
+    <link rel="icon" href="https://pengpengyang94.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://pengpengyang94.github.io/2020/08/pymol%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://pengpengyang94.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://pengpengyang94.github.io/">一个慵懒之人的随笔</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://pengpengyang94.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://pengpengyang94.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Ezio</h4>
+        
+          <h5 class="sidebar-profile-bio">学习、记录、变强，最后 <strong>变秃</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder-open"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user-o"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/pengpengyang94" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://space.bilibili.com/87148526" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-caret-square-o-right"></i>
+      
+      <span class="sidebar-button-desc">Bilibili</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.bioinfo.info/?/people/Ezio" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitch"></i>
+      
+      <span class="sidebar-button-desc">Bioinfo</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//i.loli.net/2020/08/19/eTNq75yOcWHAJvQ.png')"
+       data-behavior="5">
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaOut
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      PyMOL：命令行操作学习笔记
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-08-24T15:40:50&#43;08:00">
+        
+  August 24, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://pengpengyang94.github.io/categories/%e8%bd%af%e4%bb%b6%e8%af%b4%e6%98%8e">软件说明</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>　　本文主要记录 <strong>PyMOL</strong> 中的一些命令行操作，<strong>PyMOL</strong> 的主界面虽然有两个输入指令的窗口，但个人认为 <strong>External GUI</strong> 里面的指令输入框更为方便，不仅能查看输入的记录，也能在分离出主界面后放大并置于合适的位置进行命令行操作。另外 <strong>PyMOL</strong> 自带 <code>tab 键</code>补齐的功能，所以 <strong>PyMOL</strong> 对命令行操作还是比较友好的。</p>
+<h2 id="1查看指令的帮助文档help-and-">1.查看指令的帮助文档（<code>help</code> and <code>?</code>）</h2>
+<p>　　下面两种方式都可以查看指令的帮助文档，区别是前者比后者给出的信息更加全面。</p>
+<pre><code>help command
+command ?
+</code></pre><p>　　<strong>PyMOL</strong> 的所有指令都可以通过点击 <code>Help</code> - <code>PyMOL Command Reference</code> 在如下网址中显示。<br>
+PyMOL Command Reference: <a href="http://pymol.org/pymol-command-ref.html">http://pymol.org/pymol-command-ref.html</a></p>
+<h2 id="2查看和切换工作路径pwdcd-and-ls">2.查看和切换工作路径（<code>pwd</code>、<code>cd</code> and <code>ls</code>）</h2>
+<p><code>pwd</code>：查看当前路径<br>
+<code>cd C:/Users/DELL/Desktop/pymol/test</code>：切换到 <strong>test</strong> 文件夹中<br>
+<code>ls</code>：查看当前路径中的文件</p>
+<p>注意：<strong>Windows</strong> 系统中默认的路径中的反斜杠可以使用 <code>/</code> 来替换。</p>
+<h2 id="3下载和载入蛋白结构fetch-and-load">3.下载和载入蛋白结构（<code>fetch</code> and <code>load</code>）</h2>
+<p>　　使用 <code>fetch ID</code> 下载蛋白结构。默认从 <strong>pdb</strong> 网站下载，并且下载完成后自动载入。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fetch <span style="color:#ae81ff">6</span>MVD <span style="color:#75715e"># 下载格式为cif的6MVD的结构</span>
+fetch <span style="color:#ae81ff">6</span>MVD, type<span style="color:#f92672">=</span>pdb <span style="color:#75715e"># 下载格6MVD的结构，但格式指定为pdb</span>
+fetch <span style="color:#ae81ff">6</span>MVD, type<span style="color:#f92672">=</span>pdb, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;6MVD-test&#34;</span> <span style="color:#75715e"># 下载格式为pdb的6MVD的结构，但命名为 6MVD-test</span>
+</code></pre></div><p>　　使用 <code>load filename</code> 载入蛋白结构，其后也可以使用结构对应的 <strong>url</strong> 来下载并载入，所以其同 <code>fetch</code> 的差别在于不能根据 ID 搜索。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">load http:<span style="color:#f92672">//</span>files<span style="color:#f92672">.</span>rcsb<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>download<span style="color:#f92672">/</span><span style="color:#ae81ff">6</span>MVD<span style="color:#f92672">.</span>pdb <span style="color:#75715e"># 从URL下载6MVD后载入</span>
+load <span style="color:#ae81ff">6</span>MVD<span style="color:#f92672">.</span>pdb <span style="color:#75715e"># 载入存在于当前目录下的6MVD.pd</span>
+</code></pre></div><p>注意：虽然两个指令都可以下载结构文件，但是不建议使用 <strong>PyMOL</strong> 来下载。</p>
+<h2 id="4object-的排序隐藏保存和删除orderdisableenabledeletesave-and-remove">4.object 的排序、隐藏、保存和删除（<code>order</code>、<code>disable</code>、<code>enable</code>、<code>delete</code>、<code>save</code> and <code>remove</code>）</h2>
+<p>　　依次载入 <strong>6mvd</strong> 和 <strong>4hbk</strong> 后进行如下操作，同时主要观察对象和显示窗口中 object 的变化：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">order <span style="color:#f92672">*</span>,yes <span style="color:#75715e"># 根据 object 名字进行排序</span>
+order <span style="color:#ae81ff">6</span>mvd <span style="color:#ae81ff">4</span>hbk <span style="color:#75715e"># 根据设定的顺序排序</span>
+disable <span style="color:#ae81ff">6</span>mvd <span style="color:#75715e"># 隐藏 6mvd</span>
+enable <span style="color:#ae81ff">6</span>mvd <span style="color:#75715e"># 显示 6mvd</span>
+delete <span style="color:#ae81ff">6</span>mvd <span style="color:#75715e"># 删除 6mvd</span>
+remove resn hoh <span style="color:#75715e"># 删除水分子，由于并没有删除水分子的选项，此处是基于残基匹配水分子来删除的</span>
+save <span style="color:#ae81ff">4</span>hbk<span style="color:#f92672">.</span>cif <span style="color:#75715e"># 保存 4hbk</span>
+disable all <span style="color:#75715e"># 删除所有object</span>
+load <span style="color:#ae81ff">4</span>hbk<span style="color:#f92672">.</span>cif <span style="color:#75715e"># 载入 4hbk 查看水分子</span>
+</code></pre></div><p>注意：载入多个结构时，由于缩放问题，显示窗口只会显示最后一个载入的结构，这时使用 <code>reset</code> 或 <code>orient</code> 就可以显示载入的所有结构。</p>
+<h2 id="5保存图片相关设置pngray-and-bg_color">5.保存图片相关设置（<code>png</code>、<code>ray</code> and <code>bg_color</code>）</h2>
+<p>使用 <code>png</code>  来输出 <strong>png</strong> 格式的图片，有如下可控参数。<br>
+<code>png filename [, width [, height [, dpi [, ray]]]]</code><br>
+<code>filename</code>：输出图片的名字<br>
+<code>width</code> 和 <code>height</code>：提供 pixels(默认), inches (in) 和 centimeters (cm)三种单位<br>
+<code>dpi</code>：dots-per-inch<br>
+<code>ray</code>：0 或 1，默认为 0，表示不使用，当设置为 1 时，之前需运行 <code>ray</code> 渲染光线</p>
+<p>使用 <code>ray</code>  来制作光线追踪的效果，可以使照片更加美观和真实，具体是否使用根据需求选择。<br>
+<code>ray [width [,height [,antialias [,angle [,shift [,renderer [,quiet[,async ]]]]]]]]]</code><br>
+<code>width</code> 和 <code>height</code>：含义同上<br>
+<code>antialias</code>：抗锯齿，使曲线部分更加平滑<br>
+<code>renderer</code>: 渲染器，提供 -1, 0, 1, or 2 四种模式，分别代表 <code>default</code>, <code>built-in</code>,<code>pov-ray</code>, or <code>dry-run</code>，其中 0 是默认模式。</p>
+<p>　　输出图片的背景一般为白色，可以运行 <code>bg_color white</code> 轻松修改。注意<strong>仅支持</strong>颜色的英文拼写，<strong>不支持</strong> 16 进制或 RGB 格式的颜色，但是<strong>部分支持</strong>颜色通过在字母后加数字来修改颜色的透明度，如 grey30 。</p>
+<p>下面提供几个示例注意输出图片的区别。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">png image1<span style="color:#f92672">.</span>png, width<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>, height<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,dpi<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span>
+png image2<span style="color:#f92672">.</span>png, <span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">1000</span>,dpi<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span>
+ray 
+png image3<span style="color:#f92672">.</span>png, <span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">1000</span>, dpi<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span>, ray<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div><p>　　输出的 3 张图片中 image1 和 image2 完全一样，下图展示 image3 与它们的区别。可以明显看出运行 <code>ray</code> 后输出的图片，具有<strong>阴影</strong>效果，并且曲线部分更加<strong>平滑</strong>，同时<strong>没有背景</strong>，总体感觉右边的比左边的图片更加美观，所以推荐使用。</p>
+<p><img src="https://i.loli.net/2020/08/24/toQwHGITJ2v4rNg.png" alt="pymol-2-1.png"></p>
+<h2 id="6蛋白的展现形式指令show-and-as">6.蛋白的展现形式指令（<code>show</code> and <code>as</code>）</h2>
+<p>　　使用 <code>show</code> 和 <code>as</code> 均可更改蛋白的外观，其用法也相同。 准确的来说 <code>as</code> 是<strong>更改</strong>外观，而 <code>show</code> 是<strong>展示</strong>外观，言外之意就是可以<strong>叠加</strong>多种形式。</p>
+<p><code>as/show representation [, selection ]</code></p>
+<p>　　若不知道 <code>as/show</code> 可以填写什么形式，按一下 <code>tab 键</code>会显示全部可以输入的形式；<code>selection</code> 则是填写选择需要改变的部分，其写法非常多，可以在接着前面补全之后，再按 <code>tab 键</code> 一次，感受一下有啥选项，默认为 <code>all</code>。以之前的两个结构为例，依次运行下面指令并观察所产生的变化。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">load <span style="color:#ae81ff">6</span>mvd<span style="color:#f92672">.</span>pdb
+<span style="color:#66d9ef">as</span> sticks
+show cartoon
+load <span style="color:#ae81ff">4</span>hbk<span style="color:#f92672">.</span>cif
+reset
+show cartoon, <span style="color:#ae81ff">4</span>hbk
+</code></pre></div><h2 id="7设置双键显示及小球大小valence-and-sphere_scale">7.设置双键显示及小球大小（<code>valence</code> and <code>sphere_scale</code>）</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">load <span style="color:#ae81ff">4</span>hbk<span style="color:#f92672">.</span>cif
+<span style="color:#66d9ef">as</span> sticks
+set valence, <span style="color:#ae81ff">0</span>  <span style="color:#75715e">#关闭双键显示</span>
+set valence, <span style="color:#ae81ff">1</span>  <span style="color:#75715e">#开启双键显示</span>
+
+<span style="color:#66d9ef">as</span> sphere
+set sphere_scale, <span style="color:#ae81ff">0.5</span>
+</code></pre></div><h2 id="8cartoon-模式设置cartoon">8.cartoon 模式设置（<code>cartoon</code>）</h2>
+<p>　　可以使用 <code>cartoon type, selection</code> 来设置。<code>type</code> 中内置 10 种方案以供选择，其中 <code>selection</code> 参数说明同上。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">as</span> cartoon
+cartoon loop
+cartoon tube
+cartoon putty
+cartoon automatic 
+</code></pre></div><p>　　其中 <code>automatic</code> 模式中还内置了三种模式（<code>default</code>、<code>Fancy Helices</code> 和 <code>Cylindrical Helices</code>），运行下面命令观察变化。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 开启 Fancy 模式</span>
+set cartoon_fancy_helices, <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e"># 开启 cylindrcal 模式</span>
+set cartoon_cylindrical_helices, <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e"># 设置圆柱的粗细</span>
+set cartoon_helix_radius,<span style="color:#ae81ff">0.9</span>
+set cartoon_helix_radius,<span style="color:#ae81ff">2.5</span>
+</code></pre></div><p>将 <code>Fancy</code> 和 <code>Cylindrical</code> 关闭（后面参数设置为 0），返回 <code>default</code> 模式。</p>
+<p>在 <code>default</code> 模式下还可以设置 <strong>α-helix</strong> 的长宽。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">set cartoon_oval_length, <span style="color:#ae81ff">0.8</span> <span style="color:#75715e"># default is 1.20</span>
+set cartoon_oval_width, <span style="color:#ae81ff">0.2</span> <span style="color:#75715e"># default is 0.25</span>
+</code></pre></div><h2 id="9设置颜色和透明度color-and-transparency">9.设置颜色和透明度（<code>color</code> and <code>transparency</code>）</h2>
+<p>　　使用 <code>color color [, selection ]</code> 来设置颜色。 而透明度一般会用在 <strong>surface</strong> 和 <strong>cartoon</strong> 同时存在的时候置，按照如下指令操作并观察变化，最后通过鼠标旋转可以获得如下图片。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">load <span style="color:#ae81ff">6</span>mvd<span style="color:#f92672">.</span>pdb
+color cyan <span style="color:#75715e"># 修改整体颜色为cyan</span>
+color yellow, chain A <span style="color:#75715e"># 将A链颜色改为yellow</span>
+show cartoon <span style="color:#75715e">#显示cartoon</span>
+show surface <span style="color:#75715e">#显示表面</span>
+hide lines <span style="color:#75715e">#隐藏lines</span>
+set surface_color,green <span style="color:#75715e">#修改surface颜色为green</span>
+set transparency,<span style="color:#ae81ff">0.6</span> <span style="color:#75715e">#设置表面透明度为0.6</span>
+set surface_quality,<span style="color:#ae81ff">1</span> <span style="color:#75715e">#设置表面质量</span>
+</code></pre></div><p><img src="https://i.loli.net/2020/08/24/glzILnsdfZjraVc.png" alt="pymol-2-2.png"></p>
+<h2 id="10选择命令select">10.选择命令（<code>select</code>）</h2>
+<p>　　使用方法为：<code>select name, selection [, enable [, quiet [, merge [, state [, domain ]]]]]</code></p>
+<pre><code>select chA, chain A # 选择A链，命名为chA
+select ( resn HIS ) # 选择HIS
+select near142, resi 142 around 5 # 选择142位附近的5个残基，命名为near142
+select catoms, elem C # 选择所有的碳原子基，命名为catoms
+select protein, (byres polymer &amp; name CA) # 选择蛋白，命名为protein
+select nucleic, (byres polymer &amp; name P) # 选择核酸，命名为nucleic
+select rna, (byres polymer &amp; name O2) # 选择RNA，命名为rna
+select dna, (nucleic &amp; !rna) # 选择DNA，命名为dna
+</code></pre><h2 id="11查看二硫键及删除配体分子5a以外的水分子">11.查看二硫键及删除配体分子5A以外的水分子</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">load <span style="color:#ae81ff">6</span>mvd<span style="color:#f92672">.</span>pdb
+show sticks, (cys<span style="color:#f92672">/</span>ca<span style="color:#f92672">+</span>cb<span style="color:#f92672">+</span>sg) <span style="color:#f92672">and</span> byres (cys<span style="color:#f92672">/</span>sg <span style="color:#f92672">and</span> bound_to cys<span style="color:#f92672">/</span>sg)
+
+load <span style="color:#ae81ff">4</span>hbk<span style="color:#f92672">.</span>cif
+remove resn hoh <span style="color:#f92672">and</span> (resi <span style="color:#ae81ff">307</span> gap <span style="color:#ae81ff">5</span>)
+</code></pre></div><h2 id="12叠合两个object-super-and-align">12.叠合两个object (<code>super</code> and <code>align</code>)</h2>
+<p>　　可以使用<code>super</code> 和 <code>align</code> 进行担保叠合。两者用法基本一致，但针对的叠合的情况有所不同，<code>super</code> 主要基于结构进行叠合，序列相似度<code>较低</code>时效果较好，<code>align</code> 主要基于序列进行叠合，当序列相似性大于 30 % 效果较好。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># super自动叠合4hbk和6mvd</span>
+super <span style="color:#ae81ff">4</span>hbk, <span style="color:#ae81ff">6</span>mvd
+
+<span style="color:#75715e"># 指定4hbk的A链的2-191位残基和6mvd的B链的2-191位残基进行叠合</span>
+super <span style="color:#ae81ff">4</span>hbk <span style="color:#f92672">&amp;</span> resi <span style="color:#ae81ff">2</span><span style="color:#f92672">-</span><span style="color:#ae81ff">191</span> <span style="color:#f92672">&amp;</span> chain A, <span style="color:#ae81ff">6</span>mvd <span style="color:#f92672">&amp;</span> resi <span style="color:#ae81ff">2</span><span style="color:#f92672">-</span><span style="color:#ae81ff">191</span> <span style="color:#f92672">&amp;</span> chain B, object<span style="color:#f92672">=</span>supeAB
+
+<span style="color:#75715e"># align自动叠合4hbk和6mvd</span>
+align <span style="color:#ae81ff">4</span>hbk, <span style="color:#ae81ff">6</span>mvd
+</code></pre></div><hr>
+<p><strong>参考资料：</strong><br>
+<a href="http://pymol.chenzhaoqiang.com/">1.PyMOL中文教程</a><br>
+<a href="http://pymol.org/pymol-command-ref.html">2.PyMOL Command Reference</a><br>
+<a href="https://blog.csdn.net/u012325865/article/details/77489112">3.Pymol（1.8.6）作图技巧之cartoon和surface镶嵌模型</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/%E4%B8%89%E7%BB%B4%E7%BB%93%E6%9E%84/">三维结构</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/pymol/">PyMOL</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/08/pymol%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" data-tooltip="PyMOL：安装及入门笔记">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/08/pymol%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/08/pymol%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/08/pymol%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Ezio. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/08/pymol%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" data-tooltip="PyMOL：安装及入门笔记">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/08/pymol%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/08/pymol%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/08/pymol%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F08%2Fpymol%25E5%2591%25BD%25E4%25BB%25A4%25E8%25A1%258C%25E6%2593%258D%25E4%25BD%259C%25E5%25AD%25A6%25E4%25B9%25A0%25E7%25AC%2594%25E8%25AE%25B0%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F08%2Fpymol%25E5%2591%25BD%25E4%25BB%25A4%25E8%25A1%258C%25E6%2593%258D%25E4%25BD%259C%25E5%25AD%25A6%25E4%25B9%25A0%25E7%25AC%2594%25E8%25AE%25B0%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F08%2Fpymol%25E5%2591%25BD%25E4%25BB%25A4%25E8%25A1%258C%25E6%2593%258D%25E4%25BD%259C%25E5%25AD%25A6%25E4%25B9%25A0%25E7%25AC%2594%25E8%25AE%25B0%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Ezio</h4>
+    
+      <div id="about-card-bio">学习、记录、变强，最后 <strong>变秃</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        生物信息学
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国 云南 昆明
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://pengpengyang94.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://pengpengyang94.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/pengpengyang94.github.io\/2020\/08\/pymol%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/';
+          
+            this.page.identifier = '\/2020\/08\/pymol%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
