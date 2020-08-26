@@ -6,10 +6,28 @@
     <description>Recent content in Tags on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 24 Aug 2020 15:40:50 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2020 15:02:30 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GRN</title>
+      <link>https://pengpengyang94.github.io/tags/grn/</link>
+      <pubDate>Wed, 26 Aug 2020 15:02:30 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/grn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://pengpengyang94.github.io/tags/r/</link>
+      <pubDate>Wed, 26 Aug 2020 15:02:30 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/r/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>PyMOL</title>
@@ -44,15 +62,6 @@
       <pubDate>Wed, 19 Aug 2020 08:48:57 +0800</pubDate>
       
       <guid>https://pengpengyang94.github.io/tags/spark/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>https://pengpengyang94.github.io/tags/r/</link>
-      <pubDate>Thu, 13 Aug 2020 15:20:26 +0800</pubDate>
-      
-      <guid>https://pengpengyang94.github.io/tags/r/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GRN on 一个慵懒之人的随笔</title>
+    <link>https://pengpengyang94.github.io/tags/grn/</link>
+    <description>Recent content in GRN on 一个慵懒之人的随笔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 26 Aug 2020 15:02:30 +0800</lastBuildDate>
+    
+	<atom:link href="https://pengpengyang94.github.io/tags/grn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GENIE3构建GRN</title>
+      <link>https://pengpengyang94.github.io/2020/08/genie3%E6%9E%84%E5%BB%BAgrn/</link>
+      <pubDate>Wed, 26 Aug 2020 15:02:30 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2020/08/genie3%E6%9E%84%E5%BB%BAgrn/</guid>
+      <description>&lt;p&gt;　　主要记录如何使用 GENIE3 构建基因调控网络（GRN）。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
