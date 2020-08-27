@@ -6,10 +6,37 @@
     <description>Recent content in Tags on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 26 Aug 2020 15:02:30 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2020 11:23:19 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>aplot</title>
+      <link>https://pengpengyang94.github.io/tags/aplot/</link>
+      <pubDate>Thu, 27 Aug 2020 11:23:19 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/aplot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://pengpengyang94.github.io/tags/r/</link>
+      <pubDate>Thu, 27 Aug 2020 11:23:19 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>图形拼接</title>
+      <link>https://pengpengyang94.github.io/tags/%E5%9B%BE%E5%BD%A2%E6%8B%BC%E6%8E%A5/</link>
+      <pubDate>Thu, 27 Aug 2020 11:23:19 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/%E5%9B%BE%E5%BD%A2%E6%8B%BC%E6%8E%A5/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>GRN</title>
@@ -17,15 +44,6 @@
       <pubDate>Wed, 26 Aug 2020 15:02:30 +0800</pubDate>
       
       <guid>https://pengpengyang94.github.io/tags/grn/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>https://pengpengyang94.github.io/tags/r/</link>
-      <pubDate>Wed, 26 Aug 2020 15:02:30 +0800</pubDate>
-      
-      <guid>https://pengpengyang94.github.io/tags/r/</guid>
       <description></description>
     </item>
     
@@ -98,15 +116,6 @@
       <pubDate>Sun, 28 Jun 2020 17:00:51 +0800</pubDate>
       
       <guid>https://pengpengyang94.github.io/tags/patchwork/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>图形拼接</title>
-      <link>https://pengpengyang94.github.io/tags/%E5%9B%BE%E5%BD%A2%E6%8B%BC%E6%8E%A5/</link>
-      <pubDate>Sun, 28 Jun 2020 17:00:51 +0800</pubDate>
-      
-      <guid>https://pengpengyang94.github.io/tags/%E5%9B%BE%E5%BD%A2%E6%8B%BC%E6%8E%A5/</guid>
       <description></description>
     </item>
     

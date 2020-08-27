@@ -6,10 +6,20 @@
     <description>Recent content in R on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 26 Aug 2020 15:02:30 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2020 11:23:19 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Aplot拼图</title>
+      <link>https://pengpengyang94.github.io/2020/08/aplot%E6%8B%BC%E5%9B%BE/</link>
+      <pubDate>Thu, 27 Aug 2020 11:23:19 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2020/08/aplot%E6%8B%BC%E5%9B%BE/</guid>
+      <description>&lt;p&gt;　　本文主要记录了对 &lt;strong&gt;aplot&lt;/strong&gt; 包学习的过程，作者原文见参考资料。&lt;br&gt;
+　　&lt;strong&gt;aplot&lt;/strong&gt; 也是一个拼图的 &lt;strong&gt;R&lt;/strong&gt; 包，在对齐图与图之间的坐标轴方面比 &lt;strong&gt;cowplot&lt;/strong&gt; 和 &lt;strong&gt;patchwork&lt;/strong&gt; 更好用。并且其内置有在主图的上下左右插入图片的四个函数，综上来看和 &lt;strong&gt;complexHeatmap&lt;/strong&gt; 比较类似，均是通过对齐坐标来画出各种复杂的图形。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>GENIE3构建GRN</title>
