@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Ezio">
+<meta name="keywords" content="">
+<meta name="description" content="　　本文记录使用 Cartesian_ddG 计算蛋白-配体复合物的单点突变自由能的过程，软件版本为 rosetta_bin_linux_2020.28.61328_bundle。">
+
+
+<meta property="og:description" content="　　本文记录使用 Cartesian_ddG 计算蛋白-配体复合物的单点突变自由能的过程，软件版本为 rosetta_bin_linux_2020.28.61328_bundle。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cartesian_ddG计算蛋白复合物单点突变自由能">
+<meta name="twitter:title" content="Cartesian_ddG计算蛋白复合物单点突变自由能">
+<meta property="og:url" content="https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/">
+<meta property="twitter:url" content="https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/">
+<meta property="og:site_name" content="一个慵懒之人的随笔">
+<meta property="og:description" content="　　本文记录使用 Cartesian_ddG 计算蛋白-配体复合物的单点突变自由能的过程，软件版本为 rosetta_bin_linux_2020.28.61328_bundle。">
+<meta name="twitter:description" content="　　本文记录使用 Cartesian_ddG 计算蛋白-配体复合物的单点突变自由能的过程，软件版本为 rosetta_bin_linux_2020.28.61328_bundle。">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-12-16T18:56:51">
+  
+  
+    <meta property="article:modified_time" content="2020-12-16T18:56:51">
+  
+  
+  
+    
+      <meta property="article:section" content="Rosetta">
+    
+  
+  
+    
+      <meta property="article:tag" content="Rosetta">
+    
+      <meta property="article:tag" content="Cartesian_ddG">
+    
+      <meta property="article:tag" content="∆∆G">
+    
+      <meta property="article:tag" content="蛋白复合物单点突变">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="//i.loli.net/2020/12/16/JHUX7QVAaCo9x42.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/12/16/JHUX7QVAaCo9x42.png">
+
+
+  <meta property="og:image" content="//i.loli.net/2020/12/16/puBraGcWQv8sK71.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/12/16/puBraGcWQv8sK71.png">
+
+
+
+
+  <meta property="og:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+  <meta property="twitter:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+
+
+    <title>Cartesian_ddG计算蛋白复合物单点突变自由能</title>
+
+    <link rel="icon" href="https://pengpengyang94.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://pengpengyang94.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://pengpengyang94.github.io/">一个慵懒之人的随笔</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://pengpengyang94.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://pengpengyang94.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Ezio</h4>
+        
+          <h5 class="sidebar-profile-bio">学习、记录、变强，最后 <strong>变秃</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder-open"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user-o"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/pengpengyang94" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://space.bilibili.com/87148526" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-caret-square-o-right"></i>
+      
+      <span class="sidebar-button-desc">Bilibili</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.bioinfo.info/?/people/Ezio" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitch"></i>
+      
+      <span class="sidebar-button-desc">Bioinfo</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//i.loli.net/2020/12/16/puBraGcWQv8sK71.png')"
+       data-behavior="5">
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaOut
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      Cartesian_ddG计算蛋白复合物单点突变自由能
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-12-16T18:56:51&#43;08:00">
+        
+  December 16, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://pengpengyang94.github.io/categories/rosetta">Rosetta</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>　　本文记录使用 <strong>Cartesian_ddG</strong> 计算蛋白-配体复合物的单点突变自由能的过程，软件版本为 <strong>rosetta_bin_linux_2020.28.61328_bundle</strong>。</p>
+<h2 id="1蛋白-配体复合物预处理">1.蛋白-配体复合物预处理</h2>
+<h3 id="11-分离蛋白和配体分子">1.1 分离蛋白和配体分子</h3>
+<p>根据实际情况进行分离，一般可使用如下指令进行分离。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">grep ^ATOM complex.pdb &gt; pro.pdb
+grep ^HETATM complex.pdb &gt; lig.pdb
+</code></pre></div><p>　　若上面指令不能达到所需效果，另行修改即可，本文在提取分离时所用的指令如下，只分离出 A 链和 A 链所对应的配体。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ROSETTA/main/tools/protein_tools/scripts/clean_pdb.py pro.pdb A
+cat 3v4i.pdb | grep AZT | awk <span style="color:#e6db74">&#39;($4==&#34;A&#34;)&#39;</span> &gt; lig.pdb
+</code></pre></div><h3 id="12-配体分子加氢">1.2 配体分子加氢</h3>
+<p>　　使用 <strong>babel</strong> 对配体分子加氢，并转化为下一步所需的 <strong>mol2</strong> 格式文件，下方指令根据实际情况选择其一即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">babel -h lig.pdb lig.mol2
+obabel lig.pdb -O lig.mol2 -h
+</code></pre></div><h3 id="13-生成小分子拓扑参数文件">1.3 生成小分子拓扑参数文件</h3>
+<p>使用 <strong>lig.mol2</strong> 生成 <strong>Rosetta</strong> 所需要小分子拓扑参数文件。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ROSETTA/main/source/scripts/python/public/molfile_to_params.py -n LIG --extra_torsion_output lig.mol2
+</code></pre></div><h3 id="13-生成新的复合物">1.3 生成新的复合物</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat pro.pdb LIG_0001.pdb &gt; complex.pdb
+</code></pre></div><h2 id="2relax预处理">2.Relax预处理</h2>
+<p>　　进行两步 <strong>relax</strong> 对初始结构进行优化，根据 <code>nstruct</code> 设置的个数判断时长，数目越多所需时间越长。</p>
+<h3 id="21-第一次relax">2.1 第一次<strong>relax</strong></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">relax.static.linuxgccrelease <span style="color:#ae81ff">\</span>
+  -s complex.pdb <span style="color:#ae81ff">\</span>
+  -extra_res_fa LIG.params <span style="color:#ae81ff">\</span>
+  -relax:constrain_relax_to_start_coords <span style="color:#ae81ff">\</span>
+  -ramp_constraints false <span style="color:#ae81ff">\</span>
+  -relax:coord_constrain_sidechains <span style="color:#ae81ff">\</span>
+  -nstruct <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">\</span>
+  -ex1 <span style="color:#ae81ff">\</span>
+  -ex2 <span style="color:#ae81ff">\</span>
+  -use_input_sc <span style="color:#ae81ff">\</span>
+  -flip_HNQ <span style="color:#ae81ff">\</span>
+  -no_optH false
+</code></pre></div><p>将 <strong>score.sc</strong> 文件中 <strong>total_score</strong> 列最小的 <strong>pdb</strong> 作为下一步 <strong>relax</strong> 的输入。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 将第一次的能量最低的pdb文件名存储在relax.log中</span>
+cat score.sc | tail -n +3 | awk <span style="color:#e6db74">&#39;BEGIN {min = 1000} {if ($2 &lt; min) {min=$2 ;pdb=$23} } END {print &#34;min_total_score_pdb: &#34;pdb&#34;.pdb (&#34;min&#34;)&#34;}&#39;</span> &gt; relax.log
+
+<span style="color:#75715e"># 将第一次的能量最低的pdb文件名存储在变量lowest_energy中，以供下步使用</span>
+lowest_energy<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>cat score.sc | tail -n +3 | awk <span style="color:#e6db74">&#39;BEGIN {min = 1000} {if ($2 &lt; min) {min=$2 ;pdb=$23} } END {print pdb&#34;.pdb&#34;}&#39;</span><span style="color:#e6db74">`</span>
+</code></pre></div><h3 id="21-第二次relax">2.1 第二次<strong>relax</strong></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">relax.static.linuxgccrelease <span style="color:#ae81ff">\</span>
+  -s <span style="color:#e6db74">${</span>lowest_energy<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\</span>
+  -extra_res_fa LIG.params <span style="color:#ae81ff">\</span>
+  -score:extra_improper_file LIG.tors <span style="color:#ae81ff">\</span>
+  -relax:constrain_relax_to_start_coords <span style="color:#ae81ff">\</span>
+  -ramp_constraints true <span style="color:#ae81ff">\</span>
+  -relax:coord_constrain_sidechains <span style="color:#ae81ff">\</span>
+  -nstruct <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">\</span>
+  -ex1 <span style="color:#ae81ff">\</span>
+  -ex2 <span style="color:#ae81ff">\</span>
+  -use_input_sc <span style="color:#ae81ff">\</span>
+  -flip_HNQ <span style="color:#ae81ff">\</span>
+  -no_optH false <span style="color:#ae81ff">\</span>
+  -relax:cartesian <span style="color:#ae81ff">\</span>
+  -score:weights ref2015_cart <span style="color:#ae81ff">\</span>
+  -crystal_refine
+</code></pre></div><p>继续将 <strong>score.sc</strong> 文件中 <strong>total_score</strong> 列最小的 <strong>pdb</strong> 作为下一步计算 <strong>∆∆G</strong> 的输入。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 将第二次的能量最低的pdb文件名追加在relax.log中</span>
+cat score.sc | tail -n +3 | awk <span style="color:#e6db74">&#39;BEGIN {min = 1000} {if ($2 &lt; min) {min=$2 ;pdb=$24} } END {print &#34;min_total_score_pdb: &#34;pdb&#34;.pdb (&#34;min&#34;)&#34;}&#39;</span> &gt;&gt; relax.log
+
+<span style="color:#75715e"># 将第二次的能量最低的pdb文件名存储在变量lowest_energy中，以供下步使用</span>
+lowest_energy<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>cat score.sc | tail -n +3 | awk <span style="color:#e6db74">&#39;BEGIN {min = 1000} {if ($2 &lt; min) {min=$2 ;pdb=$24} } END {print pdb&#34;.pdb&#34;}&#39;</span><span style="color:#e6db74">`</span>
+</code></pre></div><p>注意：两步 <strong>relax</strong> 产生的结构打分信息均存储于 <strong>score.sc</strong> 中，但是结构名所在的列数是<strong>不同</strong>的。</p>
+<h2 id="3计算蛋白-配体复合物g">3.计算蛋白-配体复合物<strong>∆∆G</strong></h2>
+<h3 id="31-准备mutfile文件">3.1 准备<strong>mutfile</strong>文件</h3>
+<p>　　官方给出的 <strong>mutfile</strong> 文件示例及说明如下，比较详细。在此稍对第二行的 <code>2</code> 进行说明，此处表示当前轮的突变有 2 个，也就说计算出的 <strong>∆∆G</strong> 是这 2 个突变叠加后的结果，其他以此类推。</p>
+<pre><code>total 3 #this is the total number of mutations being made.
+2 # the number of mutations made
+G 1 A # the wild-type aa, the residue number, and the mutant aa
+W 6 Y # the wild-type aa, the residue number, and the mutant aa
+1 # the number of mutations
+F 10 Y # the wild-type aa, the residue number, and the mutant aa
+</code></pre><p>本次准备四个 <strong>mutfile</strong> 文件，其中一个 <strong>S163T.mutfile</strong> 内容如下。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">total 1
+1
+S <span style="color:#ae81ff">163</span> T
+</code></pre></div><p>将所有 <strong>mutfile</strong> 路径放入 <strong>mutfile.list</strong> 文件中。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ls mutfiles/*.mutfile &gt; mutfile.list
+</code></pre></div><h3 id="32-运行cartesian_ddg">3.2 运行<strong>cartesian_ddg</strong></h3>
+<p>　　使用参考资料2 中的 <code>run_mutations_ddg.py</code> 脚本生成每个突变的 <strong>cartesian_ddg</strong> 指令，并存储在 <strong>job.list</strong> 中。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">run_mutations_ddg.py <span style="color:#ae81ff">\</span>
+  <span style="color:#e6db74">${</span>lowest_energy<span style="color:#e6db74">}</span> mutfile.list <span style="color:#ae81ff">\</span>
+  <span style="color:#f92672">[</span>cartesian_ddg.static.linuxgccrelease<span style="color:#f92672">]</span> <span style="color:#ae81ff">\</span>
+  <span style="color:#f92672">[</span>-extra_res_fa LIG.params<span style="color:#f92672">]</span> <span style="color:#ae81ff">\</span>
+  <span style="color:#f92672">[</span>-score:extra_improper_file LIG.tors<span style="color:#f92672">]</span> &gt; job.list
+</code></pre></div><p>并行运行 <strong>job.list</strong> 中的脚本。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mut_number<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>cat job.list | wc -l<span style="color:#e6db74">`</span>
+cat job.list | parallel -j <span style="color:#e6db74">${</span>mut_number<span style="color:#e6db74">}</span>
+</code></pre></div><h3 id="33-结果处理">3.3 结果处理</h3>
+<p>　　使用<strong>参考资料2</strong> 中的 <code>parse_data_ddg.py</code> 处理 <strong>cartesian_ddg</strong> 的结果，并存储在 <strong>results.txt</strong> 中。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 将所有突变的ddg文件路径存放在list中</span>
+ls *ddg &gt; list
+
+<span style="color:#75715e"># 统计每个突变的结果，并格式化输出</span>
+parse_data_ddg.py | awk <span style="color:#e6db74">&#39;BEGIN {print &#34;Mutation\tΔG_fold\tΔG_bound\tΔΔG\tG_bound\tG_unbound&#34;}{print $1,$2,$3,$4,$5,$6}&#39;</span> OFS<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;\t&#39;</span> &gt; results.txt
+</code></pre></div><p>　　最终结果如下，其中第四列数据的 <strong>ΔΔG</strong> 就是我们所需要的信息，蛋白与小分子之间的结合能变化。</p>
+<table>
+<thead>
+<tr>
+<th align="center">Mutation</th>
+<th align="center">ΔG_fold</th>
+<th align="center">ΔG_bound</th>
+<th align="center">ΔΔG</th>
+<th align="center">G_bound</th>
+<th align="center">G_unbound</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">I136L</td>
+<td align="center">0.62</td>
+<td align="center">0.63</td>
+<td align="center">0.00</td>
+<td align="center">-2631.221</td>
+<td align="center">-2630.595</td>
+</tr>
+<tr>
+<td align="center">I179V</td>
+<td align="center">0.50</td>
+<td align="center">0.49</td>
+<td align="center">-0.02</td>
+<td align="center">-2637.268</td>
+<td align="center">-2636.78</td>
+</tr>
+<tr>
+<td align="center">S163T</td>
+<td align="center">-2.68</td>
+<td align="center">-2.76</td>
+<td align="center">-0.08</td>
+<td align="center">-2634.173</td>
+<td align="center">-2636.934</td>
+</tr>
+<tr>
+<td align="center">K174A</td>
+<td align="center">0.11</td>
+<td align="center">0.10</td>
+<td align="center">-0.01</td>
+<td align="center">-2632.656</td>
+<td align="center">-2632.557</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4脚本修改说明">4.脚本修改说明</h2>
+<p>　　主要使用参考资料2中 <code>run_mutations_ddg.py</code> 和 <code>parse_data_ddg.py</code> 这两个脚本，很不幸的是本次测试时均报错，我的 <strong>python</strong> 版本为 <strong>3.7</strong>，下面记录对应修改的地方。</p>
+<p>① <code>run_mutations_ddg.py</code> 脚本只需将 <strong>19</strong> 行修改为 <code>print(cmd)</code>，即 <code>print</code> 后加上括号，当然也可以根据需求对 <strong>18</strong> 行的 <code>cartesian_ddg</code> 中参数进行修改。<br>
+② <code>parse_data_ddg.py</code> 脚本中除了将 39 行 <code>print</code> 后加上括号外，还需要分别将 <strong>22</strong> 行的<code>BEFORE_JUMP</code> 和 <strong>27</strong> 行的 <code>AFTER_JUMP</code> 分别改为 <code>COMPLEX</code> 和 <code>OPT_APART</code> 即可。</p>
+<p><code>parse_data_ddg.py</code> 进行上述修改是基于<strong>参考资料4</strong> 和该脚本中的注释信息来确定的。<br>
+脚本中可获得如下对应信息：<br>
+<strong>WT</strong> &ndash; <strong>mono</strong> WT &ndash; <strong>AFTER_JUMP</strong><br>
+MUT &ndash; mono MUT &ndash; AFTER_JUMP<br>
+<strong>B_WT</strong> &ndash; <strong>bind</strong> WT &ndash;<strong>BEFORE_JUMP</strong><br>
+B_MUT &ndash; bind MUT &ndash; BEFORE_JUMP</p>
+<p><strong>参考资料4</strong> 中可获得如下信息：<br>
+<strong>ddG_bind</strong> = avrg(<strong>COMPLEX</strong> MUT totalscore) - avrg(<strong>COMPLEX</strong> WT totalscore)<br>
+<strong>ddG_mono</strong> = avrg(<strong>OPT_APART</strong> MUT totalscore) - avrg(<strong>OPT_APAR</strong>T WT totalscore)</p>
+<p>由此可知，<strong>BEFORE_JUMP</strong> 对应  <strong>COMPLEX</strong>，<strong>AFTER_JUMP</strong> 对应 OPT_APART。</p>
+<h2 id="5相关报错处理">5.相关报错处理</h2>
+<p>　　第三步的 <strong>cartesian_ddg</strong> 中出现如下报错信息，这是由于 <strong>mutfile</strong> 文件中记录的野生型碱基同输入蛋白的结构中对应位置的碱基不一致造成的。</p>
+<pre><code>ERROR: Assertion `pose.residue(resnum).name1() == wt` failed.
+</code></pre><p>官方链接 (<a href="https://www.rosettacommons.org/node/3443">https://www.rosettacommons.org/node/3443</a>) 中给出了如下解释和解决方案。</p>
+<blockquote>
+<p>Your test.pdb has zero occupancies for chain A residue 1 atoms. By default, Rosetta discards atoms with zero occupancies. The loaded pose will therefore not have a chain A residue 1 atom. This will cause the resfile reader to throw an error when you try to specify that residue, and other portions of the code will have issues if there are sequence mismatches.<br>
+There&rsquo;s two ways of fixing it. The first is to edit the PDB file to place a value of 1.00 in the occupacy column. The second is to pass the flag &ldquo;-ignore_zero_occupancy false&rdquo; to the commandline, telling Rosetta that it shouldn&rsquo;t ignore atoms with zero occupancy.</p>
+</blockquote>
+<h2 id="6整体流程总结">6.整体流程总结</h2>
+<p>　　整体流程可以分为两部分。第一部分为文件准备，包括蛋白-配体复合物预处理和准备 <strong>mutfile</strong> 文件；第二部分为 <strong>Relax</strong> 预处理和 运行<strong>cartesian_ddg</strong>。其中前一部分较为灵活需要修改，而第二部分只需根据需求修改相应参数即可。</p>
+<hr>
+<p><strong>参考资料：</strong><br>
+<a href="https://zhuanlan.zhihu.com/p/65451836">1.Cartesian_ddG: 更快更准确的单点突变自由能预测方法</a><br>
+<a href="https://github.com/wendao/CAGE-Prox">2.Computer Aided and Genetically Encoded PROXimal decaging (CAGE-Prox)</a><br>
+<a href="https://www.rosettacommons.org/demos/latest/public/calculate_protein_protein_ddg/README">3.Calculate Protein Protein ΔΔG</a><br>
+<a href="https://www.rosettacommons.org/docs/latest/cartesian-ddG">4.cartesian_ddg application</a><br>
+<a href="https://zhuanlan.zhihu.com/rosettastudy">5.Rosetta研习社</a><br>
+<a href="https://www.rosettacommons.org/demos/latest/Home#tutorials">6.Rosetta Tutorials, Demos, and Protocol Captures</a><br>
+<a href="https://www.rosettacommons.org/docs/latest/getting_started/Getting-Started">7.Getting started</a><br>
+<a href="https://www.rosettacommons.org/demos/latest/tutorials/prepare_ligand/prepare_ligand_tutorial">8.Preparing Ligands</a><br>
+<a href="https://www.rosettacommons.org/demos/latest/tutorials/ligand_docking/ligand_docking_tutorial">9.Ligand Docking</a><br>
+<a href="https://www.rosettacommons.org/docs/latest/rosetta_basics/preparation/preparing-structures">10.How to prepare structures for use in Rosetta</a><br>
+<a href="https://www.rosettacommons.org/docs/latest/application_documentation/analysis/ddg-monomer">11.ddg_monomer application</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/rosetta/">Rosetta</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/cartesian_ddg/">Cartesian_ddG</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/g/">∆∆G</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98/">蛋白复合物单点突变</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/12/ubantu-%E5%AE%89%E8%A3%85-rosetta/" data-tooltip="Ubantu 安装 Rosetta">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Ezio. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/12/ubantu-%E5%AE%89%E8%A3%85-rosetta/" data-tooltip="Ubantu 安装 Rosetta">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F12%2Fcartesian_ddg%25E8%25AE%25A1%25E7%25AE%2597%25E8%259B%258B%25E7%2599%25BD%25E5%25A4%258D%25E5%2590%2588%25E7%2589%25A9%25E5%258D%2595%25E7%2582%25B9%25E7%25AA%2581%25E5%258F%2598%25E8%2587%25AA%25E7%2594%25B1%25E8%2583%25BD%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F12%2Fcartesian_ddg%25E8%25AE%25A1%25E7%25AE%2597%25E8%259B%258B%25E7%2599%25BD%25E5%25A4%258D%25E5%2590%2588%25E7%2589%25A9%25E5%258D%2595%25E7%2582%25B9%25E7%25AA%2581%25E5%258F%2598%25E8%2587%25AA%25E7%2594%25B1%25E8%2583%25BD%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F12%2Fcartesian_ddg%25E8%25AE%25A1%25E7%25AE%2597%25E8%259B%258B%25E7%2599%25BD%25E5%25A4%258D%25E5%2590%2588%25E7%2589%25A9%25E5%258D%2595%25E7%2582%25B9%25E7%25AA%2581%25E5%258F%2598%25E8%2587%25AA%25E7%2594%25B1%25E8%2583%25BD%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Ezio</h4>
+    
+      <div id="about-card-bio">学习、记录、变强，最后 <strong>变秃</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        生物信息学
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国 云南 昆明
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://pengpengyang94.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://pengpengyang94.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/pengpengyang94.github.io\/2020\/12\/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD\/';
+          
+            this.page.identifier = '\/2020\/12\/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

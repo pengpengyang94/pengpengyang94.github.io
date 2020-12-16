@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Ezio">
+<meta name="keywords" content="">
+<meta name="description" content="　　本文记录为了计算突变对复合物自由能的影响而安装 Rosetta 及其他使用到的软件的过程。">
+
+
+<meta property="og:description" content="　　本文记录为了计算突变对复合物自由能的影响而安装 Rosetta 及其他使用到的软件的过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubantu 安装 Rosetta">
+<meta name="twitter:title" content="Ubantu 安装 Rosetta">
+<meta property="og:url" content="https://pengpengyang94.github.io/2020/12/ubantu-%E5%AE%89%E8%A3%85-rosetta/">
+<meta property="twitter:url" content="https://pengpengyang94.github.io/2020/12/ubantu-%E5%AE%89%E8%A3%85-rosetta/">
+<meta property="og:site_name" content="一个慵懒之人的随笔">
+<meta property="og:description" content="　　本文记录为了计算突变对复合物自由能的影响而安装 Rosetta 及其他使用到的软件的过程。">
+<meta name="twitter:description" content="　　本文记录为了计算突变对复合物自由能的影响而安装 Rosetta 及其他使用到的软件的过程。">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-12-16T18:53:55">
+  
+  
+    <meta property="article:modified_time" content="2020-12-16T18:53:55">
+  
+  
+  
+    
+      <meta property="article:section" content="Rosetta">
+    
+  
+  
+    
+      <meta property="article:tag" content="Rosetta">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="//i.loli.net/2020/12/16/pK2HOXh9ZxATbYI.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/12/16/pK2HOXh9ZxATbYI.png">
+
+
+  <meta property="og:image" content="//i.loli.net/2020/12/16/M75EbAKIVTGQzLR.png">
+  <meta property="twitter:image" content="//i.loli.net/2020/12/16/M75EbAKIVTGQzLR.png">
+
+
+
+
+  <meta property="og:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+  <meta property="twitter:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+
+
+    <title>Ubantu 安装 Rosetta</title>
+
+    <link rel="icon" href="https://pengpengyang94.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://pengpengyang94.github.io/2020/12/ubantu-%E5%AE%89%E8%A3%85-rosetta/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://pengpengyang94.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://pengpengyang94.github.io/">一个慵懒之人的随笔</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://pengpengyang94.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://pengpengyang94.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Ezio</h4>
+        
+          <h5 class="sidebar-profile-bio">学习、记录、变强，最后 <strong>变秃</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder-open"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user-o"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/pengpengyang94" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://space.bilibili.com/87148526" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-caret-square-o-right"></i>
+      
+      <span class="sidebar-button-desc">Bilibili</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.bioinfo.info/?/people/Ezio" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitch"></i>
+      
+      <span class="sidebar-button-desc">Bioinfo</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//i.loli.net/2020/12/16/M75EbAKIVTGQzLR.png')"
+       data-behavior="5">
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaOut
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      Ubantu 安装 Rosetta
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-12-16T18:53:55&#43;08:00">
+        
+  December 16, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://pengpengyang94.github.io/categories/rosetta">Rosetta</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>　　本文记录为了计算突变对复合物自由能的影响而安装 <strong>Rosetta</strong> 及其他使用到的软件的过程。</p>
+<h2 id="1-下载-rosetta">1 下载 <strong>Rosetta</strong></h2>
+<p>　　<strong>Rosetta</strong> 需要购买（<strong>学术版免费</strong>），整个下载的过程类似于在网上购买电子书，注册账户-购买权限-获取下载链接和登录的账户密码。</p>
+<p>① 点击下方链接出现下图所示界面，再点击下方左边红圈中的 <strong>Start Here</strong><br>
+<strong>URL:</strong> <a href="https://www.rosettacommons.org/software/license-and-download">https://www.rosettacommons.org/software/license-and-download</a></p>
+<p><img src="https://i.loli.net/2020/12/16/XL5UKuVQjtEgbCc.png" alt="Rosetta_1.png"></p>
+<p>② 跳转至如下界面，可以先点击 上方红框中的 <strong>Register</strong>，注册成功之后再点击 <strong>ORDER NOW</strong> 来购买；也可以直接点击 <strong>ORDER NOW</strong>，在没有登录的情况下会强制拉去注册。注册就是填下相关信息后去邮箱里面复制激活码，最后再设置一下账户密码。</p>
+<p><img src="https://i.loli.net/2020/12/16/X5pIwdnm4697LjS.png" alt="Rosetta_2.png"></p>
+<p>③ 订单提交后会出现包含下面信息的界面，这些信息建议保存，该界面提供了相应 <strong>pdf</strong> 文件的下载。</p>
+<p><img src="https://i.loli.net/2020/12/16/W61tw75STLJZK4u.png" alt="Rosetta_3.png"></p>
+<p>④ 用浏览器打开上方 <strong>URL</strong> 后的链接，需要输入上方的 Username 和 <strong>Password</strong> 才能进入下面的软件版本选择界面。里面可选择 <strong>Last Numbered Release</strong> 和 <strong>Weekly Releases</strong> 两种版本，其中 <strong>Weekly Releases</strong> 顾名思义，就是每周修复已知 <strong>bug</strong> 的版本，因此发布的次数较多并且时间较新，两种版本按需选择即可，本次选择的是 <strong>Rosetta 2020.46</strong> 版本。</p>
+<p><img src="https://i.loli.net/2020/12/16/JOHZbXREuTDecja.png" alt="Rosetta_4.png"></p>
+<p>⑤ 点击上图中下方的红框即可进入最终的下载界面。本次下载的是 <strong>Rosetta 2020.46 source</strong> 源码版本，同时也下载了 300 M 大小的 <strong>Rosetta 2020.46 Online User Guide</strong>。由于文件都比较大，<strong>强烈建议进行 MD5 校验</strong>，校验码在 <strong>MD5 checksum of all files</strong> 中。</p>
+<p><img src="https://i.loli.net/2020/12/16/SWxuEpcezkbVJh3.png" alt="Rosetta_5.png"></p>
+<h2 id="2-下载安装-scons">2 下载安装 <strong>SCons</strong></h2>
+<p>　　由于 <strong>Rosetta</strong> 推荐使用 <strong>SCons</strong> 来编译，所以在下载 <strong>Rosetta</strong> 的过程中可以来安装 SCons，下方链接为 <strong>SCons</strong> 的下载界面。</p>
+<p><strong>SCons Download page</strong>: <a href="https://scons.org/pages/download.html">https://scons.org/pages/download.html</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget https://nchc.dl.sourceforge.net/project/scons/scons/4.0.0/scons-4.0.0.tar.gz
+tar -zxvf scons-4.0.0.tar.gz
+cd SCons-4.0.0
+python setup.py install
+scons --help
+</code></pre></div><p>注意安装 <strong>SCons</strong> 要求 <strong>python3</strong> !</p>
+<h2 id="3-安装-openbabel">3 安装 <strong>openbabel</strong></h2>
+<p>　　等待下载 <strong>Rosetta</strong> 时，顺便把后面需要用到的 <strong>pdb</strong> 转 <strong>mol2</strong> 的软件也装上，只想装 <strong>Rosetta</strong> 的自行略过。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mamba install openbabel
+conda install openbabel
+</code></pre></div><p>喜欢源码安装的见<strong>参考资料4</strong>。</p>
+<h2 id="4-安装-rosetta">4 安装 <strong>Rosetta</strong></h2>
+<p>　　首先配置环境变量，其中 <code>ROSETTA</code> 后面接 <strong>rosetta_src_2020.46.61480_bundle.tgz</strong> 解压后的路径，其余则不用修改，然后直接复制到 <code>~/.bashrc</code> 中再 <code>source</code> 即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#Rosetta</span>
+export ROSETTA<span style="color:#f92672">=</span>/data/yangpp/soft/rosetta_src_2020.46.61480_bundle
+export ROSETTA3_DB<span style="color:#f92672">=</span>$ROSETTA/main/database
+export ROSETTA_BIN<span style="color:#f92672">=</span>$ROSETTA/main/source/bin
+export PATH<span style="color:#f92672">=</span>$PATH:$ROSETTA_BIN
+export LD_LIBRARY_PATH<span style="color:#f92672">=</span>$ROSETTA/main/source/bin:$LD_LIBRARY_PATH
+</code></pre></div><p>配置好环境变量后，正式开始安装，步骤如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># download and unzip</span>
+wget https://www.rosettacommons.org/download.php?token<span style="color:#f92672">=</span>a64t4Q78m&amp;file<span style="color:#f92672">=</span>rosetta_src_2020.46.61480_bundle.tgz
+tar -zxvf rosetta_src_2020.46.61480_bundle.tgz
+cd rosetta_src_2020.46.61480_bundle/main/source
+
+<span style="color:#75715e"># install release</span>
+scons -j40 mode<span style="color:#f92672">=</span>release bin
+
+<span style="color:#75715e"># test release</span>
+./test/run.py -j <span style="color:#ae81ff">40</span> --one
+</code></pre></div><p>注意：<br>
+① <code>scons</code> 后的 <code>-j</code> 设置调用的线程数，本次调用 <strong>40</strong> 个线程大概用了 <strong>10</strong> 分钟才编译完，也就是说<strong>单线程</strong>的话需要 <strong>400 分钟</strong>才能结束，还是挺慢的，条件允许的情况下尽量多给点线程。<br>
+② <code>scons</code> 默认调用 <strong>GCC</strong> 编译，也可以用 CLang 编译，后面添加 <code>cxx=clang</code> 即可。所以在安装 Rosetta 之前可以用 <code>g++ --version</code> 和 <code>clang --version</code> 来检查系统中是否装有 <strong>GCC</strong> 或 <strong>CLang</strong>，本次检查中，系统中只有 <strong>GCC</strong> 故采用上面指令进行安装。<br>
+③ 最后一步 <strong>test</strong> 运行结束出现 <strong>All tests passed</strong> 则表示成功。</p>
+<p>　　至此安装完成，由于本次安装并没有出现任何报错，所以并未记录报错的解决方法，若出现报错，可查阅<strong>参考资料3</strong> 和<strong>参考资料6</strong> 进行处理。</p>
+<h2 id="5-rosetta-指令的命名方式">5 <strong>Rosetta</strong> 指令的命名方式</h2>
+<p>　　最后需有必要对 <strong>Rosetta</strong> 指令的命名方式做一些说明，因为名字会随着不同的安装方式而改变!!!</p>
+<p>下方以 <code>antibody</code> 指令为例，可以按照 <code>.</code> 来划分为三部分，不同编译方式的名字是不一样的：<br>
+<code>antibody.default.linuxgccrelease</code>：本次编译的结果，中间部分为 <strong>default</strong> 是因为采用默认参数编译的，后面部分可以明显的知道这是 <strong>linux</strong> 系统上用 <strong>GCC</strong> 编译的版本。<br>
+<code>antibody.mpi.linuxgccrelease</code>：中间部分为 <strong>mpi</strong> 是由于运行 <code>scons</code> 时后面加了 <code>extras=mpi</code>。<br>
+<code>antibody.mpi.linuxclangrelease</code>：这个与上个的不同点是用 <strong>CLang</strong> 编译的。<br>
+<code>antibody.static.linuxgccrelease</code>：这个是下载的安装包不同，用的是 <strong>rosetta_bin_linux_2020.46.61480_bundle</strong>，所以中间部分为 <strong>static</strong>。</p>
+<hr>
+<p><strong>参考资料：</strong><br>
+<a href="https://www.rosettacommons.org/software/license-and-download">1.Rosetta download</a><br>
+<a href="https://www.rosettacommons.org/docs/latest/getting_started/Getting-Started">2.Getting started</a><br>
+<a href="https://www.rosettacommons.org/docs/latest/build_documentation/Build-Documentation#dependencies">3.Setting up Rosetta 3</a><br>
+<a href="https://open-babel.readthedocs.io/en/latest/Installation/install.html">4.Install Open Babel</a><br>
+<a href="https://open-babel.readthedocs.io/en/latest/Command-line_tools/babel.html">5.Open Babel 3.0.1 documentation</a><br>
+<a href="https://zhuanlan.zhihu.com/p/58384830">6.CentOS7配置Rosetta安装教程</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/rosetta/">Rosetta</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/" data-tooltip="Cartesian_ddG计算蛋白复合物单点突变自由能">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/12/%E4%BD%BF%E7%94%A8-autodock-vina-%E8%BF%9B%E8%A1%8C%E5%88%86%E5%AD%90%E5%AF%B9%E6%8E%A5/" data-tooltip="使用 AutoDock Vina 进行分子对接">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/12/ubantu-%E5%AE%89%E8%A3%85-rosetta/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/12/ubantu-%E5%AE%89%E8%A3%85-rosetta/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/12/ubantu-%E5%AE%89%E8%A3%85-rosetta/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Ezio. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/" data-tooltip="Cartesian_ddG计算蛋白复合物单点突变自由能">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/12/%E4%BD%BF%E7%94%A8-autodock-vina-%E8%BF%9B%E8%A1%8C%E5%88%86%E5%AD%90%E5%AF%B9%E6%8E%A5/" data-tooltip="使用 AutoDock Vina 进行分子对接">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2020/12/ubantu-%E5%AE%89%E8%A3%85-rosetta/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2020/12/ubantu-%E5%AE%89%E8%A3%85-rosetta/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2020/12/ubantu-%E5%AE%89%E8%A3%85-rosetta/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F12%2Fubantu-%25E5%25AE%2589%25E8%25A3%2585-rosetta%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F12%2Fubantu-%25E5%25AE%2589%25E8%25A3%2585-rosetta%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fpengpengyang94.github.io%2F2020%2F12%2Fubantu-%25E5%25AE%2589%25E8%25A3%2585-rosetta%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Ezio</h4>
+    
+      <div id="about-card-bio">学习、记录、变强，最后 <strong>变秃</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        生物信息学
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国 云南 昆明
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://pengpengyang94.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://pengpengyang94.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/pengpengyang94.github.io\/2020\/12\/ubantu-%E5%AE%89%E8%A3%85-rosetta\/';
+          
+            this.page.identifier = '\/2020\/12\/ubantu-%E5%AE%89%E8%A3%85-rosetta\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

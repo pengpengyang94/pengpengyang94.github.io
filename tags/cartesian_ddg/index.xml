@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cartesian_ddG on 一个慵懒之人的随笔</title>
+    <link>https://pengpengyang94.github.io/tags/cartesian_ddg/</link>
+    <description>Recent content in Cartesian_ddG on 一个慵懒之人的随笔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 16 Dec 2020 18:56:51 +0800</lastBuildDate>
+    
+	<atom:link href="https://pengpengyang94.github.io/tags/cartesian_ddg/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cartesian_ddG计算蛋白复合物单点突变自由能</title>
+      <link>https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/</link>
+      <pubDate>Wed, 16 Dec 2020 18:56:51 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/</guid>
+      <description>&lt;p&gt;　　本文记录使用 &lt;strong&gt;Cartesian_ddG&lt;/strong&gt; 计算蛋白-配体复合物的单点突变自由能的过程，软件版本为 &lt;strong&gt;rosetta_bin_linux_2020.28.61328_bundle&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
