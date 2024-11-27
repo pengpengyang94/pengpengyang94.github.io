@@ -6,10 +6,19 @@
     <description>Recent content on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 16 Dec 2020 18:56:51 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Nov 2024 12:50:04 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ubantu配置HDF5</title>
+      <link>https://pengpengyang94.github.io/2024/11/ubantu%E9%85%8D%E7%BD%AEhdf5/</link>
+      <pubDate>Wed, 27 Nov 2024 12:50:04 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2024/11/ubantu%E9%85%8D%E7%BD%AEhdf5/</guid>
+      <description>&lt;p&gt;　　本文记录了 Ubuntu 和 HDF5 版本不匹配所导致的问题和解决方法。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Cartesian_ddG计算蛋白复合物单点突变自由能</title>

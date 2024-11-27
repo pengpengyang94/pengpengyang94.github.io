@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubantu on 一个慵懒之人的随笔</title>
+    <link>https://pengpengyang94.github.io/tags/ubantu/</link>
+    <description>Recent content in Ubantu on 一个慵懒之人的随笔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 27 Nov 2024 12:50:04 +0800</lastBuildDate>
+    
+	<atom:link href="https://pengpengyang94.github.io/tags/ubantu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ubantu配置HDF5</title>
+      <link>https://pengpengyang94.github.io/2024/11/ubantu%E9%85%8D%E7%BD%AEhdf5/</link>
+      <pubDate>Wed, 27 Nov 2024 12:50:04 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/2024/11/ubantu%E9%85%8D%E7%BD%AEhdf5/</guid>
+      <description>&lt;p&gt;　　本文记录了 Ubuntu 和 HDF5 版本不匹配所导致的问题和解决方法。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

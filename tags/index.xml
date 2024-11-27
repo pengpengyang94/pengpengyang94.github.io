@@ -6,10 +6,28 @@
     <description>Recent content in Tags on 一个慵懒之人的随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 16 Dec 2020 18:56:51 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Nov 2024 12:50:04 +0800</lastBuildDate>
     
 	<atom:link href="https://pengpengyang94.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HDF5</title>
+      <link>https://pengpengyang94.github.io/tags/hdf5/</link>
+      <pubDate>Wed, 27 Nov 2024 12:50:04 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/hdf5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubantu</title>
+      <link>https://pengpengyang94.github.io/tags/ubantu/</link>
+      <pubDate>Wed, 27 Nov 2024 12:50:04 +0800</pubDate>
+      
+      <guid>https://pengpengyang94.github.io/tags/ubantu/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Cartesian_ddG</title>

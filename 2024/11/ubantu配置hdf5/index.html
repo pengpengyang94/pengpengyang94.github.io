@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Ezio">
+<meta name="keywords" content="">
+<meta name="description" content="　　本文记录了 Ubuntu 和 HDF5 版本不匹配所导致的问题和解决方法。">
+
+
+<meta property="og:description" content="　　本文记录了 Ubuntu 和 HDF5 版本不匹配所导致的问题和解决方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubantu配置HDF5">
+<meta name="twitter:title" content="Ubantu配置HDF5">
+<meta property="og:url" content="https://pengpengyang94.github.io/2024/11/ubantu%E9%85%8D%E7%BD%AEhdf5/">
+<meta property="twitter:url" content="https://pengpengyang94.github.io/2024/11/ubantu%E9%85%8D%E7%BD%AEhdf5/">
+<meta property="og:site_name" content="一个慵懒之人的随笔">
+<meta property="og:description" content="　　本文记录了 Ubuntu 和 HDF5 版本不匹配所导致的问题和解决方法。">
+<meta name="twitter:description" content="　　本文记录了 Ubuntu 和 HDF5 版本不匹配所导致的问题和解决方法。">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2024-11-27T12:50:04">
+  
+  
+    <meta property="article:modified_time" content="2024-11-27T12:50:04">
+  
+  
+  
+    
+      <meta property="article:section" content="软件设置">
+    
+  
+  
+    
+      <meta property="article:tag" content="HDF5">
+    
+      <meta property="article:tag" content="Ubantu">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="//s2.loli.net/2024/11/27/BjTY19OfQpLDwGE.jpg">
+  <meta property="twitter:image" content="//s2.loli.net/2024/11/27/BjTY19OfQpLDwGE.jpg">
+
+
+  <meta property="og:image" content="//s2.loli.net/2024/11/27/wUWvVRXrgFbZIBp.jpg">
+  <meta property="twitter:image" content="//s2.loli.net/2024/11/27/wUWvVRXrgFbZIBp.jpg">
+
+
+
+
+  <meta property="og:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+  <meta property="twitter:image" content="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg">
+
+
+    <title>Ubantu配置HDF5</title>
+
+    <link rel="icon" href="https://pengpengyang94.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://pengpengyang94.github.io/2024/11/ubantu%E9%85%8D%E7%BD%AEhdf5/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://pengpengyang94.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://pengpengyang94.github.io/">一个慵懒之人的随笔</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://pengpengyang94.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://pengpengyang94.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Ezio</h4>
+        
+          <h5 class="sidebar-profile-bio">学习、记录、变强，最后 <strong>变秃</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder-open"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user-o"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/pengpengyang94" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://space.bilibili.com/87148526" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-caret-square-o-right"></i>
+      
+      <span class="sidebar-button-desc">Bilibili</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.bioinfo.info/?/people/Ezio" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitch"></i>
+      
+      <span class="sidebar-button-desc">Bioinfo</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://pengpengyang94.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//s2.loli.net/2024/11/27/wUWvVRXrgFbZIBp.jpg')"
+       data-behavior="5">
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaOut
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      Ubantu配置HDF5
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2024-11-27T12:50:04&#43;08:00">
+        
+  November 27, 2024
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://pengpengyang94.github.io/categories/%e8%bd%af%e4%bb%b6%e8%ae%be%e7%bd%ae">软件设置</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>　　本文记录了 Ubuntu 和 HDF5 版本不匹配所导致的问题和解决方法。</p>
+<p>Ubantu 中配置 HDF5，在大部分情况下只需运行下面指令即可完成。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get update
+sudo apt-get install libhdf5-dev
+sudo apt-get install libhdf5-serial-dev
+</code></pre></div><p>　　但是当 Ubantu 的版本和 HDF5 版本不匹配的时候，虽然运行上面指令，任然可以完成安装，但是当某些程序调用时，就会出现各种稀奇古怪的报错，这些报错几乎在 google 上搜不到，扰乱解决报错的方向。它们之间的版本对应关系可以参考下面网址。<br>
+HDF5 vulnerabilities: <a href="https://ubuntu.com/security/notices/USN-5272-1">https://ubuntu.com/security/notices/USN-5272-1</a></p>
+<table>
+<thead>
+<tr>
+<th align="center">Ubantu</th>
+<th align="center">HDF5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">20.04</td>
+<td align="center">1.10.4</td>
+</tr>
+<tr>
+<td align="center">18.04</td>
+<td align="center">1.10.0</td>
+</tr>
+<tr>
+<td align="center">16.04</td>
+<td align="center">1.8.16</td>
+</tr>
+<tr>
+<td align="center">14.04</td>
+<td align="center">1.8.11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-手动对-hdf5-进行版本降级">1 手动对 HDF5 进行版本降级</h2>
+<p>　　本次是在 <strong>Ubuntu 18.04.6</strong> 上发现报错的，其中 HDF5 版本为 <strong>1.10.4</strong>，所以需要把 HDF5 降级为 <strong>1.10.0</strong>。由于 <code>apt-get</code> 并不能像 <code>pip</code> 一样，可以在安装的时候指定所需版本，所以需要先把之前的卸载干净后，再本地安装 1.10.0 版本的 HDF5 即可，具体操作参考下面代码。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">## 1 卸载 HDF5</span>
+sudo apt-get remove libhdf5-dev
+sudo apt-get remove libhdf5-serial-dev
+<span style="color:#75715e"># HDF5 1.10.4 对应的是 libhdf5-103，根据实际情况灵活变动</span>
+sudo apt-get remove libhdf5-103 
+<span style="color:#75715e"># 有时运行上面代码，卸载失败或卸载完后，会提示运行下面代码，需要运行之后，再继续失败或下一步指令</span>
+sudo apt --fix-broken install
+sudo apt-get autoremove
+</code></pre></div><p>　　卸载干净与否可以在运行 <code>ls /usr/lib/x86_64-linux-gnu/ | grep libhdf5_serial</code> 后，查看是否有输出来判断，如果没有任何输出则表示卸载干净，如果有下面输出则表示还需要卸载。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">libhdf5_serial.a
+libhdf5_serial_fortran.a
+libhdf5_serial_fortran.so -&gt; libhdf5_serial_fortran.so.100.1.2
+libhdf5_serial_fortran.so.100 -&gt; libhdf5_serial_fortran.so.100.1.2
+libhdf5_serial_fortran.so.100.1.2
+libhdf5_serial_hl.a
+libhdf5_serialhl_fortran.a
+libhdf5_serialhl_fortran.so -&gt; libhdf5_serialhl_fortran.so.100.0.3
+libhdf5_serialhl_fortran.so.100 -&gt; libhdf5_serialhl_fortran.so.100.0.3
+libhdf5_serialhl_fortran.so.100.0.3
+libhdf5_serial_hl.so -&gt; libhdf5_serial_hl.so.100.1.1
+libhdf5_serial_hl.so.100 -&gt; libhdf5_serial_hl.so.100.1.1
+libhdf5_serial_hl.so.100.1.1
+libhdf5_serial.settings
+libhdf5_serial.so -&gt; libhdf5_serial.so.103.0.0
+libhdf5_serial.so.103 -&gt; libhdf5_serial.so.103.0.0
+libhdf5_serial.so.103.0.0
+</code></pre></div><p>Tips：</p>
+<ol>
+<li>考资料1中提到，可以运行 <code>sudo ln -s /usr/lib/x86_64-linux-gnu/libhdf5_serial.so.103 /usr/lib/x86_64-linux-gnu/libhdf5_serial.so.100</code>，从而手动创建一个实际为 <code>libhdf5_serial.so.103</code> 的 <code>libhdf5_serial.so.100</code> 的软连接，来消除 <code>libhdf5_serial.so.100</code> 无法找到的报错，但是还会有新的更加奇怪的报错出现。不过有的缺少库的报错是因为安装位置的原因，完全可以使用这种设置软连接的方式解决。</li>
+<li><code>libhdf5_serial.so.103</code> 的路径并不一定和本文记录的一致，可以通过运行 <code>sudo find / -type f -name &quot;libhdf5_hl.so*&quot;</code> 来确定。</li>
+<li>一定要看完运行输出的文字，根据提示灵活变动。</li>
+</ol>
+<p>　　把之前的 HDF5 完全清理后，就需要手动本地安装对应版本的 HDF5，本次是下载 deb 文件进行安装，下载链接如下，因为存在依赖关系，所以需要<strong>依次</strong>运行下面代码。<br>
+hdf5 package in Ubuntu: <a href="https://launchpad.net/ubuntu/+source/hdf5">https://launchpad.net/ubuntu/+source/hdf5</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">## 2 本地安装 HDF5</span>
+sudo dpkg -i ./hdf5-helpers_1.10.0-patch1+docs-4_amd64.deb
+sudo dpkg -i ./libhdf5-100_1.10.0-patch1+docs-4_amd64.deb
+sudo dpkg -i ./libhdf5-cpp-100_1.10.0-patch1+docs-4_amd64.deb
+sudo apt-get install libaec-dev
+sudo dpkg -i ./libhdf5-dev_1.10.0-patch1+docs-4_amd64.deb
+</code></pre></div><p>Tips：</p>
+<ol>
+<li>不同版本的 deb 文件的中间代号是不一致的，所以使用开头名称和版本（如: <code>hdf5-helpers_1.10.0</code>）进行搜索来精确定位，其中本次的服务器需要 amd64 构架，根据实际情况改动。</li>
+<li>第2行代码在运行时出现 <code>libhdf5-103:amd64 conflicts with libhdf5-100</code> 的报错，就是没有卸载干净，运行对应卸载部分的代码即可。</li>
+<li>一定要看完运行输出的文字，根据提示灵活变动。</li>
+</ol>
+<h2 id="2-如何确定是版本不匹配造成的-">2 如何确定是版本不匹配造成的 !!!</h2>
+<p>　　怎么确定是版本不匹配造成的，这是个非常好的问题 !!!<br>
+　　最初是在 R 中加载 （或安装） <code>hdf5r</code> 时，出现 <code>libhdf5_serial.so.100</code> 无法找到的报错，使用第一部分中的代码确实找不到，只能找到 <code>libhdf5_serial.so.103</code> ，我的固有思想是觉得 R 包的版本有问题有问题，当然换不同版本的 R 包安装也是最简单的一步。<br>
+　　当我在安装了不同版本的 R 包，均出现相同报错的时候，我就觉得可能不是这个原因，应该是 Ubantu 中的 <code>HDF5</code> 有问题，首当其冲的就运行了，本文开头的那三行指令，代码运行起来没有任何报错，一副岁月安好的样子，但是一装 <code>hdf5r</code> ，依旧是熟悉的报错，这时候才开始自己思考报错的含义，并且又搜索大量的相关信息。<br>
+　　随后就进入到，既然可以找到 <code>libhdf5_serial.so.103</code>，那就软连接创建一个 <code>libhdf5_serial.so.100</code> 来解决，找不到的报错，但是后面在安装的时候又出现了下面一些报错，这个报错搜不到相关的网页，是一条死胡同。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">## error 1：报错整体没有记录，报错中主要是包含下面字符</span>
+SZ_encoder_enabled
+
+<span style="color:#75715e">## error 2</span>
+Error<span style="color:#f92672">:</span> package or namespace load failed for ‘hdf5r’ in <span style="color:#a6e22e">dyn.load</span>(file, DLLpath <span style="color:#f92672">=</span> DLLpath, <span style="color:#66d9ef">...</span>)<span style="color:#f92672">:</span> unable to load shared object <span style="color:#e6db74">&#39;/data1/yangpp/R_library/4.1/hdf5r/libs/hdf5r.so&#39;</span><span style="color:#f92672">:</span> <span style="color:#f92672">/</span>data1<span style="color:#f92672">/</span>yangpp<span style="color:#f92672">/</span>R_library<span style="color:#f92672">/</span><span style="color:#ae81ff">4.1</span><span style="color:#f92672">/</span>hdf5r<span style="color:#f92672">/</span>libs<span style="color:#f92672">/</span>hdf5r.so<span style="color:#f92672">:</span> undefined symbol<span style="color:#f92672">:</span> H5Oget_info_by_name, version HDF5_SERIAL_1.8.7
+</code></pre></div><p>　　所以还是回到 <code>libhdf5_serial.so.100</code> 不存在的问题上，100是小于103的，那就可以想到是当前的 HDF5 版本过高导致没得这个文件。后面就向着这个方向上努力，才有了能够解决此次报错的方法。</p>
+<hr>
+<p><strong>参考资料：</strong><br>
+<a href="https://askubuntu.com/questions/1313040/ubuntu-20-04-libhdf5-serial-so-10-not-found-gdal-installation">1.Ubuntu 20.04 - libhdf5_serial.so.10 not found (Gdal installation)</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/hdf5/">HDF5</a>
+
+  <a class="tag tag--primary tag--small" href="https://pengpengyang94.github.io/tags/ubantu/">Ubantu</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/" data-tooltip="Cartesian_ddG计算蛋白复合物单点突变自由能">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2024/11/ubantu%E9%85%8D%E7%BD%AEhdf5/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2024/11/ubantu%E9%85%8D%E7%BD%AEhdf5/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2024/11/ubantu%E9%85%8D%E7%BD%AEhdf5/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 Ezio. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://pengpengyang94.github.io/2020/12/cartesian_ddg%E8%AE%A1%E7%AE%97%E8%9B%8B%E7%99%BD%E5%A4%8D%E5%90%88%E7%89%A9%E5%8D%95%E7%82%B9%E7%AA%81%E5%8F%98%E8%87%AA%E7%94%B1%E8%83%BD/" data-tooltip="Cartesian_ddG计算蛋白复合物单点突变自由能">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://pengpengyang94.github.io/2024/11/ubantu%E9%85%8D%E7%BD%AEhdf5/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://pengpengyang94.github.io/2024/11/ubantu%E9%85%8D%E7%BD%AEhdf5/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://pengpengyang94.github.io/2024/11/ubantu%E9%85%8D%E7%BD%AEhdf5/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpengpengyang94.github.io%2F2024%2F11%2Fubantu%25E9%2585%258D%25E7%25BD%25AEhdf5%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fpengpengyang94.github.io%2F2024%2F11%2Fubantu%25E9%2585%258D%25E7%25BD%25AEhdf5%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fpengpengyang94.github.io%2F2024%2F11%2Fubantu%25E9%2585%258D%25E7%25BD%25AEhdf5%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.loli.net/2020/04/15/xFaPfkeSHjc3sg4.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Ezio</h4>
+    
+      <div id="about-card-bio">学习、记录、变强，最后 <strong>变秃</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        生物信息学
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国 云南 昆明
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://pengpengyang94.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://pengpengyang94.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/pengpengyang94.github.io\/2024\/11\/ubantu%E9%85%8D%E7%BD%AEhdf5\/';
+          
+            this.page.identifier = '\/2024\/11\/ubantu%E9%85%8D%E7%BD%AEhdf5\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
